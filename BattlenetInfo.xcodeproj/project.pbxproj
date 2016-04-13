@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		588243FA539833DA64317E00 /* libPods-BattlenetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */; };
+		835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */; };
 		8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388B6851CAFAD4B0098B864 /* WebServiceManager.m */; };
-		839E25721CAEDA8800C09052 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839E25711CAEDA8800C09052 /* LogInViewController.m */; };
 		83B6B7BA1CAECA1800B08FDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6B7B91CAECA1800B08FDB /* main.m */; };
 		83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6B7BC1CAECA1900B08FDB /* AppDelegate.m */; };
 		83B6B7C31CAECA1A00B08FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B6B7C11CAECA1A00B08FDB /* Main.storyboard */; };
@@ -40,10 +40,10 @@
 /* Begin PBXFileReference section */
 		15D70625271416477995371C /* Pods-BattlenetInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BattlenetInfo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BattlenetInfo/Pods-BattlenetInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BattlenetInfo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		835F209B1CBE3C600094819F /* BattleTagSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTagSelectionViewController.h; sourceTree = "<group>"; };
+		835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTagSelectionViewController.m; sourceTree = "<group>"; };
 		8388B6841CAFAD4B0098B864 /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
 		8388B6851CAFAD4B0098B864 /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
-		839E25701CAEDA8800C09052 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
-		839E25711CAEDA8800C09052 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		83B6B7B51CAECA1700B08FDB /* BattlenetInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattlenetInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B6B7B91CAECA1800B08FDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B6B7BB1CAECA1800B08FDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -113,10 +113,10 @@
 		839E256F1CAEDA5600C09052 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				839E25701CAEDA8800C09052 /* LogInViewController.h */,
-				839E25711CAEDA8800C09052 /* LogInViewController.m */,
 				8388B6841CAFAD4B0098B864 /* WebServiceManager.h */,
 				8388B6851CAFAD4B0098B864 /* WebServiceManager.m */,
+				835F209B1CBE3C600094819F /* BattleTagSelectionViewController.h */,
+				835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -378,9 +378,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */,
-				839E25721CAEDA8800C09052 /* LogInViewController.m in Sources */,
 				83B6B7C61CAECA1A00B08FDB /* BattlenetInfo.xcdatamodeld in Sources */,
 				83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */,
+				835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */,
 				83B6B7BA1CAECA1800B08FDB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
