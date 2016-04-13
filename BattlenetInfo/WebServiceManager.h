@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFOAuth2Manager.h>
+
+#import "AFNetworking.h"
 
 typedef NS_ENUM(NSUInteger, BattlenetRegion) {
     BattlenetRegionEU       = 0 ,
@@ -17,9 +18,11 @@ typedef NS_ENUM(NSUInteger, BattlenetRegion) {
     BattlenetRegionCN = 4
 };
 
-@interface WebServiceManager : NSObject
+@interface WebServiceManager : AFHTTPSessionManager
 
-+ (id)sharedWebServiceManager;
-- (NSURLRequest *)urlRequestForLoginForRegion:(BattlenetRegion)region;
-- (void)fetchImageInfoForManufacturer:(NSString *)manufacturer model:(NSString *)model color:(NSString *)color withCompletionBlock:(void (^)(NSArray *array))completionBlock;
++ (NSString *)stringFromBattlenetRegion:(BattlenetRegion)region;
+
+- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSArray *array))completionBlock;
+    
+
 @end

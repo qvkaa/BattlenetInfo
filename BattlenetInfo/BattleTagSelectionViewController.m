@@ -7,9 +7,11 @@
 //
 
 #import "BattleTagSelectionViewController.h"
-
+#import "AddBattletagViewController.h"
 @interface BattleTagSelectionViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (nonatomic) CGFloat cellHeight;
 @end
 
@@ -25,6 +27,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+   
 }
 
 #pragma mark - accessors
@@ -43,13 +50,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reusableCell"];
-    //[cell.accessoryView setTintColor:[UIColor whiteColor]];
+    
     cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-    //[cell.textLabel setTextColor:[UIColor whiteColor]];
-    //[cell setTintColor:[UIColor whiteColor]];
-    
-    
-    // Add elements to the cell
+ 
     return cell;
 }
 
@@ -57,7 +60,35 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.cellHeight;
 }
+#pragma mark - segue preperation 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"showHeroesSegue"])
+    {
+        
+        UITableViewController *destinationViewController = [segue destinationViewController];
+        destinationViewController.navigationItem.title = @"Heroes";
+    }
+    
+    if ([[segue identifier] isEqualToString:@"newBattletagSegue"])
+    {
+    
+       
+    }
 
+    
+}
+
+#pragma mark - IBActions
+//- (IBAction)userDidPressAddButton:(id)sender {
+//    if (!self.editing) {
+//        [self performSegueWithIdentifier:@"showHeroesSegue" sender:sender];
+//    }
+//}
+- (IBAction)userDidPressEditButton:(id)sender {
+    self.tableView.editing = !self.tableView.editing;
+    
+}
 
 /*
  #pragma mark - Navigation
