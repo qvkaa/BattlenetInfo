@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic) CGFloat cellHeight;
 @end
 
@@ -99,5 +100,24 @@
  // Pass the selected object to the new view controller.
  }
  */
-
+#pragma mark - fetch delegate methods
+- (void)initializeFetchedResultsController
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BattleTag"];
+    
+    NSSortDescriptor *battleTagSort = [NSSortDescriptor sortDescriptorWithKey:@"battleTag" ascending:YES];
+    
+    [request setSortDescriptors:@[battleTagSort]];
+    
+    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType]; //Retrieve the main queue NSManagedObjectContext
+    
+    [self setFetchedResultsController:[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:nil]];
+    [[self fetchedResultsController] setDelegate:self];
+    
+    NSError *error = nil;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+}
 @end

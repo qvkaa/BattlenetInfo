@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Automatic">
-    <entity name="BattleTag" syncable="YES">
+    <entity name="BattleTag" representedClassName="BattleTag" syncable="YES">
         <attribute name="battleTag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="battleTag" inverseEntity="Character" syncable="YES"/>
     </entity>
+    <entity name="Character" syncable="YES">
+        <attribute name="characterClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="characterName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="softcore" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="battleTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BattleTag" inverseName="characters" inverseEntity="BattleTag" syncable="YES"/>
+    </entity>
+    <entity name="Equipment" syncable="YES"/>
     <elements>
-        <element name="BattleTag" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="BattleTag" positionX="-479" positionY="11" width="128" height="88"/>
+        <element name="Character" positionX="-243" positionY="-19" width="128" height="118"/>
+        <element name="Equipment" positionX="-47" positionY="18" width="128" height="43"/>
     </elements>
 </model>

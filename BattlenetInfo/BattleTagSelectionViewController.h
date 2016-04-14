@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
-@interface BattleTagSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+#import <CoreData/CoreData.h>
+@interface BattleTagSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate>
 
+- (void)initializeFetchedResultsController;
 
 @end
