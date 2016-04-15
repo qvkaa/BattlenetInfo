@@ -51,7 +51,7 @@
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier
                                               forIndexPath:indexPath];
-    [self.delegate configureCell:cell withObject:object];
+    [self. configureCell:cell withObject:object];
     return cell;
 }
 

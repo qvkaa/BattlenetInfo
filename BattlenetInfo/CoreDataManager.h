@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "CoreDataBridge.h"
+
 @interface CoreDataManager : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
+@property (strong,nonatomic) NSArray * battleTags;
 + (id)sharedCoreDataManager;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+
 
 @end

@@ -1,5 +1,5 @@
 //
-//  BattleTag.h
+//  Hero.h
 //  BattlenetInfo
 //
 //  Created by yavoraleksiev on 4/15/16.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Hero;
+@class BattleTag;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BattleTag : NSManagedObject
+@interface Hero : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "BattleTag+CoreDataProperties.h"
+#import "Hero+CoreDataProperties.h"

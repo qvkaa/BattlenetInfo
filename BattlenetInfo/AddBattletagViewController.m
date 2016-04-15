@@ -8,6 +8,7 @@
 
 #import "AddBattletagViewController.h"
 #import "WebServiceManager.h"
+#import "CoreDataManager.h"
 @interface AddBattletagViewController ()
 
 @end
@@ -36,7 +37,9 @@
 */
 - (IBAction)userDidPressSave:(id)sender {
     [[WebServiceManager manager] fetchProfileWithBattleTag:@"tazza-2997" region:BattlenetRegionEU withCompletionBlock:^(NSArray *array) {
-        
+        CoreDataManager *coreDataManager = [CoreDataManager sharedCoreDataManager];
+        [coreDataManager insertBattleTag];
+        [coreDataManager fetchAllBattleTags];
     }];
 }
 
