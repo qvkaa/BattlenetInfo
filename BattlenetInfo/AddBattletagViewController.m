@@ -8,8 +8,9 @@
 
 #import "AddBattletagViewController.h"
 #import "WebServiceManager.h"
-#import "CoreDataManager.h"
+#import "CoreDataBridge.h"
 @interface AddBattletagViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *battleTagTextField;
 
 @end
 
@@ -36,10 +37,12 @@
 }
 */
 - (IBAction)userDidPressSave:(id)sender {
-    [[WebServiceManager manager] fetchProfileWithBattleTag:@"tazza-2997" region:BattlenetRegionEU withCompletionBlock:^(NSArray *array) {
-        CoreDataManager *coreDataManager = [CoreDataManager sharedCoreDataManager];
-        [coreDataManager insertBattleTag];
-        [coreDataManager fetchAllBattleTags];
+    NSString *battleTag = self.battleTagTextField.text;
+    [[WebServiceManager manager] fetchProfileWithBattleTag:@"tazza-2997" region:BattlenetRegionEU withCompletionBlock:^(NSDictionary *dictonary) {
+        
+        CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
+        [sharedCoreDataBridge insertBattleTagWithDictionary:dictonary];
+        [sharedCoreDataBridge fetchAllBattleTags];
     }];
 }
 

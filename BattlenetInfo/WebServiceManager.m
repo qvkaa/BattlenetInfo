@@ -22,8 +22,31 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 
 
 #pragma mark - request
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSArray *array))completionBlock {
-  
+//- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
+//  
+//    NSString *urlString =[self URIStringWithBattleTag:battletag region:region];
+//    
+//    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@","];
+//    
+//    NSURL *URL = [NSURL URLWithString:urlString];
+//    
+//    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+//        
+//        
+//        NSDictionary *photos = [responseObject objectForKey:@"photos"];
+//        NSArray *array = [photos objectForKey:@"photo"];
+//        
+//        if ([array count] > 0) {
+//            completionBlock(responseObject);
+//        } else {
+//            completionBlock(nil);
+//        }
+//    } failure:^(NSURLSessionTask *operation, NSError *error) {
+//        completionBlock(nil);
+//    }];
+//}
+- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
+    
     NSString *urlString =[self URIStringWithBattleTag:battletag region:region];
     
     urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@","];
@@ -32,12 +55,14 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     
     [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         
-        
-        NSDictionary *photos = [responseObject objectForKey:@"photos"];
-        NSArray *array = [photos objectForKey:@"photo"];
-        
-        if ([array count] > 0) {
-            completionBlock(array);
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString* code = [responseObject objectForKey:@"code"];
+            if ([code isEqualToString:@"NOTFOUND"]) {
+                NSLog(@"%@",[responseObject objectForKey:@"reason"]);
+                completionBlock(nil);
+            } else {
+                completionBlock(responseObject);
+            }
         } else {
             completionBlock(nil);
         }

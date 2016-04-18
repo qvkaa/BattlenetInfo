@@ -1,5 +1,5 @@
 //
-//  Hero+CoreDataProperties.m
+//  Equipment+CoreDataProperties.m
 //  BattlenetInfo
 //
 //  Created by yavoraleksiev on 4/18/16.
@@ -9,18 +9,11 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Hero+CoreDataProperties.h"
+#import "Equipment+CoreDataProperties.h"
 
-@implementation Hero (CoreDataProperties)
+@implementation Equipment (CoreDataProperties)
 
-@dynamic eliteKills;
-@dynamic hardcore;
-@dynamic heroClass;
-@dynamic heroID;
-@dynamic heroLevel;
-@dynamic heroName;
-@dynamic seasonal;
-@dynamic battleTag;
-@dynamic items;
+@dynamic xds;
+@dynamic hero;
 
 @end

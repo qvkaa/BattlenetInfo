@@ -1,5 +1,5 @@
 //
-//  Hero+CoreDataProperties.m
+//  Equipment+CoreDataProperties.h
 //  BattlenetInfo
 //
 //  Created by yavoraleksiev on 4/18/16.
@@ -9,18 +9,15 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Hero+CoreDataProperties.h"
+#import "Equipment.h"
 
-@implementation Hero (CoreDataProperties)
+NS_ASSUME_NONNULL_BEGIN
 
-@dynamic eliteKills;
-@dynamic hardcore;
-@dynamic heroClass;
-@dynamic heroID;
-@dynamic heroLevel;
-@dynamic heroName;
-@dynamic seasonal;
-@dynamic battleTag;
-@dynamic items;
+@interface Equipment (CoreDataProperties)
+
+@property (nullable, nonatomic, retain) NSNumber *xds;
+@property (nullable, nonatomic, retain) Hero *hero;
 
 @end
+
+NS_ASSUME_NONNULL_END

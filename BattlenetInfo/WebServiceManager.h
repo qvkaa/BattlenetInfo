@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, BattlenetRegion) {
 
 + (NSString *)stringFromBattlenetRegion:(BattlenetRegion)region;
 
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSArray *array))completionBlock;
+- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
     
 
 @end

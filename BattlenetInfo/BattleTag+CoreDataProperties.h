@@ -2,7 +2,7 @@
 //  BattleTag+CoreDataProperties.h
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/15/16.
+//  Created by yavoraleksiev on 4/18/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *paragonLevelHardcore;
 @property (nullable, nonatomic, retain) NSNumber *paragonLevelSeason;
 @property (nullable, nonatomic, retain) NSNumber *paragonLevelSeasonHardcore;
+@property (nullable, nonatomic, retain) NSNumber *hardcoreMonsters;
+@property (nullable, nonatomic, retain) NSNumber *elites;
+@property (nullable, nonatomic, retain) NSNumber *monsters;
 @property (nullable, nonatomic, retain) NSSet<Hero *> *characters;
 
 @end

@@ -103,6 +103,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="battleTagTextField" destination="g5l-6s-Kje" id="bRX-Tb-cHT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjT-Ha-cT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -2,7 +2,7 @@
 //  BattleTag+CoreDataProperties.m
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/15/16.
+//  Created by yavoraleksiev on 4/18/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,6 +19,9 @@
 @dynamic paragonLevelHardcore;
 @dynamic paragonLevelSeason;
 @dynamic paragonLevelSeasonHardcore;
+@dynamic hardcoreMonsters;
+@dynamic elites;
+@dynamic monsters;
 @dynamic characters;
 
 @end

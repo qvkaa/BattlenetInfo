@@ -2,14 +2,14 @@
 //  Hero.h
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/15/16.
+//  Created by yavoraleksiev on 4/18/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class BattleTag;
+@class BattleTag, Equipment;
 
 NS_ASSUME_NONNULL_BEGIN
 

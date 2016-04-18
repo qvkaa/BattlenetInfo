@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "CoreDataBridge.h"
+
 
 @interface CoreDataManager : NSObject
 
