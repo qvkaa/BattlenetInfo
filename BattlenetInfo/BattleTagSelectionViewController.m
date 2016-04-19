@@ -8,7 +8,8 @@
 
 #import "BattleTagSelectionViewController.h"
 #import "AddBattletagViewController.h"
-@interface BattleTagSelectionViewController ()
+#import "AccountInfoViewController.h"
+@interface BattleTagSelectionViewController () <NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -20,7 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    [self initializeFetchedResultsController];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -43,32 +46,58 @@
     }
     return _cellHeight;
 }
+#pragma mark - private helper methods
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    // Fetch Record
+    NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    // Update Cell
+    [cell.textLabel setText:[record valueForKey:@"accountTag"]];
+   
+}
 #pragma mark - tableview datasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [[self.fetchedResultsController sections] count];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    NSArray *sections = [self.fetchedResultsController sections];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+    
+    return [sectionInfo numberOfObjects];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reusableCell"];
+    [self configureCell:cell atIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
  
     return cell;
 }
 
 #pragma mark - tableview delegate
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.cellHeight;
 }
 #pragma mark - segue preperation 
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@"showHeroesSegue"])
+    if ([[segue identifier] isEqualToString:@"showInfoSegue"])
     {
-        
-        UITableViewController *destinationViewController = [segue destinationViewController];
-        destinationViewController.navigationItem.title = @"Heroes";
+       
+        if ([sender isKindOfClass:[UITableViewCell class]]){
+            NSIndexPath *path = [self.tableView indexPathForCell:sender];
+            NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:path];
+         
+            AccountInfoViewController *vc = [segue destinationViewController];
+            vc.managedObject = record;
+        }
+
     }
     
     if ([[segue identifier] isEqualToString:@"newBattletagSegue"])
@@ -81,43 +110,64 @@
 }
 
 #pragma mark - IBActions
-//- (IBAction)userDidPressAddButton:(id)sender {
-//    if (!self.editing) {
-//        [self performSegueWithIdentifier:@"showHeroesSegue" sender:sender];
-//    }
-//}
+
 - (IBAction)userDidPressEditButton:(id)sender {
     self.tableView.editing = !self.tableView.editing;
     
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-#pragma mark - fetch delegate methods
-- (void)initializeFetchedResultsController
-{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BattleTag"];
+#pragma mark - fetchController
+- (void)initializeFetchedResultsController {
+    // Initialize Fetch Request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"BattleTag"];
     
-    NSSortDescriptor *battleTagSort = [NSSortDescriptor sortDescriptorWithKey:@"battleTag" ascending:YES];
+    // Add Sort Descriptors
+    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"accountTag" ascending:YES]]];
     
-    [request setSortDescriptors:@[battleTagSort]];
+    // Initialize Fetched Results Controller
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
-    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType]; //Retrieve the main queue NSManagedObjectContext
+    // Configure Fetched Results Controller
+    [self.fetchedResultsController setDelegate:self];
     
-    [self setFetchedResultsController:[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:nil]];
-    [[self fetchedResultsController] setDelegate:self];
-    
+    // Perform Fetch
     NSError *error = nil;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
+    [self.fetchedResultsController performFetch:&error];
+    
+    if (error) {
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
     }
 }
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeInsert: {
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete: {
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate: {
+          //  [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+        }
+        case NSFetchedResultsChangeMove: {
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+    }
+}
+
 @end

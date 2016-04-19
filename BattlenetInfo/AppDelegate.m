@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "CoreDataManager.h"
+#import "BattleTagSelectionViewController.h"
+#import "CoreDataManager.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +18,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    // Instantiate Root Navigation Controller
+    UINavigationController *rootNavigationController = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"rootNavigationController"];
+    
+    // Configure View Controller
+    BattleTagSelectionViewController *viewController = (BattleTagSelectionViewController *)[rootNavigationController topViewController];
+    
+    if ([viewController isKindOfClass:[BattleTagSelectionViewController class]]) {
+        CoreDataManager *manager = [CoreDataManager sharedCoreDataManager];
+        [viewController setManagedObjectContext: manager.managedObjectContext];
+    }
+    
+    // Configure Window
+    [self.window setRootViewController:rootNavigationController];
+    
     return YES;
 }
 

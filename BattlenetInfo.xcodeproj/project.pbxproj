@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		588243FA539833DA64317E00 /* libPods-BattlenetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */; };
-		835E832C1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835E832B1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.m */; };
 		835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */; };
 		835F20A31CBE62290094819F /* HeroesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F20A21CBE62290094819F /* HeroesTableViewController.m */; };
 		835F20A71CBE62A00094819F /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F20A61CBE62A00094819F /* CoreDataManager.m */; };
@@ -21,7 +20,7 @@
 		835F4E8E1CC51A0B00BF2C5F /* BattleTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E881CC51A0B00BF2C5F /* BattleTag.m */; };
 		8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386E3031CC10DDB0023D540 /* CoreDataBridge.m */; };
 		8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388B6851CAFAD4B0098B864 /* WebServiceManager.m */; };
-		83AD18281CC1444C00921BB5 /* BattleTagFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AD18271CC1444C00921BB5 /* BattleTagFetchedResultsController.m */; };
+		83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83951EB81CC649A600CFDC2D /* AccountInfoViewController.m */; };
 		83B6B7BA1CAECA1800B08FDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6B7B91CAECA1800B08FDB /* main.m */; };
 		83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6B7BC1CAECA1900B08FDB /* AppDelegate.m */; };
 		83B6B7C31CAECA1A00B08FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B6B7C11CAECA1A00B08FDB /* Main.storyboard */; };
@@ -52,8 +51,6 @@
 /* Begin PBXFileReference section */
 		15D70625271416477995371C /* Pods-BattlenetInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BattlenetInfo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BattlenetInfo/Pods-BattlenetInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BattlenetInfo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		835E832A1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSource.h; sourceTree = "<group>"; };
-		835E832B1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsControllerDataSource.m; sourceTree = "<group>"; };
 		835F209B1CBE3C600094819F /* BattleTagSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTagSelectionViewController.h; sourceTree = "<group>"; };
 		835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTagSelectionViewController.m; sourceTree = "<group>"; };
 		835F20A11CBE62290094819F /* HeroesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroesTableViewController.h; sourceTree = "<group>"; };
@@ -78,8 +75,8 @@
 		8386E3031CC10DDB0023D540 /* CoreDataBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataBridge.m; sourceTree = "<group>"; };
 		8388B6841CAFAD4B0098B864 /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
 		8388B6851CAFAD4B0098B864 /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
-		83AD18261CC1444C00921BB5 /* BattleTagFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTagFetchedResultsController.h; sourceTree = "<group>"; };
-		83AD18271CC1444C00921BB5 /* BattleTagFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTagFetchedResultsController.m; sourceTree = "<group>"; };
+		83951EB71CC649A600CFDC2D /* AccountInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfoViewController.h; sourceTree = "<group>"; };
+		83951EB81CC649A600CFDC2D /* AccountInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfoViewController.m; sourceTree = "<group>"; };
 		83B6B7B51CAECA1700B08FDB /* BattlenetInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattlenetInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B6B7B91CAECA1800B08FDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B6B7BB1CAECA1800B08FDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,14 +132,10 @@
 		835E83261CBFEADB00C69E95 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				835E832A1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.h */,
-				835E832B1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.m */,
 				835F20A51CBE62A00094819F /* CoreDataManager.h */,
 				835F20A61CBE62A00094819F /* CoreDataManager.m */,
 				8386E3021CC10DDB0023D540 /* CoreDataBridge.h */,
 				8386E3031CC10DDB0023D540 /* CoreDataBridge.m */,
-				83AD18261CC1444C00921BB5 /* BattleTagFetchedResultsController.h */,
-				83AD18271CC1444C00921BB5 /* BattleTagFetchedResultsController.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -198,6 +191,8 @@
 				835F20A21CBE62290094819F /* HeroesTableViewController.m */,
 				835F20A81CBE6E330094819F /* AddBattletagViewController.h */,
 				835F20A91CBE6E330094819F /* AddBattletagViewController.m */,
+				83951EB71CC649A600CFDC2D /* AccountInfoViewController.h */,
+				83951EB81CC649A600CFDC2D /* AccountInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -462,20 +457,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				835F4E891CC51A0B00BF2C5F /* Equipment+CoreDataProperties.m in Sources */,
-				83AD18281CC1444C00921BB5 /* BattleTagFetchedResultsController.m in Sources */,
 				8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */,
 				835F20A71CBE62A00094819F /* CoreDataManager.m in Sources */,
 				83B6B7C61CAECA1A00B08FDB /* BattlenetInfo.xcdatamodeld in Sources */,
 				83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */,
 				835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */,
 				8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */,
+				83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */,
 				835F4E8A1CC51A0B00BF2C5F /* Equipment.m in Sources */,
 				835F4E8B1CC51A0B00BF2C5F /* Hero+CoreDataProperties.m in Sources */,
 				835F4E8C1CC51A0B00BF2C5F /* Hero.m in Sources */,
 				83B6B7BA1CAECA1800B08FDB /* main.m in Sources */,
 				835F4E8D1CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.m in Sources */,
 				835F20A31CBE62290094819F /* HeroesTableViewController.m in Sources */,
-				835E832C1CBFEEBE00C69E95 /* FetchedResultsControllerDataSource.m in Sources */,
 				835F20AA1CBE6E330094819F /* AddBattletagViewController.m in Sources */,
 				835F4E8E1CC51A0B00BF2C5F /* BattleTag.m in Sources */,
 			);
