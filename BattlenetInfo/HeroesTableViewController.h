@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+@interface HeroesTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate>
 
-@interface HeroesTableViewController : UITableViewController
+
+@property (strong,nonatomic) NSManagedObject *managedObject;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+- (void)initializeFetchedResultsController;
+
+
 
 @end

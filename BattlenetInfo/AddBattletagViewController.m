@@ -14,9 +14,10 @@
 #import "AddBattletagViewController.h"
 #import "WebServiceManager.h"
 #import "CoreDataBridge.h"
-@interface AddBattletagViewController ()
+@interface AddBattletagViewController () 
 @property (weak, nonatomic) IBOutlet UITextField *battleTagTextField;
 @property (weak, nonatomic) IBOutlet UITextField *regionTextField;
+@property (strong, nonatomic)  UIPickerView *pickerView;
 
 @end
 
@@ -25,7 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initPickerView];
+        // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,56 +42,59 @@
     return _regions;
 }
 
+- (void)initPickerView {
+  
+        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
+        _pickerView.delegate = self;
+        _pickerView.dataSource = self;
+        [_pickerView setShowsSelectionIndicator:YES];
+        self.regionTextField.inputView = _pickerView;
+}
 #pragma mark -
 #pragma mark PickerView DataSource
 
 - (NSInteger)numberOfComponentsInPickerView:
-(UIPickerView *)pickerView
-{
+(UIPickerView *)pickerView {
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView
-numberOfRowsInComponent:(NSInteger)component
-{
+numberOfRowsInComponent:(NSInteger)component {
     return self.regions.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView
-             titleForRow:(NSInteger)row
-            forComponent:(NSInteger)component
-{
-    return self.regions[row];
-}
 #pragma mark -
 #pragma mark PickerView Delegate
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
-      inComponent:(NSInteger)component
-{
-//    float rate = [_exchangeRates[row] floatValue];
-//    float dollars = [_dollarText.text floatValue];
-//    float result = dollars * rate;
-//    
-//    NSString *resultString = [[NSString alloc] initWithFormat:
-//                              @"%.2f USD = %.2f %@", dollars, result,
-//                              _countryNames[row]];
-//    _resultLabel.text = resultString;
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.regions[row];
 }
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.regionTextField.text = [self.regions objectAtIndex:row];
+}
+
 
 #pragma mark - IBActions
 - (IBAction)userDidPressSave:(id)sender {
     NSString *battleTag = self.battleTagTextField.text;
-    [[WebServiceManager manager] fetchProfileWithBattleTag:battleTag region:BattlenetRegionEU withCompletionBlock:^(NSDictionary *dictionary) {
-        if (dictionary) {
-            CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
-            [sharedCoreDataBridge insertBattleTagWithDictionary:dictionary];
-            [sharedCoreDataBridge fetchAllBattleTags];
-        }else {
-            
-            [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
-
-        }
+    NSString *region = self.regionTextField.text;
+    if ([battleTag length] < 6) {
+         [self alertWithTitle:@"Missing Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
+    } else if ([region isEqualToString:@""]) {
+         [self alertWithTitle:@"Missing Region" message:@"Please select a region."];
+        
+    } else {
+        [[WebServiceManager manager] fetchProfileWithBattleTag:battleTag region:BattlenetRegionEU withCompletionBlock:^(NSDictionary *dictionary) {
+            if (dictionary) {
+                CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
+                [sharedCoreDataBridge insertBattleTagWithDictionary:dictionary];
+                [sharedCoreDataBridge fetchAllBattleTags];
+            }else {
+                [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
+            }
     }];
+    }
 }
 - (void)alertWithTitle:(NSString *)title message:(NSString *)message {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:title
@@ -101,5 +106,16 @@ numberOfRowsInComponent:(NSInteger)component
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
+}
+- (IBAction)userDidTapBackground:(id)sender {
+    [self.view endEditing:YES];
+}
+
+#pragma mark - TextField delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.battleTagTextField) {
+        [self.regionTextField becomeFirstResponder];
+    }
+    return NO;
 }
 @end

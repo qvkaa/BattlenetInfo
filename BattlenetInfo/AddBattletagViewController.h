@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddBattletagViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface AddBattletagViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+
 
 @property (strong, nonatomic) NSArray *regions;
 
