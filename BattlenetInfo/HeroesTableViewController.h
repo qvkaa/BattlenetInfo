@@ -8,14 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "Hero+CoreDataProperties.h"
 @interface HeroesTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate>
-
-
-@property (strong,nonatomic) NSManagedObject *managedObject;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-- (void)initializeFetchedResultsController;
-
-
+@property (strong,nonatomic) NSArray *characters; // of Hero+CoreDataProperties
 
 @end

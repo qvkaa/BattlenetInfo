@@ -55,10 +55,13 @@
     [cell.textLabel setText:[record valueForKey:@"accountTag"]];
    
 }
+
 #pragma mark - tableview datasource
+
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.managedObjectContext deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+//        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -86,32 +89,25 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.cellHeight;
 }
+
 #pragma mark - segue preperation 
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@"showInfoSegue"])
-    {
-       
-        if ([sender isKindOfClass:[UITableViewCell class]]){
+    if ([[segue identifier] isEqualToString:@"showInfoSegue"]) {
+        if ([sender isKindOfClass:[UITableViewCell class]]) {
             NSIndexPath *path = [self.tableView indexPathForCell:sender];
             NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:path];
-         
             AccountInfoViewController *vc = [segue destinationViewController];
             vc.managedObject = record;
+            vc.managedObjectContext = self.managedObjectContext;
         }
 
     }
     
-    if ([[segue identifier] isEqualToString:@"newBattletagSegue"])
-    {
-    
+    if ([[segue identifier] isEqualToString:@"newBattletagSegue"]) {
        
     }
-
-    
 }
 
 #pragma mark - IBActions

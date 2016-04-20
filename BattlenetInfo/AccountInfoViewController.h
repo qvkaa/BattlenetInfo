@@ -11,6 +11,7 @@
 @interface AccountInfoViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (strong,nonatomic) NSManagedObject *managedObject;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) NSString *textString;
 - (void)prepareTextLabel;
 @end

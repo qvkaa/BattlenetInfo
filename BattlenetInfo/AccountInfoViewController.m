@@ -7,7 +7,7 @@
 //
 
 #import "AccountInfoViewController.h"
-
+#import "HeroesTableViewController.h"
 @interface AccountInfoViewController ()
 
 @end
@@ -47,8 +47,12 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showHeroesSegue"]) {
-        UIViewController *vc = [segue destinationViewController];
+        HeroesTableViewController *vc = [segue destinationViewController];
         vc.navigationItem.title = @"Heroes";
+        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"heroName" ascending:YES];
+        NSSet *characterSet = [self.managedObject valueForKey:@"characters"];
+        NSArray *characters = [characterSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+        vc.characters = characters;
     }
 }
 
