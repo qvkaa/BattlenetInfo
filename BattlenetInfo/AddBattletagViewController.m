@@ -85,10 +85,13 @@ numberOfRowsInComponent:(NSInteger)component {
          [self alertWithTitle:@"Missing Region" message:@"Please select a region."];
         
     } else {
-        [[WebServiceManager manager] fetchProfileWithBattleTag:battleTag region:BattlenetRegionEU withCompletionBlock:^(NSDictionary *dictionary) {
+        [[WebServiceManager manager] fetchProfileWithBattleTag:battleTag region:region withCompletionBlock:^(NSDictionary *dictionary) {
             if (dictionary) {
+                NSMutableDictionary *mutableDictionary = [dictionary mutableCopy];
+                [mutableDictionary setValue:region forKey:@"region"];
+                NSDictionary *newDictionary = [[NSDictionary alloc] initWithDictionary:mutableDictionary];
                 CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
-                [sharedCoreDataBridge insertBattleTagWithDictionary:dictionary];
+                [sharedCoreDataBridge insertBattleTagWithDictionary:newDictionary];
                 [sharedCoreDataBridge fetchAllBattleTags];
             }else {
                 [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];

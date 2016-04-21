@@ -10,6 +10,7 @@
         <attribute name="paragonLevelHardcore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="paragonLevelSeason" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="paragonLevelSeasonHardcore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hero" inverseName="battleTag" inverseEntity="Hero" syncable="YES"/>
     </entity>
     <entity name="Equipment" representedClassName="Equipment" syncable="YES">
@@ -40,7 +41,7 @@
         <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Equipment" inverseName="hero" inverseEntity="Equipment" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BattleTag" positionX="-479" positionY="11" width="128" height="193"/>
+        <element name="BattleTag" positionX="-479" positionY="11" width="128" height="210"/>
         <element name="Equipment" positionX="-20" positionY="81" width="128" height="253"/>
         <element name="Hero" positionX="-243" positionY="-19" width="128" height="178"/>
     </elements>

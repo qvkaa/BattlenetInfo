@@ -24,6 +24,7 @@
                             hardcoreMonsters:(NSNumber *)hardcoreMonsters
                                       elites:(NSNumber *)elites
                                     monsters:(NSNumber *)monsters
-                                      heroes:(NSArray *)heroes;
+                                      heroes:(NSArray *)heroes
+                                      region:(NSString *)region;
 - (NSArray *)fetchAllBattleTags;
 @end

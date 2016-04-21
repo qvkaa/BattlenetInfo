@@ -45,11 +45,36 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 //        completionBlock(nil);
 //    }];
 //}
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
+- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
     
-    NSString *urlString =[self URIStringWithBattleTag:battletag region:region];
+    NSString *newBattleTag = [self changeBattletagFormat:battletag];
     
-    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@","];
+    NSString *urlString =[self URIStringWithBattleTag:newBattleTag region:region];
+    
+    NSURL *URL = [NSURL URLWithString:urlString];
+    
+    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString* code = [responseObject objectForKey:@"code"];
+            if ([code isEqualToString:@"NOTFOUND"]) {
+                NSLog(@"%@",[responseObject objectForKey:@"reason"]);
+                completionBlock(nil);
+            } else {
+                completionBlock(responseObject);
+            }
+        } else {
+            completionBlock(nil);
+        }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        completionBlock(nil);
+    }];
+}
+- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
+    
+    NSString *newBattleTag = [self changeBattletagFormat:battletag];
+    
+    NSString *urlString =[self URIStringWithBattleTag:newBattleTag region:region];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     
@@ -71,11 +96,26 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     }];
 }
 
+
 #pragma mark - private helper methods
-- (NSString *)URIStringWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region {
-    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/?locale=en_GB&apikey=r6f5spyft2eneundahqtrtap2pkmctx5",
-                                                                                           [WebServiceManager stringFromBattlenetRegion:region],
-                                                                                            battletag];
+- (NSString *)changeBattletagFormat:(NSString *)battleTag {
+    if ([battleTag length] < 6) {
+        return nil;
+    }
+    NSMutableString *newBattleTag = [battleTag mutableCopy];
+    NSUInteger index = [newBattleTag length] - 5;
+    NSRange range = NSMakeRange(index, 1);
+    [newBattleTag replaceCharactersInRange:range withString:@"-"];
+    
+    return newBattleTag;
+}
+- (NSString *)URIcharacterStringWithBattleTag:(NSString *)battletag region:(NSString *)region characterID:(NSString *)characterID {
+   
+    NSString *newBattleTag = [self changeBattletagFormat:battletag];
+    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/hero/%@?locale=en_GB&apikey=%@",region,newBattleTag,characterID,CLIENT_ID];
+}
+- (NSString *)URIStringWithBattleTag:(NSString *)battletag region:(NSString *)region {
+    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/?locale=en_GB&apikey=%@",region,battletag,CLIENT_ID];
 }
 - (NSDictionary *)authorizeHeaderDictionary {
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:

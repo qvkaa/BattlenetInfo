@@ -6,6 +6,10 @@
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 /// http://media.blizzard.com/d3/icons/items/large/unique_helm_010_x1_demonhunter_male.png
+/*
+ Icons: When any of the d3 APIs reference an icon you can use the following url to reference it: "http://media.blizzard.com/d3/icons/<type>/<size>/<icon>.png".
+ The type can be "items" or "skills" based on the type of icon. For items size can be "small" or "large" and for skills size can be 21, 42 or 64.
+ */
 #import "CoreDataBridge.h"
 #import "CoreDataManager.h"
 
@@ -39,7 +43,7 @@
     NSNumber *hardcoreMonsters = [kills valueForKey:@"hardcoreMonsters"];
     NSNumber *elites = [kills valueForKey:@"elites"];
     NSNumber *monsters = [kills valueForKey:@"monsters"];
-    
+    NSString *region = [dictionary valueForKey:@"region"];
     NSArray *heroes = [dictionary valueForKey:@"heroes"];
     
     BattleTag *newBattleTag =[self insertBattleTagWithAccountTag:accountTag
@@ -51,7 +55,8 @@
                                                 hardcoreMonsters:hardcoreMonsters
                                                           elites:elites
                                                         monsters:monsters
-                                                          heroes:heroes];
+                                                          heroes:heroes
+                                                          region:region];
    
     return newBattleTag;
 }
@@ -65,6 +70,7 @@
                                       elites:(NSNumber *)elites
                                     monsters:(NSNumber *)monsters
                                       heroes:(NSArray *)heroes
+                                      region:(NSString *)region
 {
    
     BattleTag* newBattleTag = [NSEntityDescription insertNewObjectForEntityForName:@"BattleTag" inManagedObjectContext:self.manager.managedObjectContext];
@@ -77,6 +83,7 @@
     newBattleTag.elites = elites;
     newBattleTag.monsters = monsters;
     newBattleTag.hardcoreMonsters = hardcoreMonsters;
+    newBattleTag.region = region;
 
     for (NSDictionary *hero in heroes) {
        

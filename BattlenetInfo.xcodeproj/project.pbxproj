@@ -8,16 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		588243FA539833DA64317E00 /* libPods-BattlenetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */; };
+		835823541CC90E4F000EA43A /* Equipment+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 835823491CC90E4F000EA43A /* Equipment+CoreDataProperties.m */; };
+		835823551CC90E4F000EA43A /* Equipment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8358234B1CC90E4F000EA43A /* Equipment.m */; };
+		835823561CC90E4F000EA43A /* BattleTag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8358234D1CC90E4F000EA43A /* BattleTag+CoreDataProperties.m */; };
+		835823571CC90E4F000EA43A /* BattleTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8358234F1CC90E4F000EA43A /* BattleTag.m */; };
+		835823581CC90E4F000EA43A /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 835823511CC90E4F000EA43A /* Hero+CoreDataProperties.m */; };
+		835823591CC90E4F000EA43A /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 835823531CC90E4F000EA43A /* Hero.m */; };
+		8358235C1CC91D5E000EA43A /* HeroInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8358235B1CC91D5E000EA43A /* HeroInfoViewController.m */; };
 		835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */; };
 		835F20A31CBE62290094819F /* HeroesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F20A21CBE62290094819F /* HeroesTableViewController.m */; };
 		835F20A71CBE62A00094819F /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F20A61CBE62A00094819F /* CoreDataManager.m */; };
 		835F20AA1CBE6E330094819F /* AddBattletagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F20A91CBE6E330094819F /* AddBattletagViewController.m */; };
-		835F4E891CC51A0B00BF2C5F /* Equipment+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E7E1CC51A0B00BF2C5F /* Equipment+CoreDataProperties.m */; };
-		835F4E8A1CC51A0B00BF2C5F /* Equipment.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E801CC51A0B00BF2C5F /* Equipment.m */; };
-		835F4E8B1CC51A0B00BF2C5F /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E821CC51A0B00BF2C5F /* Hero+CoreDataProperties.m */; };
-		835F4E8C1CC51A0B00BF2C5F /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E841CC51A0B00BF2C5F /* Hero.m */; };
-		835F4E8D1CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E861CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.m */; };
-		835F4E8E1CC51A0B00BF2C5F /* BattleTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F4E881CC51A0B00BF2C5F /* BattleTag.m */; };
 		8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386E3031CC10DDB0023D540 /* CoreDataBridge.m */; };
 		8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388B6851CAFAD4B0098B864 /* WebServiceManager.m */; };
 		83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83951EB81CC649A600CFDC2D /* AccountInfoViewController.m */; };
@@ -51,6 +52,20 @@
 /* Begin PBXFileReference section */
 		15D70625271416477995371C /* Pods-BattlenetInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BattlenetInfo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BattlenetInfo/Pods-BattlenetInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BattlenetInfo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		835823481CC90E4F000EA43A /* Equipment+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Equipment+CoreDataProperties.h"; sourceTree = "<group>"; };
+		835823491CC90E4F000EA43A /* Equipment+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Equipment+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8358234A1CC90E4F000EA43A /* Equipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equipment.h; sourceTree = "<group>"; };
+		8358234B1CC90E4F000EA43A /* Equipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Equipment.m; sourceTree = "<group>"; };
+		8358234C1CC90E4F000EA43A /* BattleTag+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BattleTag+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8358234D1CC90E4F000EA43A /* BattleTag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BattleTag+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8358234E1CC90E4F000EA43A /* BattleTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTag.h; sourceTree = "<group>"; };
+		8358234F1CC90E4F000EA43A /* BattleTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTag.m; sourceTree = "<group>"; };
+		835823501CC90E4F000EA43A /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
+		835823511CC90E4F000EA43A /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
+		835823521CC90E4F000EA43A /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		835823531CC90E4F000EA43A /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
+		8358235A1CC91D5E000EA43A /* HeroInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfoViewController.h; sourceTree = "<group>"; };
+		8358235B1CC91D5E000EA43A /* HeroInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroInfoViewController.m; sourceTree = "<group>"; };
 		835F209B1CBE3C600094819F /* BattleTagSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTagSelectionViewController.h; sourceTree = "<group>"; };
 		835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTagSelectionViewController.m; sourceTree = "<group>"; };
 		835F20A11CBE62290094819F /* HeroesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroesTableViewController.h; sourceTree = "<group>"; };
@@ -59,18 +74,6 @@
 		835F20A61CBE62A00094819F /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		835F20A81CBE6E330094819F /* AddBattletagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBattletagViewController.h; sourceTree = "<group>"; };
 		835F20A91CBE6E330094819F /* AddBattletagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBattletagViewController.m; sourceTree = "<group>"; };
-		835F4E7D1CC51A0B00BF2C5F /* Equipment+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Equipment+CoreDataProperties.h"; sourceTree = "<group>"; };
-		835F4E7E1CC51A0B00BF2C5F /* Equipment+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Equipment+CoreDataProperties.m"; sourceTree = "<group>"; };
-		835F4E7F1CC51A0B00BF2C5F /* Equipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equipment.h; sourceTree = "<group>"; };
-		835F4E801CC51A0B00BF2C5F /* Equipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Equipment.m; sourceTree = "<group>"; };
-		835F4E811CC51A0B00BF2C5F /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
-		835F4E821CC51A0B00BF2C5F /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
-		835F4E831CC51A0B00BF2C5F /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
-		835F4E841CC51A0B00BF2C5F /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
-		835F4E851CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BattleTag+CoreDataProperties.h"; sourceTree = "<group>"; };
-		835F4E861CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BattleTag+CoreDataProperties.m"; sourceTree = "<group>"; };
-		835F4E871CC51A0B00BF2C5F /* BattleTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTag.h; sourceTree = "<group>"; };
-		835F4E881CC51A0B00BF2C5F /* BattleTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTag.m; sourceTree = "<group>"; };
 		8386E3021CC10DDB0023D540 /* CoreDataBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataBridge.h; sourceTree = "<group>"; };
 		8386E3031CC10DDB0023D540 /* CoreDataBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataBridge.m; sourceTree = "<group>"; };
 		8388B6841CAFAD4B0098B864 /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
@@ -143,18 +146,18 @@
 		835E83391CBFFBC300C69E95 /* CoreDataEntities */ = {
 			isa = PBXGroup;
 			children = (
-				835F4E7D1CC51A0B00BF2C5F /* Equipment+CoreDataProperties.h */,
-				835F4E7E1CC51A0B00BF2C5F /* Equipment+CoreDataProperties.m */,
-				835F4E7F1CC51A0B00BF2C5F /* Equipment.h */,
-				835F4E801CC51A0B00BF2C5F /* Equipment.m */,
-				835F4E811CC51A0B00BF2C5F /* Hero+CoreDataProperties.h */,
-				835F4E821CC51A0B00BF2C5F /* Hero+CoreDataProperties.m */,
-				835F4E831CC51A0B00BF2C5F /* Hero.h */,
-				835F4E841CC51A0B00BF2C5F /* Hero.m */,
-				835F4E851CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.h */,
-				835F4E861CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.m */,
-				835F4E871CC51A0B00BF2C5F /* BattleTag.h */,
-				835F4E881CC51A0B00BF2C5F /* BattleTag.m */,
+				835823481CC90E4F000EA43A /* Equipment+CoreDataProperties.h */,
+				835823491CC90E4F000EA43A /* Equipment+CoreDataProperties.m */,
+				8358234A1CC90E4F000EA43A /* Equipment.h */,
+				8358234B1CC90E4F000EA43A /* Equipment.m */,
+				8358234C1CC90E4F000EA43A /* BattleTag+CoreDataProperties.h */,
+				8358234D1CC90E4F000EA43A /* BattleTag+CoreDataProperties.m */,
+				8358234E1CC90E4F000EA43A /* BattleTag.h */,
+				8358234F1CC90E4F000EA43A /* BattleTag.m */,
+				835823501CC90E4F000EA43A /* Hero+CoreDataProperties.h */,
+				835823511CC90E4F000EA43A /* Hero+CoreDataProperties.m */,
+				835823521CC90E4F000EA43A /* Hero.h */,
+				835823531CC90E4F000EA43A /* Hero.m */,
 			);
 			name = CoreDataEntities;
 			sourceTree = "<group>";
@@ -193,6 +196,8 @@
 				83951EB81CC649A600CFDC2D /* AccountInfoViewController.m */,
 				835F20A11CBE62290094819F /* HeroesTableViewController.h */,
 				835F20A21CBE62290094819F /* HeroesTableViewController.m */,
+				8358235A1CC91D5E000EA43A /* HeroInfoViewController.h */,
+				8358235B1CC91D5E000EA43A /* HeroInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -456,22 +461,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				835F4E891CC51A0B00BF2C5F /* Equipment+CoreDataProperties.m in Sources */,
 				8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */,
 				835F20A71CBE62A00094819F /* CoreDataManager.m in Sources */,
+				835823541CC90E4F000EA43A /* Equipment+CoreDataProperties.m in Sources */,
 				83B6B7C61CAECA1A00B08FDB /* BattlenetInfo.xcdatamodeld in Sources */,
 				83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */,
 				835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */,
+				835823551CC90E4F000EA43A /* Equipment.m in Sources */,
+				835823561CC90E4F000EA43A /* BattleTag+CoreDataProperties.m in Sources */,
 				8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */,
 				83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */,
-				835F4E8A1CC51A0B00BF2C5F /* Equipment.m in Sources */,
-				835F4E8B1CC51A0B00BF2C5F /* Hero+CoreDataProperties.m in Sources */,
-				835F4E8C1CC51A0B00BF2C5F /* Hero.m in Sources */,
+				835823571CC90E4F000EA43A /* BattleTag.m in Sources */,
 				83B6B7BA1CAECA1800B08FDB /* main.m in Sources */,
-				835F4E8D1CC51A0B00BF2C5F /* BattleTag+CoreDataProperties.m in Sources */,
+				835823581CC90E4F000EA43A /* Hero+CoreDataProperties.m in Sources */,
 				835F20A31CBE62290094819F /* HeroesTableViewController.m in Sources */,
+				8358235C1CC91D5E000EA43A /* HeroInfoViewController.m in Sources */,
 				835F20AA1CBE6E330094819F /* AddBattletagViewController.m in Sources */,
-				835F4E8E1CC51A0B00BF2C5F /* BattleTag.m in Sources */,
+				835823591CC90E4F000EA43A /* Hero.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

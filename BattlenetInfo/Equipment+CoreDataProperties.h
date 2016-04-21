@@ -2,7 +2,7 @@
 //  Equipment+CoreDataProperties.h
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/18/16.
+//  Created by yavoraleksiev on 4/21/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,7 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Equipment (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *xds;
+@property (nullable, nonatomic, retain) NSString *bracers;
+@property (nullable, nonatomic, retain) NSString *feet;
+@property (nullable, nonatomic, retain) NSString *hands;
+@property (nullable, nonatomic, retain) NSString *head;
+@property (nullable, nonatomic, retain) NSString *leftFinger;
+@property (nullable, nonatomic, retain) NSString *legs;
+@property (nullable, nonatomic, retain) NSString *mainHand;
+@property (nullable, nonatomic, retain) NSString *neck;
+@property (nullable, nonatomic, retain) NSString *offHand;
+@property (nullable, nonatomic, retain) NSString *rightFinger;
+@property (nullable, nonatomic, retain) NSString *shoulders;
+@property (nullable, nonatomic, retain) NSString *torso;
+@property (nullable, nonatomic, retain) NSString *waist;
 @property (nullable, nonatomic, retain) Hero *hero;
 
 @end

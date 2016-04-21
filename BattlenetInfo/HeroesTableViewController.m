@@ -7,7 +7,7 @@
 //
 
 #import "HeroesTableViewController.h"
-
+#import "HeroInfoViewController.h"
 @interface HeroesTableViewController () //<NSFetchedResultsControllerDelegate>
 
 @end
@@ -30,11 +30,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"heroInfo"]) {
+        if ([sender isKindOfClass:[UITableViewCell class]]) {
+            NSIndexPath *path = [self.tableView indexPathForCell:sender];
+            HeroInfoViewController *vc = [segue destinationViewController];
+            vc.hero = [self.characters objectAtIndex:path.row];
+        }
+    }
+}
 #pragma mark - private helper methods
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.textLabel.text = [[self.characters objectAtIndex:indexPath.row] valueForKey:@"heroName"];
+    NSNumber *hardcore =[[self.characters objectAtIndex:indexPath.row] valueForKey:@"hardcore"];
+    if ([hardcore boolValue]) {
+        [cell.textLabel setTextColor:[UIColor redColor]];
+    }
+    cell.detailTextLabel.text = [[self.characters objectAtIndex:indexPath.row] valueForKey:@"heroClass"];
 }
 
 #pragma mark - Table view data source
