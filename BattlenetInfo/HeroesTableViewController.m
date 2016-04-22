@@ -36,6 +36,8 @@
             NSIndexPath *path = [self.tableView indexPathForCell:sender];
             HeroInfoViewController *vc = [segue destinationViewController];
             vc.hero = [self.characters objectAtIndex:path.row];
+            vc.region = self.region;
+            vc.battleTag = self.battleTag;
         }
     }
 }

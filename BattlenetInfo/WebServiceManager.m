@@ -74,7 +74,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     
     NSString *newBattleTag = [self changeBattletagFormat:battletag];
     
-    NSString *urlString =[self URIStringWithBattleTag:newBattleTag region:region];
+    NSString *urlString =[self URIcharacterStringWithBattleTag:newBattleTag region:region characterID:heroID];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     

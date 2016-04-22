@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Hero+CoreDataProperties.h"
+#import "WebServiceManager.h"
 @interface HeroInfoViewController : UIViewController
 
 @property (strong,nonatomic) Hero *hero;
+@property (nonatomic) NSString *battleTag;
+@property (nonatomic) NSString *region;
 
 @end

@@ -53,6 +53,8 @@
         NSSet *characterSet = [self.managedObject valueForKey:@"characters"];
         NSArray *characters = [characterSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
         vc.characters = characters;
+        vc.battleTag = [self.managedObject valueForKey:@"accountTag"];
+        vc.region = [self.managedObject valueForKey:@"region"];
     }
 }
 

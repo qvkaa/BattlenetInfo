@@ -6,6 +6,7 @@ platform :ios, '8.0'
 target 'BattlenetInfo' do
     #	pod 'AFOAuth2Manager', '~> 2.2'
 	pod 'AFNetworking', '~> 3.0'
+    pod 'MBProgressHUD', '~> 0.9'
 end
 
 target 'BattlenetInfoTests' do

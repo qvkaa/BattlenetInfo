@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "Hero+CoreDataProperties.h"
+#import "BattleTag+CoreDataProperties.h"
 @interface HeroesTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate>
+
 @property (strong,nonatomic) NSArray *characters; // of Hero+CoreDataProperties
+@property (nonatomic) NSString *battleTag;
+@property (nonatomic) NSString *region;
 
 @end
