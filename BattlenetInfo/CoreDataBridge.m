@@ -92,7 +92,7 @@
     }
     [self.manager saveContext];
     
-    NSLog(@"Saving User to Core Data completed.");
+//    NSLog(@"Saving User to Core Data completed.");
     return newBattleTag;
 }
 
@@ -126,9 +126,9 @@
     NSError *error = nil;
     NSArray *battleTags = [self.manager.managedObjectContext executeFetchRequest:request error:&error];
     [self.manager  saveContext];
-    NSLog(@"Fetching battleTags Completed.");
-    NSLog(@"battleTags: %@", battleTags);
-    NSLog(@"battleTags #: %lu", (unsigned long)[battleTags count]);
+//    NSLog(@"Fetching battleTags Completed.");
+//    NSLog(@"battleTags: %@", battleTags);
+//    NSLog(@"battleTags #: %lu", (unsigned long)[battleTags count]);
     self.manager.battleTags = [NSArray arrayWithArray:battleTags];
     return battleTags;
     

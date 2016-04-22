@@ -22,29 +22,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 
 
 #pragma mark - request
-//- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(BattlenetRegion)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
-//  
-//    NSString *urlString =[self URIStringWithBattleTag:battletag region:region];
-//    
-//    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@","];
-//    
-//    NSURL *URL = [NSURL URLWithString:urlString];
-//    
-//    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-//        
-//        
-//        NSDictionary *photos = [responseObject objectForKey:@"photos"];
-//        NSArray *array = [photos objectForKey:@"photo"];
-//        
-//        if ([array count] > 0) {
-//            completionBlock(responseObject);
-//        } else {
-//            completionBlock(nil);
-//        }
-//    } failure:^(NSURLSessionTask *operation, NSError *error) {
-//        completionBlock(nil);
-//    }];
-//}
+
 - (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
     
     NSString *newBattleTag = [self changeBattletagFormat:battletag];

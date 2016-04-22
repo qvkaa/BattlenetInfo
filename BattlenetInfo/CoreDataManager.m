@@ -26,37 +26,6 @@
     return sharedCoreDataManager;
 }
 
-#pragma mark - lifecycle
-
-//- (void)initializeFetchedResultsController
-//{
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
-//    
-//    NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
-//    
-//    [request setSortDescriptors:@[lastNameSort]];
-//    
-//    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType]; //Retrieve the main queue NSManagedObjectContext
-//    
-//    [self setFetchedResultsController:[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:nil]];
-//    [[self fetchedResultsController] setDelegate:self];
-//    
-//    NSError *error = nil;
-//    if (![[self fetchedResultsController] performFetch:&error]) {
-//        NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
-//        abort();
-//    }
-//}
-
-//- (void)initializeCoreDataStack {
-//    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"PPRecipes" withExtension:@"momd"];
-//    ZAssert(modelURL, @"Failed to find model URL");
-//
-//    NSManagedObjectModel *mom = nil;
-//    mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL]; ZAssert(mom, @"Failed to initialize model");
-//}
-
-
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;
