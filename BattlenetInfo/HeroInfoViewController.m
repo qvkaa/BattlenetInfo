@@ -7,6 +7,8 @@
 //
 
 #import "HeroInfoViewController.h"
+#import "SkillsViewController.h"
+
 
 @interface HeroInfoViewController ()
 
@@ -31,7 +33,14 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([segue.identifier isEqualToString:@"skillsSegue"]) {
+        SkillsViewController *vc = [segue destinationViewController];
+        
+        vc.region = self.region;
+        vc.battleTag = self.battleTag;
+        vc.hero = self.hero;
+        vc.heroID = [self.hero valueForKey:@"heroID"];
+    }
 }
 
 #pragma mark - helper methods
@@ -54,5 +63,6 @@
 }
 
 #pragma mark - IBActions
+
 
 @end

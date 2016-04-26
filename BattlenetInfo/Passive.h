@@ -1,5 +1,5 @@
 //
-//  BattleTag.h
+//  Passive.h
 //  BattlenetInfo
 //
 //  Created by yavoraleksiev on 4/26/16.
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BattleTag : NSManagedObject
+@interface Passive : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "BattleTag+CoreDataProperties.h"
+#import "Passive+CoreDataProperties.h"

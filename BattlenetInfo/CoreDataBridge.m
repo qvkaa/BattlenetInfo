@@ -117,7 +117,29 @@
     newHero.seasonal = seasonal;
     return newHero;
 }
+- (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary {
+    NSString *skillName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
+    NSString *runeName = [[dictionary valueForKey:@"rune"] valueForKey:@"name"];
+    NSString *icon = [[dictionary valueForKey:@"skill"] valueForKey:@"icon"];
+    
+    Skill *newSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Skill" inManagedObjectContext:self.manager.managedObjectContext];
+    newSkill.skillName = skillName;
+    newSkill.runeName = runeName;
+    newSkill.icon = icon;
+    
+    return newSkill;
+}
 
+- (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary {
+    NSString *passiveName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
+    NSString *icon = [[dictionary valueForKey:@"skill"] valueForKey:@"icon"];
+    
+    Passive *newPassiveSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Passive" inManagedObjectContext:self.manager.managedObjectContext];
+    newPassiveSkill.passiveName = passiveName;
+    newPassiveSkill.icon = icon;
+    
+    return newPassiveSkill;
+}
 #pragma mark - fetch
 
 - (NSArray *)fetchAllBattleTags {

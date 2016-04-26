@@ -375,7 +375,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Items"/>
                                 <connections>
-                                    <action selector="userDidPressItemsButton:" destination="ot8-gD-yG9" eventType="touchUpInside" id="uQp-er-2cI"/>
                                     <segue destination="bMf-4b-Mf3" kind="show" id="OR5-gp-t1r"/>
                                 </connections>
                             </button>
@@ -383,7 +382,6 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Skills"/>
                                 <connections>
-                                    <action selector="userDidPressSkillsButton:" destination="ot8-gD-yG9" eventType="touchUpInside" id="bXV-OB-SYT"/>
                                     <segue destination="Smx-FJ-TaZ" kind="show" identifier="skillsSegue" id="rjE-we-6JX"/>
                                 </connections>
                             </button>
@@ -454,10 +452,10 @@
             </objects>
             <point key="canvasLocation" x="4033.5" y="452"/>
         </scene>
-        <!--Skills View Controller-->
+        <!--Active Skils-->
         <scene sceneID="cTE-Bi-xIz">
             <objects>
-                <viewController id="Smx-FJ-TaZ" customClass="SkillsViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Smx-FJ-TaZ" customClass="SkillsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aRO-I3-f1j"/>
                         <viewControllerLayoutGuide type="bottom" id="RSZ-6K-TpY"/>
@@ -465,8 +463,55 @@
                     <view key="view" contentMode="scaleToFill" id="oWI-ei-yyf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-nx-OnF">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activeSkillsCell" id="UU0-8a-dPw">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UU0-8a-dPw" id="bXi-KO-R9D">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RFF-nx-OnF" firstAttribute="leading" secondItem="oWI-ei-yyf" secondAttribute="leading" id="2Cl-ar-rzD"/>
+                            <constraint firstAttribute="trailing" secondItem="RFF-nx-OnF" secondAttribute="trailing" id="6AL-Vp-Sf8"/>
+                            <constraint firstItem="RFF-nx-OnF" firstAttribute="top" secondItem="aRO-I3-f1j" secondAttribute="bottom" id="Ppg-kW-drH"/>
+                            <constraint firstItem="RSZ-6K-TpY" firstAttribute="top" secondItem="RFF-nx-OnF" secondAttribute="bottom" id="TBa-sa-qCP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="RFF-nx-OnF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2Cl-ar-rzD"/>
+                                <exclude reference="6AL-Vp-Sf8"/>
+                                <exclude reference="Ppg-kW-drH"/>
+                                <exclude reference="TBa-sa-qCP"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="RFF-nx-OnF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2Cl-ar-rzD"/>
+                                <include reference="6AL-Vp-Sf8"/>
+                                <include reference="Ppg-kW-drH"/>
+                                <include reference="TBa-sa-qCP"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Active Skils" id="b85-LC-JFl"/>
+                    <connections>
+                        <outlet property="tableView" destination="RFF-nx-OnF" id="svm-oi-g9V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vs-b0-EH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

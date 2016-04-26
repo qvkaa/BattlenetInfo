@@ -10,11 +10,15 @@
 #import "CoreDataManager.h"
 #import "BattleTag+CoreDataProperties.h"
 #import "Hero+CoreDataProperties.h"
+#import "Skill+CoreDataProperties.h"
+#import "Passive+CoreDataProperties.h"
 @interface CoreDataBridge : NSObject
 
 + (instancetype)sharedCoreDataBridge;
 - (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary;
 - (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary;
+- (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary;
+- (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary
 - (BattleTag *)insertBattleTagWithAccountTag:(NSString *)tag
                                    guildName:(NSString *)guild
                                 paragonLevel:(NSNumber *)paragonLevel

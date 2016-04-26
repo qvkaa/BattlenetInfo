@@ -1,18 +1,14 @@
 //
-//  Hero.m
+//  Item.m
 //  BattlenetInfo
 //
 //  Created by yavoraleksiev on 4/26/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 
-#import "Hero.h"
-#import "BattleTag.h"
-#import "Equipment.h"
-#import "Passive.h"
-#import "Skill.h"
+#import "Item.h"
 
-@implementation Hero
+@implementation Item
 
 // Insert code here to add functionality to your managed object subclass
 
