@@ -11,5 +11,6 @@
 @interface SkillCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *skillNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *runeNameLabel;
 
 @end

@@ -452,7 +452,7 @@
             </objects>
             <point key="canvasLocation" x="4033.5" y="452"/>
         </scene>
-        <!--Active Skils-->
+        <!--Skills-->
         <scene sceneID="cTE-Bi-xIz">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Smx-FJ-TaZ" customClass="SkillsViewController" sceneMemberID="viewController">
@@ -464,14 +464,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-nx-OnF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-nx-OnF">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activeSkillsCell" id="UU0-8a-dPw">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UU0-8a-dPw" id="bXi-KO-R9D">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -490,10 +491,10 @@
                                 <exclude reference="RFF-nx-OnF"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="TBa-sa-qCP"/>
                                 <exclude reference="2Cl-ar-rzD"/>
                                 <exclude reference="6AL-Vp-Sf8"/>
                                 <exclude reference="Ppg-kW-drH"/>
-                                <exclude reference="TBa-sa-qCP"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -501,14 +502,14 @@
                                 <include reference="RFF-nx-OnF"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="TBa-sa-qCP"/>
                                 <include reference="2Cl-ar-rzD"/>
                                 <include reference="6AL-Vp-Sf8"/>
                                 <include reference="Ppg-kW-drH"/>
-                                <include reference="TBa-sa-qCP"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Active Skils" id="b85-LC-JFl"/>
+                    <navigationItem key="navigationItem" title="Skills" id="b85-LC-JFl"/>
                     <connections>
                         <outlet property="tableView" destination="RFF-nx-OnF" id="svm-oi-g9V"/>
                     </connections>

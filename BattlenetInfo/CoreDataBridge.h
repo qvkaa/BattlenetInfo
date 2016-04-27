@@ -18,7 +18,7 @@
 - (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary;
 - (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary;
 - (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary;
-- (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary
+- (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary;
 - (BattleTag *)insertBattleTagWithAccountTag:(NSString *)tag
                                    guildName:(NSString *)guild
                                 paragonLevel:(NSNumber *)paragonLevel

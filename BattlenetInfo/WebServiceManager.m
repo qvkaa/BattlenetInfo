@@ -22,10 +22,19 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 
 
 #pragma mark - request
-- (void)fetchIconImageWithIcon:(NSString *)icon type:(NSString *)type forItem:(BOOL)forItem {
-    NSString *urlString = [NSString stringWithFormat:@"http://media.blizzard.com/d3/icons/<type>/%@/%@.png",
-                           icon,
-                           forItem ? @"small" : @"64" ];
++ (NSString *)imageURLWithType:(NSString *)type icon:(NSString *)icon {
+   // "http://media.blizzard.com/d3/icons/<type>/<size>/<icon>.png"
+    NSString *size;
+    if ([type isEqualToString:@"items"]) {
+        size = @"large";
+    } else {
+        size = @"64";
+    }
+    return [NSString stringWithFormat:@"http://media.blizzard.com/d3/icons/%@/%@/%@.png",
+                           type,
+                           size,
+                           icon];
+    
 }
 
 - (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
