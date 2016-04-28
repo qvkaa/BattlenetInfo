@@ -10,39 +10,25 @@
 #import "HeroesTableViewController.h"
 @interface AccountInfoViewController ()
 
+@property (strong,nonatomic) NSArray *leftLabel;
+@property (strong,nonatomic) NSArray *rightLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 @end
 
 @implementation AccountInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self prepareTextLabel];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-#pragma mark - helper methods
-- (void)prepareTextLabel {
-    
-    self.infoLabel.text = [NSString stringWithFormat:@"Battle Tag : %@\nGuild Name : %@\nMonsters Killed : %@\nHardcore Monster Killed : %@\nElites Killed : %@\nParagon Level :%@\nParagon Level Hardcore : %@",//\nParagon Season Level %@\nParagon Season Level Hardcore : %@",
-                            [self.managedObject valueForKey:@"accountTag"],
-                            [self.managedObject valueForKey:@"guildName"],
-                            [self.managedObject valueForKey:@"monsters"],
-                            [self.managedObject valueForKey:@"hardcoreMonsters"],
-                            [self.managedObject valueForKey:@"elites"],
-                            [self.managedObject valueForKey:@"paragonLevel"],
-                            [self.managedObject valueForKey:@"paragonLevelHardcore"]
-                           // [self.managedObject valueForKey:@"paragonLevelSeason"],
-                           // [self.managedObject valueForKey:@"paragonLevelSeasonHardcore"]
-                           ];
-    
-    
-    
-//    [managedObject valueForKey:@"account tag"];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -57,5 +43,48 @@
         vc.region = [self.managedObject valueForKey:@"region"];
     }
 }
+
+#pragma mark - accessors
+
+- (NSArray *)leftLabel {
+    if (!_leftLabel) {
+        _leftLabel = @[@"Battle Tag", @"Guild Name ", @"Monsters Killed", @"Hardcore Monster Killed", @"Elites Killed", @"Paragon Level", @"Paragon Level Hardcore"];
+    }
+    return _leftLabel;
+}
+- (NSArray *)rightLabel {
+    if (!_rightLabel) {
+        _rightLabel = @[[self.managedObject valueForKey:@"accountTag"],
+                        [self.managedObject valueForKey:@"guildName"],
+                        [[self.managedObject valueForKey:@"monsters"] stringValue],
+                        [[self.managedObject valueForKey:@"hardcoreMonsters"] stringValue],
+                        [[self.managedObject valueForKey:@"elites"] stringValue],
+                        [[self.managedObject valueForKey:@"paragonLevel"] stringValue],
+                        [[self.managedObject valueForKey:@"paragonLevelHardcore"] stringValue]];
+    }
+    return _rightLabel;
+}
+
+#pragma mark - tableview delegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 32.0f;
+}
+
+#pragma mark - tableview datasource
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"accountInfoCell"];
+    
+    cell.textLabel.text = [self.leftLabel objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [self.rightLabel objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.leftLabel count];
+}
+
+
 
 @end

@@ -12,7 +12,9 @@
 
 @interface HeroInfoViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *heroInfoLabel;
+@property (strong,nonatomic) NSArray *leftLabel;
+@property (strong,nonatomic) NSArray *rightLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,8 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self addInfoToLabel];
+
        // Do any additional setup after loading the view.
 }
 
@@ -43,24 +44,50 @@
     }
 }
 
+#pragma mark - accessors
+
+- (NSArray *)leftLabel {
+    if (!_leftLabel) {
+        _leftLabel = @[@"Name", @"Class ", @"Level", @"Hardcore", @"Seasonal", @"Elite Kills"];
+    }
+    return _leftLabel;
+}
+- (NSArray *)rightLabel {
+    if (!_rightLabel) {
+        _rightLabel = @[self.hero.heroName
+                        ,self.hero.heroClass
+                        ,[self.hero.heroLevel stringValue]
+                        ,[self.hero.hardcore boolValue] ? @"YES" : @"NO"
+                        ,[self.hero.seasonal boolValue] ? @"YES" : @"NO"
+                        ,[self.hero.eliteKills stringValue]];
+    }
+    return _rightLabel;
+}
+
+#pragma mark - tableview delegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 32.0f;
+}
+
+#pragma mark - tableview datasource
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"heroInfoCell"];
+    
+    cell.textLabel.text = [self.leftLabel objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [self.rightLabel objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.leftLabel count];
+}
+
+
+
 #pragma mark - helper methods
 
-- (void)addInfoToLabel {
-    self.heroInfoLabel.text = [NSString stringWithFormat:
-                               @"Name : %@\n"
-                               @"Class : %@\n"
-                               @"Level : %@\n"
-                               @"Hardcore : %@\n"
-                               @"Seasonal : %@\n"
-                               @"Elite Kills : %@"
-                               ,self.hero.heroName
-                               ,self.hero.heroClass
-                               ,self.hero.heroLevel
-                               ,[self.hero.hardcore boolValue] ? @"YES" : @"NO"
-                               ,[self.hero.seasonal boolValue] ? @"YES" : @"NO"
-                               ,self.hero.eliteKills
-                               ];
-}
 
 #pragma mark - IBActions
 

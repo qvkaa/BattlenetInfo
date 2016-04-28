@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Hero+CoreDataProperties.h"
 #import "WebServiceManager.h"
-@interface HeroInfoViewController : UIViewController
+@interface HeroInfoViewController : UIViewController  <UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic) Hero *hero;
 @property (nonatomic) NSString *battleTag;
