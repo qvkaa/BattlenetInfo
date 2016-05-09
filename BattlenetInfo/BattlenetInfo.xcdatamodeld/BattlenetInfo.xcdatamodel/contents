@@ -38,11 +38,19 @@
         <attribute name="heroName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seasonal" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="battleTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BattleTag" inverseName="characters" inverseEntity="BattleTag" syncable="YES"/>
+        <relationship name="equips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="hero" inverseEntity="Item" syncable="YES"/>
         <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Equipment" inverseName="hero" inverseEntity="Equipment" syncable="YES"/>
         <relationship name="passiveSkills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Passive" inverseName="hero" inverseEntity="Passive" syncable="YES"/>
         <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skill" inverseName="hero" inverseEntity="Skill" syncable="YES"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES"/>
+    <entity name="Item" representedClassName="Item" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toolTipParam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hero" inverseName="equips" inverseEntity="Hero" syncable="YES"/>
+    </entity>
     <entity name="Passive" representedClassName="Passive" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="passiveName" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,9 +65,9 @@
     <elements>
         <element name="BattleTag" positionX="-479" positionY="11" width="128" height="210"/>
         <element name="Equipment" positionX="-11" positionY="17" width="128" height="253"/>
-        <element name="Hero" positionX="-243" positionY="-19" width="128" height="208"/>
-        <element name="Skill" positionX="-425" positionY="315" width="128" height="103"/>
-        <element name="Item" positionX="223" positionY="101" width="128" height="43"/>
+        <element name="Hero" positionX="-243" positionY="-19" width="128" height="223"/>
+        <element name="Item" positionX="-18" positionY="-142" width="128" height="133"/>
         <element name="Passive" positionX="-153" positionY="306" width="126" height="88"/>
+        <element name="Skill" positionX="-425" positionY="315" width="128" height="103"/>
     </elements>
 </model>

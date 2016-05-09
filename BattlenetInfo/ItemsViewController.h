@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Hero+CoreDataProperties.h"
 @interface ItemsViewController : UIViewController
+
+@property (strong,nonatomic) Hero *hero;
+@property (nonatomic) NSString *battleTag;
+@property (nonatomic) NSString *region;
 
 @end

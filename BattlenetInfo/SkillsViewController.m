@@ -151,7 +151,26 @@
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
-
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"skillTypeHeader"];// [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:@"skillTypeHeader"];
+//    header.contentView.backgroundColor = [UIColor whiteColor];
+//    if (section == 0) {
+//        header.textLabel.text = @"Active Skills";
+//    } else {
+//        header.textLabel.text = @"Passive Skills";
+//    }
+//    return header;
+//}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+        if (section == 0) {
+            return @"Active Skills";
+        } else {
+            return @"Passive Skills";
+        }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 36.0f;
+}
 #pragma mark - helper methods
 
 - (void)insertSkillsWithDictionary:(NSDictionary *)dictionary {

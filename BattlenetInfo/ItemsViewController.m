@@ -10,6 +10,20 @@
 
 @interface ItemsViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *torsoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *helmImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *offHandImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mainHandImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *beltImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *pantsImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bootsImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *leftRingImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *rightRingImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *neckImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *shoulderImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *glovesImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bracersImageView;
+
 @end
 
 @implementation ItemsViewController

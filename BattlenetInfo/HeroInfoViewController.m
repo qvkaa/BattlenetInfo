@@ -8,7 +8,7 @@
 
 #import "HeroInfoViewController.h"
 #import "SkillsViewController.h"
-
+#import "ItemsViewController.h"
 
 @interface HeroInfoViewController ()
 
@@ -41,6 +41,13 @@
         vc.battleTag = self.battleTag;
         vc.hero = self.hero;
         vc.heroID = [self.hero valueForKey:@"heroID"];
+    } else if ([segue.identifier isEqualToString:@"itemsSegue"]) {
+        
+        ItemsViewController *vc = [segue destinationViewController];
+        
+        vc.region = self.region;
+        vc.battleTag = self.battleTag;
+        vc.hero = self.hero;
     }
 }
 
