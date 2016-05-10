@@ -31,8 +31,12 @@
     self.tableView.dataSource = self;
     
 }
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+   
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if ([[self.hero valueForKey:@"skills"] count] == 0 ) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -176,12 +180,12 @@
 - (void)insertSkillsWithDictionary:(NSDictionary *)dictionary {
     NSArray *activeSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"active"];
     for (NSDictionary *skillDictionary in activeSkills) {
-       [self.hero addSkillsObject:[[CoreDataBridge sharedCoreDataBridge] insertSkillWithDictionary:skillDictionary]];
+     [[CoreDataBridge sharedCoreDataBridge] insertSkillWithDictionary:skillDictionary forHero:self.hero];
     }
     activeSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"passive"];
     
     for (NSDictionary *skillDictionary in activeSkills) {
-        [self.hero addPassiveSkillsObject:[[CoreDataBridge sharedCoreDataBridge] insertPassiveSkillWithDictionary:skillDictionary]];
+        [[CoreDataBridge sharedCoreDataBridge] insertPassiveSkillWithDictionary:skillDictionary forHero:self.hero];
     }
     
 }

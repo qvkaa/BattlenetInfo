@@ -7,7 +7,7 @@
 //
 
 #import "ItemsViewController.h"
-
+#import "UIImageView+AFNetworking.h"
 @interface ItemsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *torsoImageView;
@@ -23,29 +23,136 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shoulderImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *glovesImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *bracersImageView;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *equipments;
+
 
 @end
 
 @implementation ItemsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+#pragma mark - lifecycle
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([[self.hero valueForKey:@"equips"] count] == 0 ) {
+    //if ([[self.hero valueForKey:@"equips"] count] == 0) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID withCompletionBlock:^(NSDictionary *dictonary) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self insertItemsWithDictionary:dictonary];
+                    [self initilizeEquipmentViews];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
+            }];
+        });
+    } else {
+        [self initilizeEquipmentViews];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - helper methods
+- (void)initilizeEquipmentViews {
+    NSSortDescriptor *typeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
+    NSSet *itemsSet = [self.hero valueForKey:@"equips"];
+    NSArray *items = [itemsSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:typeDescriptor]];
+    
+    NSString *icon;
+    NSString *itemID;
+    NSString *itemName;
+    NSString *toolTipParam;
+    NSString *type;
+    NSString *displayColor;
+    
+    for (Item *item in items) {
+        
+        icon = [item valueForKey:@"icon"];
+        itemID = [item valueForKey:@"itemID"];
+        itemName = [item valueForKey:@"itemName"];
+        toolTipParam = [item valueForKey:@"toolTipParam"];
+        type = [item valueForKey:@"type"];
+        displayColor = [item valueForKey:@"displayColor"];
+        
+        NSString *urlString = [WebServiceManager imageURLWithType:@"items" icon:icon];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+       
+        [self setItemImageWithRequest:request type:type];
+        [self setItemBackgroundWithDisplayColor:displayColor type:type];
+        
+        
+    }
+
 }
-*/
+
+- (void)setItemImageWithRequest:(NSURLRequest *)request type:(NSString *)type {
+    [[self imageViewForType:type] setImageWithURLRequest:request
+                                        placeholderImage:nil
+                                                 success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+                                                     [self imageViewForType:type].image = image;
+                                                 }
+                                                 failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+                                                     //                                                     [self imageViewForType:type].image = [UIImage imageNamed:@"noImage"];
+                                                 }];
+}
+- (void)setItemBackgroundWithDisplayColor:(NSString *)color type:(NSString *)type {
+    if ([color isEqualToString:@"orange"]) {
+        [[self imageViewForType:type] setBackgroundColor:[UIColor orangeColor]];
+    } else if ([color isEqualToString:@"green"]) {
+        [[self imageViewForType:type] setBackgroundColor:[UIColor colorWithRed:0.5f green:0.9f blue:0.5f alpha:1.0f]];
+    } else if ([color isEqualToString:@"white"]) {
+        [[self imageViewForType:type] setBackgroundColor:[UIColor whiteColor] ];
+    } else if ([color isEqualToString:@"blue"]) {
+        [[self imageViewForType:type] setBackgroundColor:[UIColor blueColor]];
+    } else if ([color isEqualToString:@"yellow"]) {
+        [[self imageViewForType:type] setBackgroundColor:[UIColor yellowColor]];
+    }
+}
+- (UIImageView *)imageViewForType:(NSString *)type {
+    UIImageView *currentImageView;
+    if ([type isEqualToString:@"torso"]) {
+        currentImageView = self.torsoImageView;
+    } else if ([type isEqualToString:@"waist"]) {
+        currentImageView = self.beltImageView;
+    } else if ([type isEqualToString:@"rightFinger"]) {
+        currentImageView = self.rightRingImageView;
+    } else if ([type isEqualToString:@"neck"]) {
+        currentImageView = self.neckImageView;
+    } else if ([type isEqualToString:@"head"]) {
+        currentImageView = self.helmImageView;
+    } else if ([type isEqualToString:@"feet"]) {
+        currentImageView = self.bootsImageView;
+    } else if ([type isEqualToString:@"legs"]) {
+        currentImageView = self.pantsImageView;
+    } else if ([type isEqualToString:@"shoulders"]) {
+        currentImageView = self.shoulderImageView;
+    } else if ([type isEqualToString:@"leftFinger"]) {
+        currentImageView = self.leftRingImageView;
+    } else if ([type isEqualToString:@"offHand"]) {
+        currentImageView = self.offHandImageView;
+    } else if ([type isEqualToString:@"hands"]) {
+        currentImageView = self.glovesImageView;
+    } else if ([type isEqualToString:@"mainHand"]) {
+        currentImageView = self.mainHandImageView;
+    } else if ([type isEqualToString:@"bracers"]) {
+        currentImageView = self.bracersImageView;
+    }
+    
+    return currentImageView;
+}
+- (void)insertItemsWithDictionary:(NSDictionary *)dictionary {
+    NSDictionary *items = [dictionary valueForKey:@"items"];
+    //NSArray *items = [dictionary valueForKey:@"items"];
+    for (NSString *type in items) {
+        NSDictionary *itemDictionary = [items valueForKey:type];
+        [[CoreDataBridge sharedCoreDataBridge] insertEquipmentWithDictionary:itemDictionary type:type forHero:self.hero];
+    }
+}
+
 
 @end

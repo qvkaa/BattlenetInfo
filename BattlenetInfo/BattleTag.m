@@ -2,7 +2,7 @@
 //  BattleTag.m
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/26/16.
+//  Created by yavoraleksiev on 5/10/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 

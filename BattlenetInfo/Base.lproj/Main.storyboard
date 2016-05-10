@@ -663,44 +663,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xLe-0c-0m7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xLe-0c-0m7">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mGI-fl-8WH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mGI-fl-8WH">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-Ib-eWM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-Ib-eWM">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9d7-s7-hB9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9d7-s7-hB9">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KJu-qj-Dvf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KJu-qj-Dvf">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v3Y-MR-Lo5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v3Y-MR-Lo5">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8o-mr-Nyq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8o-mr-Nyq">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="idI-7P-5pT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="idI-7P-5pT">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayS-EU-8EE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayS-EU-8EE">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-RK-RNN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-RK-RNN">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRv-WW-Bip">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRv-WW-Bip">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E4B-GC-j8N">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E4B-GC-j8N">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9FB-sq-Am7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9FB-sq-Am7">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.59918492430922066" blue="0.52063932452541606" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -775,23 +788,11 @@
                                 <exclude reference="9FB-sq-Am7"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Rvp-c1-nbg"/>
-                                <exclude reference="TSY-zo-gAO"/>
-                                <exclude reference="wDQ-sD-Nzk"/>
-                                <exclude reference="4qR-jk-KpT"/>
-                                <exclude reference="I63-1d-2eq"/>
-                                <exclude reference="LWq-Dn-K54"/>
-                                <exclude reference="Vf8-Ai-qoB"/>
-                                <exclude reference="Mpp-vR-0RG"/>
-                                <exclude reference="OYs-aI-tmN"/>
-                                <exclude reference="ToZ-yl-anb"/>
-                                <exclude reference="ZaF-r8-dyH"/>
-                                <exclude reference="fWU-3s-FRa"/>
-                                <exclude reference="iPp-7v-EQe"/>
-                                <exclude reference="xz8-SK-vhI"/>
                                 <exclude reference="0rI-og-zGT"/>
-                                <exclude reference="9pe-dV-Y01"/>
-                                <exclude reference="CkK-OB-35M"/>
+                                <exclude reference="RZA-rx-5F2"/>
+                                <exclude reference="ZL5-ub-6GO"/>
+                                <exclude reference="eL6-Ls-4e8"/>
+                                <exclude reference="zSL-EI-drQ"/>
                                 <exclude reference="0kR-vd-ibo"/>
                                 <exclude reference="Qk6-NP-goz"/>
                                 <exclude reference="Qtc-Oq-fdD"/>
@@ -801,15 +802,10 @@
                                 <exclude reference="GHH-6t-Shm"/>
                                 <exclude reference="Gwg-uY-W6g"/>
                                 <exclude reference="d0L-S2-UYP"/>
-                                <exclude reference="GzQ-HT-x5c"/>
-                                <exclude reference="gVb-xv-4fM"/>
-                                <exclude reference="u75-Kp-Cg9"/>
-                                <exclude reference="9gn-Ix-cx1"/>
-                                <exclude reference="H6A-bg-P4N"/>
-                                <exclude reference="PGH-e8-R7O"/>
-                                <exclude reference="Pp7-vZ-PU2"/>
-                                <exclude reference="SUp-bn-f9h"/>
-                                <exclude reference="eO4-ZX-sQe"/>
+                                <exclude reference="INr-fZ-CvT"/>
+                                <exclude reference="Sz3-sE-ArF"/>
+                                <exclude reference="kDd-KL-6Er"/>
+                                <exclude reference="w8d-I2-0u7"/>
                                 <exclude reference="1Pe-XI-vDd"/>
                                 <exclude reference="1QB-t0-H2x"/>
                                 <exclude reference="7XD-di-PE1"/>
@@ -819,14 +815,31 @@
                                 <exclude reference="qhZ-PO-oKn"/>
                                 <exclude reference="r87-qA-7gf"/>
                                 <exclude reference="tcs-O4-4J8"/>
-                                <exclude reference="RZA-rx-5F2"/>
-                                <exclude reference="ZL5-ub-6GO"/>
-                                <exclude reference="eL6-Ls-4e8"/>
-                                <exclude reference="zSL-EI-drQ"/>
-                                <exclude reference="INr-fZ-CvT"/>
-                                <exclude reference="Sz3-sE-ArF"/>
-                                <exclude reference="kDd-KL-6Er"/>
-                                <exclude reference="w8d-I2-0u7"/>
+                                <exclude reference="GzQ-HT-x5c"/>
+                                <exclude reference="gVb-xv-4fM"/>
+                                <exclude reference="u75-Kp-Cg9"/>
+                                <exclude reference="4qR-jk-KpT"/>
+                                <exclude reference="I63-1d-2eq"/>
+                                <exclude reference="LWq-Dn-K54"/>
+                                <exclude reference="Vf8-Ai-qoB"/>
+                                <exclude reference="9pe-dV-Y01"/>
+                                <exclude reference="CkK-OB-35M"/>
+                                <exclude reference="Rvp-c1-nbg"/>
+                                <exclude reference="TSY-zo-gAO"/>
+                                <exclude reference="wDQ-sD-Nzk"/>
+                                <exclude reference="9gn-Ix-cx1"/>
+                                <exclude reference="H6A-bg-P4N"/>
+                                <exclude reference="PGH-e8-R7O"/>
+                                <exclude reference="Pp7-vZ-PU2"/>
+                                <exclude reference="SUp-bn-f9h"/>
+                                <exclude reference="eO4-ZX-sQe"/>
+                                <exclude reference="Mpp-vR-0RG"/>
+                                <exclude reference="OYs-aI-tmN"/>
+                                <exclude reference="ToZ-yl-anb"/>
+                                <exclude reference="ZaF-r8-dyH"/>
+                                <exclude reference="fWU-3s-FRa"/>
+                                <exclude reference="iPp-7v-EQe"/>
+                                <exclude reference="xz8-SK-vhI"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -846,23 +859,11 @@
                                 <include reference="9FB-sq-Am7"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Rvp-c1-nbg"/>
-                                <include reference="TSY-zo-gAO"/>
-                                <include reference="wDQ-sD-Nzk"/>
-                                <include reference="4qR-jk-KpT"/>
-                                <include reference="I63-1d-2eq"/>
-                                <include reference="LWq-Dn-K54"/>
-                                <include reference="Vf8-Ai-qoB"/>
-                                <include reference="Mpp-vR-0RG"/>
-                                <include reference="OYs-aI-tmN"/>
-                                <include reference="ToZ-yl-anb"/>
-                                <include reference="ZaF-r8-dyH"/>
-                                <include reference="fWU-3s-FRa"/>
-                                <include reference="iPp-7v-EQe"/>
-                                <include reference="xz8-SK-vhI"/>
                                 <include reference="0rI-og-zGT"/>
-                                <include reference="9pe-dV-Y01"/>
-                                <include reference="CkK-OB-35M"/>
+                                <include reference="RZA-rx-5F2"/>
+                                <include reference="ZL5-ub-6GO"/>
+                                <include reference="eL6-Ls-4e8"/>
+                                <include reference="zSL-EI-drQ"/>
                                 <include reference="0kR-vd-ibo"/>
                                 <include reference="Qk6-NP-goz"/>
                                 <include reference="Qtc-Oq-fdD"/>
@@ -872,15 +873,10 @@
                                 <include reference="GHH-6t-Shm"/>
                                 <include reference="Gwg-uY-W6g"/>
                                 <include reference="d0L-S2-UYP"/>
-                                <include reference="GzQ-HT-x5c"/>
-                                <include reference="gVb-xv-4fM"/>
-                                <include reference="u75-Kp-Cg9"/>
-                                <include reference="9gn-Ix-cx1"/>
-                                <include reference="H6A-bg-P4N"/>
-                                <include reference="PGH-e8-R7O"/>
-                                <include reference="Pp7-vZ-PU2"/>
-                                <include reference="SUp-bn-f9h"/>
-                                <include reference="eO4-ZX-sQe"/>
+                                <include reference="INr-fZ-CvT"/>
+                                <include reference="Sz3-sE-ArF"/>
+                                <include reference="kDd-KL-6Er"/>
+                                <include reference="w8d-I2-0u7"/>
                                 <include reference="1Pe-XI-vDd"/>
                                 <include reference="1QB-t0-H2x"/>
                                 <include reference="7XD-di-PE1"/>
@@ -890,14 +886,31 @@
                                 <include reference="qhZ-PO-oKn"/>
                                 <include reference="r87-qA-7gf"/>
                                 <include reference="tcs-O4-4J8"/>
-                                <include reference="RZA-rx-5F2"/>
-                                <include reference="ZL5-ub-6GO"/>
-                                <include reference="eL6-Ls-4e8"/>
-                                <include reference="zSL-EI-drQ"/>
-                                <include reference="INr-fZ-CvT"/>
-                                <include reference="Sz3-sE-ArF"/>
-                                <include reference="kDd-KL-6Er"/>
-                                <include reference="w8d-I2-0u7"/>
+                                <include reference="GzQ-HT-x5c"/>
+                                <include reference="gVb-xv-4fM"/>
+                                <include reference="u75-Kp-Cg9"/>
+                                <include reference="4qR-jk-KpT"/>
+                                <include reference="I63-1d-2eq"/>
+                                <include reference="LWq-Dn-K54"/>
+                                <include reference="Vf8-Ai-qoB"/>
+                                <include reference="9pe-dV-Y01"/>
+                                <include reference="CkK-OB-35M"/>
+                                <include reference="Rvp-c1-nbg"/>
+                                <include reference="TSY-zo-gAO"/>
+                                <include reference="wDQ-sD-Nzk"/>
+                                <include reference="9gn-Ix-cx1"/>
+                                <include reference="H6A-bg-P4N"/>
+                                <include reference="PGH-e8-R7O"/>
+                                <include reference="Pp7-vZ-PU2"/>
+                                <include reference="SUp-bn-f9h"/>
+                                <include reference="eO4-ZX-sQe"/>
+                                <include reference="Mpp-vR-0RG"/>
+                                <include reference="OYs-aI-tmN"/>
+                                <include reference="ToZ-yl-anb"/>
+                                <include reference="ZaF-r8-dyH"/>
+                                <include reference="fWU-3s-FRa"/>
+                                <include reference="iPp-7v-EQe"/>
+                                <include reference="xz8-SK-vhI"/>
                             </mask>
                         </variation>
                     </view>
@@ -916,6 +929,19 @@
                         <outlet property="rightRingImageView" destination="ayS-EU-8EE" id="3dh-sj-nx3"/>
                         <outlet property="shoulderImageView" destination="wRv-WW-Bip" id="BT1-Bq-2Kr"/>
                         <outlet property="torsoImageView" destination="xLe-0c-0m7" id="btd-UF-qaX"/>
+                        <outletCollection property="equipments" destination="wRv-WW-Bip" id="XxC-Jv-9gT"/>
+                        <outletCollection property="equipments" destination="mGI-fl-8WH" id="jQ5-0y-ZA2"/>
+                        <outletCollection property="equipments" destination="9FB-sq-Am7" id="fsv-EU-ewe"/>
+                        <outletCollection property="equipments" destination="E4B-GC-j8N" id="W5S-3e-zDR"/>
+                        <outletCollection property="equipments" destination="xLe-0c-0m7" id="Ie2-0X-IlA"/>
+                        <outletCollection property="equipments" destination="eyq-RK-RNN" id="1UH-ls-irV"/>
+                        <outletCollection property="equipments" destination="ayS-EU-8EE" id="1mV-MK-Ksy"/>
+                        <outletCollection property="equipments" destination="KJu-qj-Dvf" id="1ew-Nc-IZy"/>
+                        <outletCollection property="equipments" destination="idI-7P-5pT" id="xmQ-ew-oer"/>
+                        <outletCollection property="equipments" destination="9d7-s7-hB9" id="sOX-4L-WZA"/>
+                        <outletCollection property="equipments" destination="v3Y-MR-Lo5" id="UnP-5X-q22"/>
+                        <outletCollection property="equipments" destination="cz0-Ib-eWM" id="42m-br-Da4"/>
+                        <outletCollection property="equipments" destination="a8o-mr-Nyq" id="UTe-yH-mpi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kom-rz-Rlx" userLabel="First Responder" sceneMemberID="firstResponder"/>

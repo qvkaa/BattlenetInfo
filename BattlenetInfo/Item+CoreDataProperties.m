@@ -2,7 +2,7 @@
 //  Item+CoreDataProperties.m
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/26/16.
+//  Created by yavoraleksiev on 5/10/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,5 +13,12 @@
 
 @implementation Item (CoreDataProperties)
 
+@dynamic icon;
+@dynamic itemID;
+@dynamic itemName;
+@dynamic toolTipParam;
+@dynamic type;
+@dynamic displayColor;
+@dynamic hero;
 
 @end

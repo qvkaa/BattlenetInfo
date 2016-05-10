@@ -117,7 +117,7 @@
     newHero.seasonal = seasonal;
     return newHero;
 }
-- (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary {
+- (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
     NSString *skillName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
     NSString *runeName = [[dictionary valueForKey:@"rune"] valueForKey:@"name"];
     NSString *icon = [[dictionary valueForKey:@"skill"] valueForKey:@"icon"];
@@ -127,18 +127,42 @@
     newSkill.runeName = runeName;
     newSkill.icon = icon;
     
+    [hero addSkillsObject:newSkill];
+    [self.manager saveContext];
     return newSkill;
 }
 
-- (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary {
+- (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero{
     NSString *passiveName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
     NSString *icon = [[dictionary valueForKey:@"skill"] valueForKey:@"icon"];
     
     Passive *newPassiveSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Passive" inManagedObjectContext:self.manager.managedObjectContext];
     newPassiveSkill.passiveName = passiveName;
     newPassiveSkill.icon = icon;
-    
+    [hero addPassiveSkillsObject:newPassiveSkill];
+    [self.manager saveContext];
     return newPassiveSkill;
+}
+
+- (Item *)insertEquipmentWithDictionary:(NSDictionary *)dictionary type:(NSString *)type forHero:(Hero *)hero{
+    NSString *icon = [dictionary valueForKey:@"icon"];
+    NSString *itemID = [dictionary valueForKey:@"id"];
+    NSString *itemName = [dictionary valueForKey:@"name"];
+    NSString *toolTipParam = [dictionary valueForKey:@"tooltipParams"];
+    NSString *displayColor = [dictionary valueForKey:@"displayColor"];
+   
+    Item *newItem = [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:self.manager.managedObjectContext];
+    newItem.icon = icon;
+    newItem.itemID = itemID;
+    newItem.itemName = itemName;
+    newItem.toolTipParam = toolTipParam;
+    newItem.type = type;
+    newItem.displayColor = displayColor;
+    
+    [hero addEquipsObject:newItem];
+    [self.manager saveContext];
+    
+    return newItem;
 }
 #pragma mark - fetch
 

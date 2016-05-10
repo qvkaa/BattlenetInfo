@@ -2,7 +2,7 @@
 //  Hero+CoreDataProperties.h
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 4/26/16.
+//  Created by yavoraleksiev on 5/10/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -23,23 +23,28 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *heroName;
 @property (nullable, nonatomic, retain) NSNumber *seasonal;
 @property (nullable, nonatomic, retain) BattleTag *battleTag;
-@property (nullable, nonatomic, retain) Equipment *items;
-@property (nullable, nonatomic, retain) NSSet<Skill *> *skills;
+@property (nullable, nonatomic, retain) NSSet<Item *> *equips;
 @property (nullable, nonatomic, retain) NSSet<Passive *> *passiveSkills;
+@property (nullable, nonatomic, retain) NSSet<Skill *> *skills;
 
 @end
 
 @interface Hero (CoreDataGeneratedAccessors)
 
-- (void)addSkillsObject:(Skill *)value;
-- (void)removeSkillsObject:(Skill *)value;
-- (void)addSkills:(NSSet<Skill *> *)values;
-- (void)removeSkills:(NSSet<Skill *> *)values;
+- (void)addEquipsObject:(Item *)value;
+- (void)removeEquipsObject:(Item *)value;
+- (void)addEquips:(NSSet<Item *> *)values;
+- (void)removeEquips:(NSSet<Item *> *)values;
 
 - (void)addPassiveSkillsObject:(Passive *)value;
 - (void)removePassiveSkillsObject:(Passive *)value;
 - (void)addPassiveSkills:(NSSet<Passive *> *)values;
 - (void)removePassiveSkills:(NSSet<Passive *> *)values;
+
+- (void)addSkillsObject:(Skill *)value;
+- (void)removeSkillsObject:(Skill *)value;
+- (void)addSkills:(NSSet<Skill *> *)values;
+- (void)removeSkills:(NSSet<Skill *> *)values;
 
 @end
 
