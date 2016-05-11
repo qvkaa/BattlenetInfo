@@ -5,13 +5,14 @@
         <attribute name="elites" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="guildName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hardcoreMonsters" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastSynched" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="monsters" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="paragonLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="paragonLevelHardcore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="paragonLevelSeason" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="paragonLevelSeasonHardcore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hero" inverseName="battleTag" inverseEntity="Hero" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Hero" inverseName="battleTag" inverseEntity="Hero" syncable="YES"/>
     </entity>
     <entity name="Hero" representedClassName="Hero" syncable="YES">
         <attribute name="eliteKills" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -20,37 +21,41 @@
         <attribute name="heroID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="heroLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="heroName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastSynched" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="seasonal" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="battleTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BattleTag" inverseName="characters" inverseEntity="BattleTag" syncable="YES"/>
-        <relationship name="equips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="hero" inverseEntity="Item" syncable="YES"/>
-        <relationship name="passiveSkills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Passive" inverseName="hero" inverseEntity="Passive" syncable="YES"/>
-        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skill" inverseName="hero" inverseEntity="Skill" syncable="YES"/>
+        <relationship name="battleTag" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BattleTag" inverseName="characters" inverseEntity="BattleTag" syncable="YES"/>
+        <relationship name="equips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="hero" inverseEntity="Item" syncable="YES"/>
+        <relationship name="passiveSkills" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Passive" inverseName="hero" inverseEntity="Passive" syncable="YES"/>
+        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Skill" inverseName="hero" inverseEntity="Skill" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="displayColor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="itemID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastSynched" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="toolTipParam" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hero" inverseName="equips" inverseEntity="Hero" syncable="YES"/>
     </entity>
     <entity name="Passive" representedClassName="Passive" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastSynched" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="passiveName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hero" inverseName="passiveSkills" inverseEntity="Hero" syncable="YES"/>
     </entity>
     <entity name="Skill" representedClassName="Skill" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastSynched" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="runeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="skillName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hero" inverseName="skills" inverseEntity="Hero" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BattleTag" positionX="-479" positionY="11" width="128" height="210"/>
-        <element name="Hero" positionX="-243" positionY="-19" width="128" height="208"/>
-        <element name="Item" positionX="-18" positionY="-142" width="128" height="148"/>
-        <element name="Passive" positionX="-153" positionY="306" width="126" height="88"/>
-        <element name="Skill" positionX="-425" positionY="315" width="128" height="103"/>
+        <element name="BattleTag" positionX="-479" positionY="11" width="128" height="225"/>
+        <element name="Hero" positionX="-243" positionY="-19" width="128" height="225"/>
+        <element name="Item" positionX="-18" positionY="-142" width="128" height="165"/>
+        <element name="Passive" positionX="-153" positionY="306" width="126" height="105"/>
+        <element name="Skill" positionX="-425" positionY="315" width="128" height="120"/>
     </elements>
 </model>

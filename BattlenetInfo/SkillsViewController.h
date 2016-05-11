@@ -10,6 +10,7 @@
 #import "Hero+CoreDataProperties.h"
 #import "WebServiceManager.h"
 #import "CoreDataBridge.h"
+#import "DataManager.h"
 @interface SkillsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong,nonatomic) Hero* hero;

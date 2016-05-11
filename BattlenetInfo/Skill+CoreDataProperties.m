@@ -2,7 +2,7 @@
 //  Skill+CoreDataProperties.m
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 5/10/16.
+//  Created by yavoraleksiev on 5/11/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,6 +16,7 @@
 @dynamic icon;
 @dynamic runeName;
 @dynamic skillName;
+@dynamic lastSynched;
 @dynamic hero;
 
 @end

@@ -35,17 +35,14 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if ([[self.hero valueForKey:@"equips"] count] == 0 ) {
-    //if ([[self.hero valueForKey:@"equips"] count] == 0) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID withCompletionBlock:^(NSDictionary *dictonary) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self insertItemsWithDictionary:dictonary];
+     
+            [[DataManager sharedDataManager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
+                if (success) {
                     [self initilizeEquipmentViews];
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                });
+                }
             }];
-        });
     } else {
         [self initilizeEquipmentViews];
     }
@@ -97,7 +94,7 @@
                                                      [self imageViewForType:type].image = image;
                                                  }
                                                  failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-                                                     //                                                     [self imageViewForType:type].image = [UIImage imageNamed:@"noImage"];
+
                                                  }];
 }
 - (void)setItemBackgroundWithDisplayColor:(NSString *)color type:(NSString *)type {
@@ -145,14 +142,5 @@
     
     return currentImageView;
 }
-- (void)insertItemsWithDictionary:(NSDictionary *)dictionary {
-    NSDictionary *items = [dictionary valueForKey:@"items"];
-    //NSArray *items = [dictionary valueForKey:@"items"];
-    for (NSString *type in items) {
-        NSDictionary *itemDictionary = [items valueForKey:type];
-        [[CoreDataBridge sharedCoreDataBridge] insertEquipmentWithDictionary:itemDictionary type:type forHero:self.hero];
-    }
-}
-
 
 @end

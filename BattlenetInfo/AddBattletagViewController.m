@@ -77,6 +77,10 @@ numberOfRowsInComponent:(NSInteger)component {
 
 #pragma mark - IBActions
 - (IBAction)userDidPressSave:(id)sender {
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        [self alertWithTitle:@"No Internet Connection" message:@"You need to be online to use this feature."];
+        return;
+    }
     NSString *battleTag = self.battleTagTextField.text;
     NSString *region = self.regionTextField.text;
     if ([battleTag length] < 6) {
@@ -85,18 +89,14 @@ numberOfRowsInComponent:(NSInteger)component {
          [self alertWithTitle:@"Missing Region" message:@"Please select a region."];
         
     } else {
-        [[WebServiceManager manager] fetchProfileWithBattleTag:battleTag region:region withCompletionBlock:^(NSDictionary *dictionary) {
-            if (dictionary) {
-                NSMutableDictionary *mutableDictionary = [dictionary mutableCopy];
-                [mutableDictionary setValue:region forKey:@"region"];
-                NSDictionary *newDictionary = [[NSDictionary alloc] initWithDictionary:mutableDictionary];
-                CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
-                [sharedCoreDataBridge insertBattleTagWithDictionary:newDictionary];
-                [sharedCoreDataBridge fetchAllBattleTags];
-            }else {
+        [[DataManager sharedDataManager] fetchProfileWithBattleTag:battleTag region:region withCompletionBlock:^(BOOL success) {
+            if (success) {
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
                 [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
             }
-    }];
+        }];
+
     }
 }
 - (void)alertWithTitle:(NSString *)title message:(NSString *)message {
@@ -120,5 +120,12 @@ numberOfRowsInComponent:(NSInteger)component {
         [self.regionTextField becomeFirstResponder];
     }
     return NO;
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == self.regionTextField) {
+        if ([self.regionTextField.text isEqualToString:@""]){
+            self.regionTextField.text = @"eu";
+        }
+    }
 }
 @end

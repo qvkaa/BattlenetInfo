@@ -39,19 +39,22 @@
     [super viewDidAppear:animated];
     if ([[self.hero valueForKey:@"skills"] count] == 0 ) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID withCompletionBlock:^(NSDictionary *dictonary) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    
-                    [self insertSkillsWithDictionary:dictonary];
-                    [self initilizeDataSource];
-                    [self.tableView reloadData];
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    
-                });
+//        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+            [[DataManager sharedDataManager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
+                [self insertSkillsWithDictionary:dictonary];
+                [self initilizeDataSource];
+                [self.tableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
-        });
+//                dispatch_async(dispatch_get_main_queue(), ^{
+                
+                    
+        
+                    
+//                });
+//            }];
+//        });
     } else {
         [self initilizeDataSource];
         [self.tableView reloadData];

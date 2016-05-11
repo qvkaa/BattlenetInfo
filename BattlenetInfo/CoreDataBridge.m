@@ -21,6 +21,8 @@
 
 @implementation CoreDataBridge
 
+#pragma mark - lifecycle
+
 + (instancetype)sharedCoreDataBridge {
     static dispatch_once_t once;
     static id sharedCoreDataBridge;
@@ -84,7 +86,7 @@
     newBattleTag.monsters = monsters;
     newBattleTag.hardcoreMonsters = hardcoreMonsters;
     newBattleTag.region = region;
-
+    newBattleTag.lastSynched = [NSDate date];
     for (NSDictionary *hero in heroes) {
        
         [newBattleTag addCharactersObject:[self insertHeroWithDictionary:hero]];
@@ -115,6 +117,7 @@
     newHero.heroLevel = heroLevel;
     newHero.heroName = heroName;
     newHero.seasonal = seasonal;
+    newHero.lastSynched = [NSDate date];
     return newHero;
 }
 - (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
@@ -126,7 +129,7 @@
     newSkill.skillName = skillName;
     newSkill.runeName = runeName;
     newSkill.icon = icon;
-    
+    newSkill.lastSynched = [NSDate date];
     [hero addSkillsObject:newSkill];
     [self.manager saveContext];
     return newSkill;
@@ -139,6 +142,7 @@
     Passive *newPassiveSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Passive" inManagedObjectContext:self.manager.managedObjectContext];
     newPassiveSkill.passiveName = passiveName;
     newPassiveSkill.icon = icon;
+    newPassiveSkill.lastSynched = [NSDate date];
     [hero addPassiveSkillsObject:newPassiveSkill];
     [self.manager saveContext];
     return newPassiveSkill;

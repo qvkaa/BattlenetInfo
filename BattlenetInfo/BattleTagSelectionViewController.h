@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
+#import "DataManager.h"
 #import <CoreData/CoreData.h>
 @interface BattleTagSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 

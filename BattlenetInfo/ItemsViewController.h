@@ -11,7 +11,7 @@
 #import "WebServiceManager.h"
 #import "CoreDataBridge.h"
 #import "MBProgressHUD.h"
-
+#import "DataManager.h"
 
 @interface ItemsViewController : UIViewController
 

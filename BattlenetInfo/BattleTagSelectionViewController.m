@@ -23,6 +23,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [self initializeFetchedResultsController];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
