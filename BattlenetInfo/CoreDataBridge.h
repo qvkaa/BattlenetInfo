@@ -9,28 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "CoreDataManager.h"
 #import "BattleTag+CoreDataProperties.h"
+#import "BattleTag+HelperMethods.h"
 #import "Hero+CoreDataProperties.h"
 #import "Skill+CoreDataProperties.h"
 #import "Passive+CoreDataProperties.h"
+#import "NSManagedObject+HelperMethods.h"
 #import "Item+CoreDataProperties.h"
 @interface CoreDataBridge : NSObject
 
 + (instancetype)sharedCoreDataBridge;
 - (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary;
-- (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary;
+- (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary forBattleTag:(BattleTag *)battletag;
 - (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero;
 - (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero;
 - (Item *)insertEquipmentWithDictionary:(NSDictionary *)dictionary type:(NSString *)type forHero:(Hero *)hero;
-- (BattleTag *)insertBattleTagWithAccountTag:(NSString *)tag
-                                   guildName:(NSString *)guild
-                                paragonLevel:(NSNumber *)paragonLevel
-                          paragonLevelSeason:(NSNumber *)paragonLevelSeason
-                        paragonLevelHardcore:(NSNumber *)paragonLevelHardcore
-                  paragonLevelSeasonHardcore:(NSNumber *)paragonLevelSeasonHardcore
-                            hardcoreMonsters:(NSNumber *)hardcoreMonsters
-                                      elites:(NSNumber *)elites
-                                    monsters:(NSNumber *)monsters
-                                      heroes:(NSArray *)heroes
-                                      region:(NSString *)region;
 - (NSArray *)fetchAllBattleTags;
 @end

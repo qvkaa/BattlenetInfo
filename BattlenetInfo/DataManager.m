@@ -21,6 +21,7 @@
     return sharedDataManager;
 }
 
+#pragma mark - fetch
 - (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL))completionBlock {
     [[WebServiceManager manager] fetchProfileWithBattleTag:battletag region:region withCompletionBlock:^(NSDictionary *dictionary) {
         if (dictionary) {
@@ -30,16 +31,47 @@
             CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
             [sharedCoreDataBridge insertBattleTagWithDictionary:newDictionary];
             completionBlock(YES);
-            //[self.navigationController popViewControllerAnimated:YES];
-            //[sharedCoreDataBridge fetchAllBattleTags];
         }else {
             completionBlock(NO);
-            //[self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
         }
     }];
 }
 
 - (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+        if (dictonary) {
+            [self insertItemsWithDictionary:dictonary forHero:hero];
+            
+            completionBlock(YES);
+        } else {
+            
+        }
+    }];
+}
+- (void)fetchItemsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+        if (dictonary) {
+            [self insertItemsWithDictionary:dictonary forHero:hero];
+            
+            completionBlock(YES);
+        } else {
+            
+        }
+    }];
+}
+
+- (void)fetchSkillsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+        if (dictonary) {
+            [self insertSkillsWithDictionary:dictonary forHero:hero];
+            completionBlock(YES);
+        } else {
+            
+        }
+    }];
+}
+
+- (void)fetchStatsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
     [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
         if (dictonary) {
             [self insertItemsWithDictionary:dictonary forHero:hero];
@@ -50,12 +82,24 @@
     }];
 }
 
+#pragma mark - insert core data
+
 - (void)insertItemsWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
     NSDictionary *items = [dictionary valueForKey:@"items"];
-    //NSArray *items = [dictionary valueForKey:@"items"];
     for (NSString *type in items) {
         NSDictionary *itemDictionary = [items valueForKey:type];
         [[CoreDataBridge sharedCoreDataBridge] insertEquipmentWithDictionary:itemDictionary type:type forHero:hero];
+    }
+}
+- (void)insertSkillsWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
+    NSArray *activeSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"active"];
+    for (NSDictionary *skillDictionary in activeSkills) {
+        [[CoreDataBridge sharedCoreDataBridge] insertSkillWithDictionary:skillDictionary forHero:hero];
+    }
+    
+    NSArray *passiveSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"passive"];
+    for (NSDictionary *skillDictionary in passiveSkills) {
+        [[CoreDataBridge sharedCoreDataBridge] insertPassiveSkillWithDictionary:skillDictionary forHero:hero];
     }
 }
 @end
