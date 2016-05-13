@@ -90,13 +90,13 @@ numberOfRowsInComponent:(NSInteger)component {
         
     } else {
         
-        BOOL isExisting = YES;
-        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region isExisting:&isExisting withCompletionBlock:^(BOOL success) {
+        __block BOOL isExisting = YES;
+        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region isExisting:&isExisting withCompletionBlock:^(BOOL success ) { 
             if (success) {
                 [self.navigationController popViewControllerAnimated:YES];
             } else {
                 if (isExisting) {
-                    [self alertWithTitle:@"Battle Tag exists" message:@"A BattleTag with the same name and region exists"];
+                    [self alertWithTitle:@"Battle Tag exists" message:@"Please insert a valid tag e.g. noob-1234."];
                 } else {
                     [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
                 }
