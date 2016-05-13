@@ -17,6 +17,9 @@
 #import "Item+CoreDataProperties.h"
 @interface CoreDataBridge : NSObject
 
+@property (strong,nonatomic) CoreDataManager* manager;
+
+
 + (instancetype)sharedCoreDataBridge;
 - (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary;
 - (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary forBattleTag:(BattleTag *)battletag;

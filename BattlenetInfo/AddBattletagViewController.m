@@ -89,11 +89,18 @@ numberOfRowsInComponent:(NSInteger)component {
          [self alertWithTitle:@"Missing Region" message:@"Please select a region."];
         
     } else {
-        [[DataManager sharedDataManager] fetchProfileWithBattleTag:battleTag region:region withCompletionBlock:^(BOOL success) {
+        
+        BOOL isExisting = YES;
+        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region isExisting:&isExisting withCompletionBlock:^(BOOL success) {
             if (success) {
                 [self.navigationController popViewControllerAnimated:YES];
             } else {
-                [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
+                if (isExisting) {
+                    [self alertWithTitle:@"Battle Tag exists" message:@"A BattleTag with the same name and region exists"];
+                } else {
+                    [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
+                }
+                
             }
         }];
 

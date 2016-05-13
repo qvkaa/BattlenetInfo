@@ -15,7 +15,6 @@
 
 @interface CoreDataBridge ()
 
-@property (strong,nonatomic) CoreDataManager* manager;
 
 @end
 

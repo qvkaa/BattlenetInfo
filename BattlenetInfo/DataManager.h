@@ -14,7 +14,7 @@
 
 + (instancetype)sharedDataManager;
 
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)addProfileWithBattleTag:(NSString *)battletag region:(NSString *)region isExisting:(BOOL *)isExisting withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)fetchItemsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock;
 - (void)fetchSkillsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock;
 - (void)fetchStatsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock;

@@ -215,7 +215,7 @@
 			name = WebService;
 			sourceTree = "<group>";
 		};
-		8382FEEC1CE4DFDD001D69B6 /* CoreDataEntitiesExtensions */ = {
+		8382FEEC1CE4DFDD001D69B6 /* CoreDataEntitiesCategories */ = {
 			isa = PBXGroup;
 			children = (
 				8382FEEE1CE4E267001D69B6 /* BattleTag+HelperMethods.h */,
@@ -223,7 +223,7 @@
 				8382FEF21CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.h */,
 				8382FEF31CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m */,
 			);
-			name = CoreDataEntitiesExtensions;
+			name = CoreDataEntitiesCategories;
 			sourceTree = "<group>";
 		};
 		839E256D1CAEDA4100C09052 /* Views */ = {
@@ -289,7 +289,7 @@
 		83B6B7B71CAECA1700B08FDB /* BattlenetInfo */ = {
 			isa = PBXGroup;
 			children = (
-				8382FEEC1CE4DFDD001D69B6 /* CoreDataEntitiesExtensions */,
+				8382FEEC1CE4DFDD001D69B6 /* CoreDataEntitiesCategories */,
 				835E83391CBFFBC300C69E95 /* CoreDataEntities */,
 				835E83261CBFEADB00C69E95 /* CoreData */,
 				835F20AB1CBE8A1E0094819F /* WebService */,

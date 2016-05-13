@@ -22,21 +22,50 @@
 }
 
 #pragma mark - fetch
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL))completionBlock {
+- (void)addProfileWithBattleTag:(NSString *)battletag region:(NSString *)region isExisting:(BOOL *)isExisting withCompletionBlock:(void (^)(BOOL))completionBlock {
+    
     [[WebServiceManager manager] fetchProfileWithBattleTag:battletag region:region withCompletionBlock:^(NSDictionary *dictionary) {
+        
         if (dictionary) {
             NSMutableDictionary *mutableDictionary = [dictionary mutableCopy];
             [mutableDictionary setValue:region forKey:@"region"];
             NSDictionary *newDictionary = [[NSDictionary alloc] initWithDictionary:mutableDictionary];
-            CoreDataBridge *sharedCoreDataBridge = [CoreDataBridge sharedCoreDataBridge];
-            [sharedCoreDataBridge insertBattleTagWithDictionary:newDictionary];
-            completionBlock(YES);
-        }else {
+            NSString *accountTag = [dictionary valueForKey:@"battleTag"];
+            //BOOL isExisting = YES;
+
+            BattleTag *newBattleTag =
+            [BattleTag findOrCreateObjectWithPredicate:[BattleTag predicateForAccountTag:accountTag region:region]
+                                               context:[CoreDataBridge sharedCoreDataBridge].manager.managedObjectContext
+                                            isExisting:isExisting
+                                      andCreationBlock:^id{
+                                          return [BattleTag insertBattleTagWithDictionary:newDictionary
+                                                                     managedObjectContext:[CoreDataBridge sharedCoreDataBridge].manager.managedObjectContext];
+                                      }];
+            
+            if (newBattleTag) {
+                if (isExisting) {
+                    completionBlock(NO); //already exists
+                } else {
+                    completionBlock(YES); //newly added
+                }
+                //[BattleTag updateBattleTag:newBattleTag WithDictionary:newDictionary managedObjectContext:[CoreDataBridge sharedCoreDataBridge].manager.managedObjectContext];
+              
+            } else {
+                completionBlock(NO);  //no valid battle tag
+            }
+            
+        } else {
+            if (isExisting) {
+                *isExisting = NO;
+            }
             completionBlock(NO);
         }
+        
     }];
 }
-
+- (void)addProfileWithDictionary:(NSDictionary *)dictionary isExisting:(BOOL *)isExisting{
+    
+}
 - (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
     [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
         if (dictonary) {
