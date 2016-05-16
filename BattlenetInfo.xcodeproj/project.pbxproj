@@ -28,6 +28,7 @@
 		837086851CCA2DC3001651D7 /* SkillsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 837086841CCA2DC3001651D7 /* SkillsViewController.m */; };
 		8372B48A1CCF9A5800643BA4 /* SkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8372B4891CCF9A5800643BA4 /* SkillCell.xib */; };
 		8372B48D1CCF9E0900643BA4 /* SkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8372B48C1CCF9E0900643BA4 /* SkillCell.m */; };
+		83756FE31CEA1EA400CE9F05 /* AlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83756FE21CEA1EA400CE9F05 /* AlertManager.m */; };
 		8382FEF01CE4E267001D69B6 /* BattleTag+HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382FEEF1CE4E267001D69B6 /* BattleTag+HelperMethods.m */; };
 		8382FEF41CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382FEF31CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m */; };
 		8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386E3031CC10DDB0023D540 /* CoreDataBridge.m */; };
@@ -102,6 +103,8 @@
 		8372B4891CCF9A5800643BA4 /* SkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillCell.xib; sourceTree = "<group>"; };
 		8372B48B1CCF9E0900643BA4 /* SkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillCell.h; sourceTree = "<group>"; };
 		8372B48C1CCF9E0900643BA4 /* SkillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillCell.m; sourceTree = "<group>"; };
+		83756FE11CEA1EA400CE9F05 /* AlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertManager.h; sourceTree = "<group>"; };
+		83756FE21CEA1EA400CE9F05 /* AlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertManager.m; sourceTree = "<group>"; };
 		8382FEEE1CE4E267001D69B6 /* BattleTag+HelperMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BattleTag+HelperMethods.h"; sourceTree = "<group>"; };
 		8382FEEF1CE4E267001D69B6 /* BattleTag+HelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BattleTag+HelperMethods.m"; sourceTree = "<group>"; };
 		8382FEF11CE4E592001D69B6 /* BattlenetInfo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BattlenetInfo.pch; sourceTree = "<group>"; };
@@ -215,6 +218,15 @@
 			name = WebService;
 			sourceTree = "<group>";
 		};
+		83756FE01CEA1E8100CE9F05 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				83756FE11CEA1EA400CE9F05 /* AlertManager.h */,
+				83756FE21CEA1EA400CE9F05 /* AlertManager.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		8382FEEC1CE4DFDD001D69B6 /* CoreDataEntitiesCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +301,7 @@
 		83B6B7B71CAECA1700B08FDB /* BattlenetInfo */ = {
 			isa = PBXGroup;
 			children = (
+				83756FE01CEA1E8100CE9F05 /* Helper */,
 				8382FEEC1CE4DFDD001D69B6 /* CoreDataEntitiesCategories */,
 				835E83391CBFFBC300C69E95 /* CoreDataEntities */,
 				835E83261CBFEADB00C69E95 /* CoreData */,
@@ -533,6 +546,7 @@
 				837086851CCA2DC3001651D7 /* SkillsViewController.m in Sources */,
 				83504E871CE3792B00C4B88D /* Passive+CoreDataProperties.m in Sources */,
 				83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */,
+				83756FE31CEA1EA400CE9F05 /* AlertManager.m in Sources */,
 				8382FEF41CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m in Sources */,
 				835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */,
 				8372B48D1CCF9E0900643BA4 /* SkillCell.m in Sources */,

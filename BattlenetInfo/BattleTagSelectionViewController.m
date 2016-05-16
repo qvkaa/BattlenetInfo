@@ -103,12 +103,11 @@
             vc.managedObject = record;
             vc.managedObjectContext = self.managedObjectContext;
         }
+    }
 
-    }
-    
-    if ([[segue identifier] isEqualToString:@"newBattletagSegue"]) {
-       
-    }
+//    if ([[segue identifier] isEqualToString:@"newBattletagSegue"]) {
+//       
+//    }
 }
 
 #pragma mark - IBActions

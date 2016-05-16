@@ -89,9 +89,7 @@ numberOfRowsInComponent:(NSInteger)component {
          [self alertWithTitle:@"Missing Region" message:@"Please select a region."];
         
     } else {
-        
-        __block BOOL isExisting = YES;
-        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region isExisting:&isExisting withCompletionBlock:^(BOOL success ) { 
+        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region withCompletionBlock:^(BOOL success, BOOL isExisting) {
             if (success) {
                 [self.navigationController popViewControllerAnimated:YES];
             } else {
@@ -102,20 +100,15 @@ numberOfRowsInComponent:(NSInteger)component {
                 }
                 
             }
-        }];
+
+        }
+                   ];
 
     }
 }
 - (void)alertWithTitle:(NSString *)title message:(NSString *)message {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title
-                                                                   message:message
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
+
+    [self presentViewController:[AlertManager alertWithTitle:title message:message] animated:YES completion:nil];
 }
 - (IBAction)userDidTapBackground:(id)sender {
     [self.view endEditing:YES];

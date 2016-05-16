@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     // Do any additional setup after loading the view.
@@ -35,10 +36,10 @@
     if ([[segue identifier] isEqualToString:@"showHeroesSegue"]) {
         HeroesTableViewController *vc = [segue destinationViewController];
         vc.navigationItem.title = @"Heroes";
-        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"heroName" ascending:YES];
-        NSSet *characterSet = [self.managedObject valueForKey:@"characters"];
-        NSArray *characters = [characterSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-        vc.characters = characters;
+//        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"heroName" ascending:YES];
+//        NSSet *characterSet = [self.managedObject valueForKey:@"characters"];
+//        NSArray *characters = [characterSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+//        vc.characters = characters;
         vc.battleTag = [self.managedObject valueForKey:@"accountTag"];
         vc.region = [self.managedObject valueForKey:@"region"];
     }

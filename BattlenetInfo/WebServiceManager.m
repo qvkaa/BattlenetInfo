@@ -62,6 +62,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
         completionBlock(nil);
     }];
 }
+
 - (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
     
     NSString *newBattleTag = [self changeBattletagFormat:battletag];
@@ -94,7 +95,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     if ([battleTag length] < 6) {
         return nil;
     }
-    NSMutableString *newBattleTag = [battleTag mutableCopy];
+    NSMutableString *newBattleTag = [[battleTag lowercaseString] mutableCopy];
     NSUInteger index = [newBattleTag length] - 5;
     NSRange range = NSMakeRange(index, 1);
     [newBattleTag replaceCharactersInRange:range withString:@"-"];
