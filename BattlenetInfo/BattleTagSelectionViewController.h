@@ -13,6 +13,6 @@
 @interface BattleTagSelectionViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-- (void)initializeFetchedResultsController;
+
 
 @end

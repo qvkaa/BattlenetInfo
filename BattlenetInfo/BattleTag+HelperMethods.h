@@ -9,7 +9,7 @@
 #import "BattleTag.h"
 
 @interface BattleTag (HelperMethods)
-+ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate inManagedObjectContext:(NSManagedObjectContext *)context;
+//+ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate inManagedObjectContext:(NSManagedObjectContext *)context;
 + (NSPredicate *)predicateForAccountTag:(NSString *)accountTag region:(NSString *)region;
 + (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context;
 + (BattleTag *)updateBattleTag:(BattleTag *)battletag WithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context;

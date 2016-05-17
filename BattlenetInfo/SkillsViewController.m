@@ -37,9 +37,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([self checkIfNeedsSynching]) {
-        
-    }
+   
     if ([[self.hero valueForKey:@"skills"] count] == 0 ) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [[DataManager sharedDataManager] fetchSkillsInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
@@ -184,8 +182,6 @@
     }
     
 }
-- (BOOL)checkIfNeedsSynching {
-  return  [[DataManager sharedDataManager] shouldSyncHero:self.hero];
-}
+
 
 @end

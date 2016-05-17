@@ -17,13 +17,13 @@
     return [NSCompoundPredicate andPredicateWithSubpredicates:@[predicateAccountTag,predicateRegion]];
 }
 
-+ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate inManagedObjectContext:(NSManagedObjectContext *)context {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BattleTag"];
-    [request setReturnsObjectsAsFaults:NO];
-    [request setPredicate:predicate];
-    NSError *error = nil;
-    return [context executeFetchRequest:request error:&error];
-}
+//+ (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate inManagedObjectContext:(NSManagedObjectContext *)context {
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BattleTag"];
+//    [request setReturnsObjectsAsFaults:NO];
+//    [request setPredicate:predicate];
+//    NSError *error = nil;
+//    return [context executeFetchRequest:request error:&error];
+//}
 
 + (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context {
     NSString *accountTag = [dictionary valueForKey:@"battleTag"];

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		588243FA539833DA64317E00 /* libPods-BattlenetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */; };
+		83070FF01CEB68E40071BB08 /* Hero+HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 83070FEF1CEB68E40071BB08 /* Hero+HelperMethods.m */; };
 		83504E701CE3439E00C4B88D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E6F1CE3439E00C4B88D /* DataManager.m */; };
 		83504E851CE3792B00C4B88D /* Skill+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E721CE3792B00C4B88D /* Skill+CoreDataProperties.m */; };
 		83504E861CE3792B00C4B88D /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E741CE3792B00C4B88D /* Skill.m */; };
@@ -64,6 +65,8 @@
 /* Begin PBXFileReference section */
 		15D70625271416477995371C /* Pods-BattlenetInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BattlenetInfo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BattlenetInfo/Pods-BattlenetInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BattlenetInfo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83070FEE1CEB68E40071BB08 /* Hero+HelperMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+HelperMethods.h"; sourceTree = "<group>"; };
+		83070FEF1CEB68E40071BB08 /* Hero+HelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+HelperMethods.m"; sourceTree = "<group>"; };
 		83504E6E1CE3439E00C4B88D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		83504E6F1CE3439E00C4B88D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		83504E711CE3792B00C4B88D /* Skill+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Skill+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				8382FEEF1CE4E267001D69B6 /* BattleTag+HelperMethods.m */,
 				8382FEF21CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.h */,
 				8382FEF31CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m */,
+				83070FEE1CEB68E40071BB08 /* Hero+HelperMethods.h */,
+				83070FEF1CEB68E40071BB08 /* Hero+HelperMethods.m */,
 			);
 			name = CoreDataEntitiesCategories;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */,
 				8372B48D1CCF9E0900643BA4 /* SkillCell.m in Sources */,
 				8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */,
+				83070FF01CEB68E40071BB08 /* Hero+HelperMethods.m in Sources */,
 				83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */,
 				83504E8D1CE3792B00C4B88D /* BattleTag+CoreDataProperties.m in Sources */,
 				83504E8A1CE3792B00C4B88D /* Item.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "DataManager.h"
 @interface AccountInfoViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) NSManagedObject *managedObject;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

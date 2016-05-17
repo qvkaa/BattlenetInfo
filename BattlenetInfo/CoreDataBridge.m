@@ -32,33 +32,33 @@
 }
 
 #pragma mark - insert or update
-+ (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void)) creationBlock {
-    NSParameterAssert(predicate);
-    Class managedObjectSubclass = [self class];
-    NSArray *existing = [managedObjectSubclass allInstancesWithPredicate:predicate inManagedObjectContext:context];
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hero "];
-//    [request setReturnsObjectsAsFaults:NO];
-//    [request setPredicate:predicate];
-//    NSError *error = nil;
-//    NSArray *battleTags = [self.manager.managedObjectContext executeFetchRequest:request error:&error];
-//
-    
-    if (existing.count > 0) {
-        NSAssert(existing.count == 1, @"There must be only one object with a certain ID");
-        if (isExisting) {
-            *isExisting = YES;
-        }
-        return existing.firstObject;
-    } else {
-        NSParameterAssert(creationBlock);
-        if (isExisting) {
-            *isExisting = NO;
-        }
-        return creationBlock();
-    }
-    
-    return nil;
-}
+//+ (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void)) creationBlock {
+//    NSParameterAssert(predicate);
+//    Class managedObjectSubclass = [self class];
+//    NSArray *existing = [managedObjectSubclass allInstancesWithPredicate:predicate  inManagedObjectContext:context];
+////    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hero "];
+////    [request setReturnsObjectsAsFaults:NO];
+////    [request setPredicate:predicate];
+////    NSError *error = nil;
+////    NSArray *battleTags = [self.manager.managedObjectContext executeFetchRequest:request error:&error];
+////
+//    
+//    if (existing.count > 0) {
+//        NSAssert(existing.count == 1, @"There must be only one object with a certain ID");
+//        if (isExisting) {
+//            *isExisting = YES;
+//        }
+//        return existing.firstObject;
+//    } else {
+//        NSParameterAssert(creationBlock);
+//        if (isExisting) {
+//            *isExisting = NO;
+//        }
+//        return creationBlock();
+//    }
+//    
+//    return nil;
+//}
 //
 //- (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary {
 //    NSString *accountTag = [dictionary valueForKey:@"battleTag"];

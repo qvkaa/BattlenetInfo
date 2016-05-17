@@ -9,12 +9,14 @@
 #import "BattleTagSelectionViewController.h"
 #import "AddBattletagViewController.h"
 #import "AccountInfoViewController.h"
+#import "DataManager.h"
 @interface BattleTagSelectionViewController () <NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic) CGFloat cellHeight;
+
 @end
 
 @implementation BattleTagSelectionViewController
@@ -24,6 +26,7 @@
     
     // Do any additional setup after loading the view.
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
     [self initializeFetchedResultsController];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -54,7 +57,14 @@
     NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
     // Update Cell
     [cell.textLabel setText:[record valueForKey:@"accountTag"]];
-   
+    
+    if ([NSManagedObject shouldSynchronizeObject:record]) {
+        cell.detailTextLabel.text = @"Not updated";
+        cell.detailTextLabel.textColor = [UIColor redColor];
+    } else {
+        cell.detailTextLabel.text = @"Updated";
+        cell.detailTextLabel.textColor = [UIColor greenColor];
+    }
 }
 
 #pragma mark - tableview datasource
@@ -118,9 +128,12 @@
 }
 
 #pragma mark - fetchController
+
 - (void)initializeFetchedResultsController {
     // Initialize Fetch Request
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"BattleTag"];
+    
+    
     
     // Add Sort Descriptors
     [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"accountTag" ascending:YES]]];

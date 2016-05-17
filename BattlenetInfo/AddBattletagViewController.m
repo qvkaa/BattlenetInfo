@@ -101,8 +101,7 @@ numberOfRowsInComponent:(NSInteger)component {
                 
             }
 
-        }
-                   ];
+        }];
 
     }
 }
