@@ -37,6 +37,23 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     
 }
 
+-(void)fetchObjectWithDictionary:(NSDictionary *)dictionary withCompletionBlock:(void (^)(NSDictionary *dictionary))completionBlock {
+    NSString *type = [dictionary valueForKey:@"type"];
+    NSString *region = [dictionary valueForKey:@"region"];
+    NSString *accountTag = [dictionary valueForKey:@"accountTag"];
+    if ([type isEqualToString:@"BattleTag"]) {
+        [self fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *responseObject) {
+            completionBlock(responseObject);
+        }];
+    } else if ([type isEqualToString:@"Hero"]) {
+        
+    } else if ([type isEqualToString:@"BattleTag"]) {
+        
+    } else if ([type isEqualToString:@"BattleTag"]) {
+        
+    }
+}
+
 - (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
     
     NSString *newBattleTag = [self changeBattletagFormat:battletag];

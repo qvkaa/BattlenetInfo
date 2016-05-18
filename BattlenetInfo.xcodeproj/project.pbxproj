@@ -20,6 +20,7 @@
 		83504E8C1CE3792B00C4B88D /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E801CE3792B00C4B88D /* Hero.m */; };
 		83504E8D1CE3792B00C4B88D /* BattleTag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E821CE3792B00C4B88D /* BattleTag+CoreDataProperties.m */; };
 		83504E8E1CE3792B00C4B88D /* BattleTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E841CE3792B00C4B88D /* BattleTag.m */; };
+		83524C151CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 83524C141CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m */; };
 		8358235C1CC91D5E000EA43A /* HeroInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8358235B1CC91D5E000EA43A /* HeroInfoViewController.m */; };
 		835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */; };
 		835F20A31CBE62290094819F /* HeroesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F20A21CBE62290094819F /* HeroesTableViewController.m */; };
@@ -89,6 +90,8 @@
 		83504E821CE3792B00C4B88D /* BattleTag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BattleTag+CoreDataProperties.m"; sourceTree = "<group>"; };
 		83504E831CE3792B00C4B88D /* BattleTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTag.h; sourceTree = "<group>"; };
 		83504E841CE3792B00C4B88D /* BattleTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTag.m; sourceTree = "<group>"; };
+		83524C131CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynchronizableManagedObjectProtocol.h; sourceTree = "<group>"; };
+		83524C141CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynchronizableManagedObjectProtocol.m; sourceTree = "<group>"; };
 		8358235A1CC91D5E000EA43A /* HeroInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfoViewController.h; sourceTree = "<group>"; };
 		8358235B1CC91D5E000EA43A /* HeroInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroInfoViewController.m; sourceTree = "<group>"; };
 		835F209B1CBE3C600094819F /* BattleTagSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTagSelectionViewController.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 				8386E3021CC10DDB0023D540 /* CoreDataBridge.h */,
 				8386E3031CC10DDB0023D540 /* CoreDataBridge.m */,
 				83B6B7C41CAECA1A00B08FDB /* BattlenetInfo.xcdatamodeld */,
+				83504E6E1CE3439E00C4B88D /* DataManager.h */,
+				83504E6F1CE3439E00C4B88D /* DataManager.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -215,8 +220,6 @@
 			children = (
 				8388B6841CAFAD4B0098B864 /* WebServiceManager.h */,
 				8388B6851CAFAD4B0098B864 /* WebServiceManager.m */,
-				83504E6E1CE3439E00C4B88D /* DataManager.h */,
-				83504E6F1CE3439E00C4B88D /* DataManager.m */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -226,6 +229,8 @@
 			children = (
 				83756FE11CEA1EA400CE9F05 /* AlertManager.h */,
 				83756FE21CEA1EA400CE9F05 /* AlertManager.m */,
+				83524C131CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.h */,
+				83524C141CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */,
 				83070FF01CEB68E40071BB08 /* Hero+HelperMethods.m in Sources */,
 				83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */,
+				83524C151CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m in Sources */,
 				83504E8D1CE3792B00C4B88D /* BattleTag+CoreDataProperties.m in Sources */,
 				83504E8A1CE3792B00C4B88D /* Item.m in Sources */,
 				83B6B7BA1CAECA1800B08FDB /* main.m in Sources */,

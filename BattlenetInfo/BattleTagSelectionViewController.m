@@ -50,6 +50,7 @@
     }
     return _cellHeight;
 }
+
 #pragma mark - private helper methods
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

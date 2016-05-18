@@ -21,7 +21,7 @@
 
 
 + (instancetype)sharedCoreDataBridge;
-- (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary;
+//- (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary;
 - (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary forBattleTag:(BattleTag *)battletag;
 - (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero;
 - (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero;

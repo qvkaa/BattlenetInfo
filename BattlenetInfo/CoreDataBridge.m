@@ -32,68 +32,6 @@
 }
 
 #pragma mark - insert or update
-//+ (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void)) creationBlock {
-//    NSParameterAssert(predicate);
-//    Class managedObjectSubclass = [self class];
-//    NSArray *existing = [managedObjectSubclass allInstancesWithPredicate:predicate  inManagedObjectContext:context];
-////    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hero "];
-////    [request setReturnsObjectsAsFaults:NO];
-////    [request setPredicate:predicate];
-////    NSError *error = nil;
-////    NSArray *battleTags = [self.manager.managedObjectContext executeFetchRequest:request error:&error];
-////
-//    
-//    if (existing.count > 0) {
-//        NSAssert(existing.count == 1, @"There must be only one object with a certain ID");
-//        if (isExisting) {
-//            *isExisting = YES;
-//        }
-//        return existing.firstObject;
-//    } else {
-//        NSParameterAssert(creationBlock);
-//        if (isExisting) {
-//            *isExisting = NO;
-//        }
-//        return creationBlock();
-//    }
-//    
-//    return nil;
-//}
-//
-//- (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary {
-//    NSString *accountTag = [dictionary valueForKey:@"battleTag"];
-//    NSNumber *paragonLevel = [dictionary valueForKey:@"paragonLevel"];
-//    NSNumber *paragonLevelHardcore = [dictionary valueForKey:@"paragonLevelHardcore"];
-//    NSNumber *paragonLevelSeason = [dictionary valueForKey:@"paragonLevelSeason"];
-//    NSNumber *paragonLevelSeasonHardcore = [dictionary valueForKey:@"paragonLevelSeasonHardcore"];
-//    NSString *guildName = [dictionary valueForKey:@"guildName"];
-//    
-//    
-//    NSDictionary *kills = [dictionary valueForKey:@"kills"];
-//    NSNumber *hardcoreMonsters = [kills valueForKey:@"hardcoreMonsters"];
-//    NSNumber *elites = [kills valueForKey:@"elites"];
-//    NSNumber *monsters = [kills valueForKey:@"monsters"];
-//    NSString *region = [dictionary valueForKey:@"region"];
-//    BattleTag *newBattleTag = [self fetchBattletagWithAccountTag:accountTag region:region];
-//    
-//    if (!newBattleTag) {
-//        newBattleTag =[self insertBattleTagWithAccountTag:accountTag
-//                                                guildName:guildName
-//                                             paragonLevel:paragonLevel
-//                                       paragonLevelSeason:paragonLevelSeason
-//                                     paragonLevelHardcore:paragonLevelHardcore
-//                               paragonLevelSeasonHardcore:paragonLevelSeasonHardcore
-//                                         hardcoreMonsters:hardcoreMonsters
-//                                                   elites:elites
-//                                                 monsters:monsters
-//                                                   region:region];
-//    } else {
-//        [self updateBattleTag:newBattleTag WithAccountTag:accountTag guildName:guildName paragonLevel:paragonLevel paragonLevelSeason:paragonLevelSeason paragonLevelHardcore:paragonLevelHardcore paragonLevelSeasonHardcore:paragonLevelSeasonHardcore hardcoreMonsters:hardcoreMonsters elites:elites monsters:monsters region:region];
-//    }
-//    return newBattleTag;
-//}
-
-
 
 - (Hero *)insertHeroWithDictionary:(NSDictionary *)dictionary forBattleTag:(BattleTag *)battletag {
     NSNumber *eliteKills = [[dictionary valueForKey:@"kills"] valueForKey:@"elites"];
@@ -177,9 +115,6 @@
     NSError *error = nil;
     NSArray *battleTags = [self.manager.managedObjectContext executeFetchRequest:request error:&error];
     [self.manager  saveContext];
-//    NSLog(@"Fetching battleTags Completed.");
-//    NSLog(@"battleTags: %@", battleTags);
-//    NSLog(@"battleTags #: %lu", (unsigned long)[battleTags count]);
     self.manager.battleTags = [NSArray arrayWithArray:battleTags];
     return battleTags;
 }
@@ -238,65 +173,5 @@
 -(CoreDataManager *)manager {
      return [CoreDataManager sharedCoreDataManager];
 }
-
-//#pragma mark - private helper methods
-//
-//- (BattleTag *)insertBattleTagWithAccountTag:(NSString *)tag
-//                                   guildName:(NSString *)guild
-//                                paragonLevel:(NSNumber *)paragonLevel
-//                          paragonLevelSeason:(NSNumber *)paragonLevelSeason
-//                        paragonLevelHardcore:(NSNumber *)paragonLevelHardcore
-//                  paragonLevelSeasonHardcore:(NSNumber *)paragonLevelSeasonHardcore
-//                            hardcoreMonsters:(NSNumber *)hardcoreMonsters
-//                                      elites:(NSNumber *)elites
-//                                    monsters:(NSNumber *)monsters
-//                                      region:(NSString *)region
-//{
-//    BattleTag* newBattleTag = [NSEntityDescription insertNewObjectForEntityForName:@"BattleTag" inManagedObjectContext:self.manager.managedObjectContext];
-//    newBattleTag.accountTag = tag;
-//    newBattleTag.guildName = guild;
-//    newBattleTag.paragonLevel = paragonLevel;
-//    newBattleTag.paragonLevelSeason = paragonLevelSeason;
-//    newBattleTag.paragonLevelHardcore = paragonLevelHardcore;
-//    newBattleTag.paragonLevelSeasonHardcore = paragonLevelSeasonHardcore;
-//    newBattleTag.elites = elites;
-//    newBattleTag.monsters = monsters;
-//    newBattleTag.hardcoreMonsters = hardcoreMonsters;
-//    newBattleTag.region = region;
-//    newBattleTag.lastSynched = [NSDate date];
-//
-//    [self.manager saveContext];
-//
-//    return newBattleTag;
-//}
-//
-//- (BattleTag *)updateBattleTag:(BattleTag *)newBattleTag
-//                WithAccountTag:(NSString *)tag
-//                     guildName:(NSString *)guild
-//                  paragonLevel:(NSNumber *)paragonLevel
-//            paragonLevelSeason:(NSNumber *)paragonLevelSeason
-//          paragonLevelHardcore:(NSNumber *)paragonLevelHardcore
-//    paragonLevelSeasonHardcore:(NSNumber *)paragonLevelSeasonHardcore
-//              hardcoreMonsters:(NSNumber *)hardcoreMonsters
-//                        elites:(NSNumber *)elites
-//                      monsters:(NSNumber *)monsters
-//                        region:(NSString *)region
-//{
-//    newBattleTag.accountTag = tag;
-//    newBattleTag.guildName = guild;
-//    newBattleTag.paragonLevel = paragonLevel;
-//    newBattleTag.paragonLevelSeason = paragonLevelSeason;
-//    newBattleTag.paragonLevelHardcore = paragonLevelHardcore;
-//    newBattleTag.paragonLevelSeasonHardcore = paragonLevelSeasonHardcore;
-//    newBattleTag.elites = elites;
-//    newBattleTag.monsters = monsters;
-//    newBattleTag.hardcoreMonsters = hardcoreMonsters;
-//    newBattleTag.region = region;
-//    newBattleTag.lastSynched = [NSDate date];
-//
-//    [self.manager saveContext];
-//
-//    return newBattleTag;
-//}
 
 @end

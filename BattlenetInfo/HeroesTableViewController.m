@@ -103,7 +103,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"accountInfoCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"heroCell"];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }

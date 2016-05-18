@@ -7,7 +7,7 @@
 //
 
 #import "NSManagedObject+HelperMethods.h"
-
+#import "SynchronizableManagedObjectProtocol.h"
 @implementation NSManagedObject (HelperMethods)
 
 + (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void)) creationBlock {
@@ -40,9 +40,9 @@
     NSError *error = nil;
     return [context executeFetchRequest:request error:&error];
 }
-+ (BOOL)shouldSynchronizeObject:(NSManagedObject *)object {
++ (BOOL)shouldSynchronizeObject:(NSManagedObject<SynchronizableManagedObject> *)object {
     BOOL shouldSync;
-    NSDate *previousDate = [object valueForKey:@"lastSynched"];
+    NSDate *previousDate = [object lastSynchronizedDate];
     if (!previousDate) {
         shouldSync = YES;
     } else {
