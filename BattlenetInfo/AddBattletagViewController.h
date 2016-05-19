@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataManager.h"
-#import "AlertManager.h"
+
 @interface AddBattletagViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 

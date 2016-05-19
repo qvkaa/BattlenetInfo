@@ -162,7 +162,7 @@
 }
 
 -(void)updateObject:(NSManagedObject *)object withDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context {
-    [[WebServiceManager manager] fetchObjectOfKind:(NSManagedObject *)object
+//    [[WebServiceManager manager] fetchObjectOfKind:(NSManagedObject *)object
 }
 
 #pragma mark - sync 

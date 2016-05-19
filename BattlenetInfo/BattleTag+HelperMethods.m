@@ -93,5 +93,14 @@
     return newBattleTag;
 }
 
+#pragma mark - helper methods
+
++ (NSDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
+    [dictionary setObject:accountTag forKey:@"accountTag"];
+    [dictionary setObject:region forKey:@"region"];
+    [dictionary setObject:@"BattleTag" forKey:@"type"];
+    return dictionary;
+}
 
 @end

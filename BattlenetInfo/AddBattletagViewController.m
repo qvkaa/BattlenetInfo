@@ -13,7 +13,9 @@
  */
 #import "AddBattletagViewController.h"
 #import "WebServiceManager.h"
-#import "CoreDataBridge.h"
+#import "DataManager.h"
+#import "AlertManager.h"
+//#import "CoreDataBridge.h"
 @interface AddBattletagViewController () 
 @property (weak, nonatomic) IBOutlet UITextField *battleTagTextField;
 @property (weak, nonatomic) IBOutlet UITextField *regionTextField;
@@ -83,6 +85,8 @@ numberOfRowsInComponent:(NSInteger)component {
     }
     NSString *battleTag = self.battleTagTextField.text;
     NSString *region = self.regionTextField.text;
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
+    
     if ([battleTag length] < 6) {
          [self alertWithTitle:@"Missing Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
     } else if ([region isEqualToString:@""]) {

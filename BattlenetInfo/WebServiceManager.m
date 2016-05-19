@@ -37,32 +37,13 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     
 }
 
--(void)fetchObjectWithDictionary:(NSDictionary *)dictionary withCompletionBlock:(void (^)(NSDictionary *dictionary))completionBlock {
-    NSString *type = [dictionary valueForKey:@"type"];
-    NSString *region = [dictionary valueForKey:@"region"];
-    NSString *accountTag = [dictionary valueForKey:@"accountTag"];
-    if ([type isEqualToString:@"BattleTag"]) {
-        [self fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *responseObject) {
-            completionBlock(responseObject);
-        }];
-    } else if ([type isEqualToString:@"Hero"]) {
-        
-    } else if ([type isEqualToString:@"BattleTag"]) {
-        
-    } else if ([type isEqualToString:@"BattleTag"]) {
-        
-    }
-}
-
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
++ (void)fetchObjectWithDictionary:(NSDictionary *)dictionary withCompletionBlock:(void (^)(NSDictionary *))completionBlock {
     
-    NSString *newBattleTag = [self changeBattletagFormat:battletag];
-    
-    NSString *urlString =[self URIStringWithBattleTag:newBattleTag region:region];
+    NSString *urlString =[WebServiceManager URIStringWithDictionary:dictionary];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     
-    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [[WebServiceManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString* code = [responseObject objectForKey:@"code"];
@@ -78,36 +59,83 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         completionBlock(nil);
     }];
+
+//    NSUInteger type = [[dictionary valueForKey:@"type"] integerValue];
+//    NSString *region = [dictionary valueForKey:@"region"];
+//    NSString *accountTag = [dictionary valueForKey:@"accountTag"];
+////    NSMutableDictionary *fetchDictionary = [self dictionaryForFetchRequestWithAccountTag:accountTag region:region type:type];
+//    switch (type) {
+//        case ManagedObjectSubclassBattleTag: {
+//            
+////            [self fetch
+////            [self fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *responseObject) {
+////                completionBlock(responseObject);
+////            }];
+//        } break;
+//        case ManagedObjectSubclassHero: {
+////            [self fetchCharacterInfoWithBattleTag:accountTag region:region heroID:heroID withCompletionBlock:^(NSDictionary *responseObject) {
+////                completionBlock(responseObject);
+////            }];
+//        }
+//        default:
+//            break;
+//    }
+////    if ([type isEqualToString:@"BattleTag"]) {
+////        [self fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *responseObject) {
+////            completionBlock(responseObject);
+////        }];
+////    } else if ([type isEqualToString:@"Hero"] || [type isEqualToString:@"Skill"] || [type isEqualToString:@"Item"]) {
+////        NSString *heroID = [dictionary valueForKey:@"heroID"];
+////        [self fetchCharacterInfoWithBattleTag:accountTag region:region heroID:heroID withCompletionBlock:^(NSDictionary *responseObject) {
+////            completionBlock(responseObject);
+////        }];
+////    }
 }
 
-- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
-    
-    NSString *newBattleTag = [self changeBattletagFormat:battletag];
-    
-    NSString *urlString =[self URIcharacterStringWithBattleTag:newBattleTag region:region characterID:heroID];
-    
-    NSURL *URL = [NSURL URLWithString:urlString];
-    
-    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSString* code = [responseObject objectForKey:@"code"];
-            if ([code isEqualToString:@"NOTFOUND"]) {
-                NSLog(@"%@",[responseObject objectForKey:@"reason"]);
-                completionBlock(nil);
-            } else {
-                completionBlock(responseObject);
-            }
-        } else {
-            completionBlock(nil);
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        completionBlock(nil);
-    }];
-}
-
+//- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
+//    
+//    NSString *newBattleTag = [self changeBattletagFormat:battletag];
+//    
+//    NSString *urlString =[self URIStringWithBattleTag:newBattleTag region:region];
+//    
+//    NSURL *URL = [NSURL URLWithString:urlString];
+//    
+//    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+//        
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//            NSString* code = [responseObject objectForKey:@"code"];
+//            if ([code isEqualToString:@"NOTFOUND"]) {
+//                NSLog(@"%@",[responseObject objectForKey:@"reason"]);
+//                completionBlock(nil);
+//            } else {
+//                completionBlock(responseObject);
+//            }
+//        } else {
+//            completionBlock(nil);
+//        }
+//    } failure:^(NSURLSessionTask *operation, NSError *error) {
+//        completionBlock(nil);
+//    }];
+//}
 
 #pragma mark - private helper methods
+
+
++ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
+    [dictionary setObject:accountTag forKey:@"accountTag"];
+    [dictionary setObject:region forKey:@"region"];
+    [dictionary setObject:[NSNumber numberWithInteger:type] forKey:@"type"];
+    return dictionary;
+}
+
+
++ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID {
+    NSMutableDictionary *fetchDictionary = [WebServiceManager dictionaryForFetchRequestWithAccountTag:accountTag region:region type:type];
+    [fetchDictionary setObject:heroID forKey:@"heroID"];
+    return fetchDictionary;
+}
+
 - (NSString *)changeBattletagFormat:(NSString *)battleTag {
     if ([battleTag length] < 6) {
         return nil;
@@ -119,14 +147,44 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     
     return newBattleTag;
 }
-- (NSString *)URIcharacterStringWithBattleTag:(NSString *)battletag region:(NSString *)region characterID:(NSString *)characterID {
-   
-    NSString *newBattleTag = [self changeBattletagFormat:battletag];
-    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/hero/%@?locale=en_GB&apikey=%@",region,newBattleTag,characterID,CLIENT_ID];
+
++ (NSString *)URIStringWithDictionary:(NSDictionary *)dictionary {
+    NSMutableString *URIString = [[NSMutableString alloc] initWithString:@"https://"];
+    
+    NSUInteger type = [[dictionary valueForKey:@"type"] integerValue];
+    
+    [URIString appendString:[dictionary valueForKey:@"region"]];
+    [URIString appendString:@".api.battle.net/d3/profile/"];
+    [URIString appendString:[dictionary valueForKey:@"accountTag"]];
+    [URIString appendString:[dictionary valueForKey:@"/"]];
+    
+  
+    switch (type) {
+        case ManagedObjectSubclassHero:{
+            [URIString appendString:[dictionary valueForKey:@"hero/"]];
+            [URIString appendString:[dictionary valueForKey:@"heroID"]];
+        } break;
+    //TODO: add more cases
+        default:
+            break;
+    }
+
+    [URIString appendString:@"?locale=en_GB&apikey="];
+    [URIString appendString:CLIENT_ID];
+    
+    return URIString;
 }
-- (NSString *)URIStringWithBattleTag:(NSString *)battletag region:(NSString *)region {
-    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/?locale=en_GB&apikey=%@",region,battletag,CLIENT_ID];
-}
+
+//- (NSString *)URIcharacterStringWithBattleTag:(NSString *)battletag region:(NSString *)region characterID:(NSString *)characterID {
+//   
+//    NSString *newBattleTag = [self changeBattletagFormat:battletag];
+//    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/hero/%@?locale=en_GB&apikey=%@",region,newBattleTag,characterID,CLIENT_ID];
+//}
+//
+//- (NSString *)URIStringWithBattleTag:(NSString *)battletag region:(NSString *)region {
+//    return [NSString stringWithFormat:@"https://%@.api.battle.net/d3/profile/%@/?locale=en_GB&apikey=%@",region,battletag,CLIENT_ID];
+//}
+
 - (NSDictionary *)authorizeHeaderDictionary {
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 CLIENT_ID, @"client_id",
@@ -137,6 +195,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
                                 nil];
     return parameters;
 }
+
 - (NSString *)authorizeURIForRegion:(BattlenetRegion)region {
     NSString *uriParameter;
     switch (region) {
@@ -166,6 +225,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     }
     return [NSString stringWithFormat:@"https://%@.battle.net/oauth/authorize",uriParameter];
 }
+
 - (NSString *)tokenURIForRegion:(BattlenetRegion)region {
     NSString *uriParameter;
     switch (region) {
@@ -197,6 +257,33 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 }
 
 #pragma mark - class methods
+
++ (NSString *)stringFromManagedObjectSubclass:(ManagedObjectSubclass)managedObject {
+    NSString *stringFromObject;
+    switch (managedObject) {
+        case ManagedObjectSubclassBattleTag: {
+            stringFromObject = @"BattleTag";
+        } break;
+            
+        case ManagedObjectSubclassHero: {
+            stringFromObject = @"Hero";
+        } break;
+            
+        case ManagedObjectSubclassItem: {
+            stringFromObject = @"Item";
+        } break;
+            
+        case ManagedObjectSubclassSkill: {
+            stringFromObject = @"Skill";
+        }break;
+            
+        default:{
+            return nil;
+        } break;
+    }
+    return stringFromObject;
+}
+
 + (NSString *)stringFromBattlenetRegion:(BattlenetRegion)region {
     NSString *stringRegion;
     switch (region) {

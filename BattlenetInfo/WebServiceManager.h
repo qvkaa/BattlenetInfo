@@ -17,13 +17,24 @@ typedef NS_ENUM(NSUInteger, BattlenetRegion) {
     BattlenetRegionTW = 3 ,
     BattlenetRegionCN = 4
 };
-
+typedef NS_ENUM(NSUInteger, ManagedObjectSubclass) {
+    ManagedObjectSubclassBattleTag = 0,
+    ManagedObjectSubclassHero = 1,
+    ManagedObjectSubclassItem = 2,
+    ManagedObjectSubclassSkill = 3
+};
 @interface WebServiceManager : AFHTTPSessionManager
 
 + (NSString *)stringFromBattlenetRegion:(BattlenetRegion)region;
 
-- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
-- (void)fetchObjectWithDictionary:(NSString *)dictionary withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
-- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
+//- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
++ (void)fetchObjectWithDictionary:(NSString *)dictionary withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
+//- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
+
 + (NSString *)imageURLWithType:(NSString *)type icon:(NSString *)icon;
+
++ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type;
++ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID;
+
 @end
+
