@@ -16,13 +16,16 @@
 #import "NSManagedObject+HelperMethods.h"
 #import "Item+CoreDataProperties.h"
 #import "CoreDataManager.h"
+#import "SynchronizableManagedObjectProtocol.h"
 
 @interface DataManager : NSObject
 
 + (instancetype)sharedDataManager;
-
 - (void)updateObject:(NSManagedObject *)object withDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context;
 
+- (void)addObjectWithDictionary:(NSDictionary *)dictionary
+           managedObjectContext:(NSManagedObjectContext *)context
+            withCompletionBlock:(void (^)(BOOL success, BOOL isExisting))completionBlock;
 - (void)addProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success, BOOL isExisting))completionBlock;
 //- (void)addOrUpdateHeroWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success,BOOL isExisting))completionBlock;
 

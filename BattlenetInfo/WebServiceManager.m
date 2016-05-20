@@ -37,21 +37,22 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     
 }
 
-+ (void)fetchObjectWithDictionary:(NSDictionary *)dictionary withCompletionBlock:(void (^)(NSDictionary *))completionBlock {
++ (void)fetchObjectWithDictionary:(NSDictionary *)fetchDictionary withCompletionBlock:(void (^)(NSDictionary *))completionBlock {
     
-    NSString *urlString =[WebServiceManager URIStringWithDictionary:dictionary];
+    NSString *urlString =[WebServiceManager URIStringWithDictionary:fetchDictionary];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     
     [[WebServiceManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString* code = [responseObject objectForKey:@"code"];
             if ([code isEqualToString:@"NOTFOUND"]) {
                 NSLog(@"%@",[responseObject objectForKey:@"reason"]);
                 completionBlock(nil);
             } else {
-                completionBlock(responseObject);
+                NSMutableDictionary *newResponseObject = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
+                [newResponseObject setObject:[fetchDictionary valueForKey:@"type"] forKey:@"type"];
+                completionBlock(newResponseObject);
             }
         } else {
             completionBlock(nil);
@@ -121,20 +122,20 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 #pragma mark - private helper methods
 
 
-+ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type {
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
-    [dictionary setObject:accountTag forKey:@"accountTag"];
-    [dictionary setObject:region forKey:@"region"];
-    [dictionary setObject:[NSNumber numberWithInteger:type] forKey:@"type"];
-    return dictionary;
-}
-
-
-+ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID {
-    NSMutableDictionary *fetchDictionary = [WebServiceManager dictionaryForFetchRequestWithAccountTag:accountTag region:region type:type];
-    [fetchDictionary setObject:heroID forKey:@"heroID"];
-    return fetchDictionary;
-}
+//+ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type {
+//    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
+//    [dictionary setObject:accountTag forKey:@"accountTag"];
+//    [dictionary setObject:region forKey:@"region"];
+//    [dictionary setObject:[NSNumber numberWithInteger:type] forKey:@"type"];
+//    return dictionary;
+//}
+//
+//
+//+ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID {
+//    NSMutableDictionary *fetchDictionary = [WebServiceManager dictionaryForFetchRequestWithAccountTag:accountTag region:region type:type];
+//    [fetchDictionary setObject:heroID forKey:@"heroID"];
+//    return fetchDictionary;
+//}
 
 - (NSString *)changeBattletagFormat:(NSString *)battleTag {
     if ([battleTag length] < 6) {
@@ -156,12 +157,12 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     [URIString appendString:[dictionary valueForKey:@"region"]];
     [URIString appendString:@".api.battle.net/d3/profile/"];
     [URIString appendString:[dictionary valueForKey:@"accountTag"]];
-    [URIString appendString:[dictionary valueForKey:@"/"]];
+    [URIString appendString:@"/"];
     
   
     switch (type) {
         case ManagedObjectSubclassHero:{
-            [URIString appendString:[dictionary valueForKey:@"hero/"]];
+            [URIString appendString:@"hero/"];
             [URIString appendString:[dictionary valueForKey:@"heroID"]];
         } break;
     //TODO: add more cases

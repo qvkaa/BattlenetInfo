@@ -8,6 +8,7 @@
 
 #import "DataManager.h"
 #import "CoreDataBridge.h"
+
 @interface DataManager ()
 
 @property (strong,nonatomic) CoreDataManager* manager;
@@ -35,135 +36,191 @@
 
 #pragma mark - fetch
 
-- (void)fetchProfileWithBattletag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(void))completionBlock {
-    [[WebServiceManager manager] fetchProfileWithBattleTag:battletag region:region withCompletionBlock:^(NSDictionary *dictonary) {
-        
-    }];
-}
+//- (void)fetchProfileWithBattletag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(void))completionBlock {
+//    [[WebServiceManager manager] fetchProfileWithBattleTag:battletag region:region withCompletionBlock:^(NSDictionary *dictonary) {
+//        
+//    }];
+//}
 
-- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
-    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
-        if (dictonary) {
-            [self insertItemsWithDictionary:dictonary forHero:hero];
-            
-            completionBlock(YES);
-        } else {
-            
-        }
-    }];
-}
-- (void)fetchItemsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
-    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
-        if (dictonary) {
-            [self insertItemsWithDictionary:dictonary forHero:hero];
-            
-            completionBlock(YES);
-        } else {
-            
-        }
-    }];
-}
+//- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+//    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+//        if (dictonary) {
+//            [self insertItemsWithDictionary:dictonary forHero:hero];
+//            
+//            completionBlock(YES);
+//        } else {
+//            
+//        }
+//    }];
+//}
+//- (void)fetchItemsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+//    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+//        if (dictonary) {
+//            [self insertItemsWithDictionary:dictonary forHero:hero];
+//            
+//            completionBlock(YES);
+//        } else {
+//            
+//        }
+//    }];
+//}
 
-- (void)fetchSkillsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
-    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
-        if (dictonary) {
-            [self insertSkillsWithDictionary:dictonary forHero:hero];
-            completionBlock(YES);
-        } else {
-            
-        }
-    }];
-}
+//- (void)fetchSkillsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+//    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+//        if (dictonary) {
+//            [self insertSkillsWithDictionary:dictonary forHero:hero];
+//            completionBlock(YES);
+//        } else {
+//            
+//        }
+//    }];
+//}
 
-- (void)fetchStatsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
-    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
-        if (dictonary) {
-            [self insertItemsWithDictionary:dictonary forHero:hero];
-            completionBlock(YES);
-        } else {
-            
-        }
-    }];
-}
+//- (void)fetchStatsInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID forHero:(Hero *)hero withCompletionBlock:(void (^)(BOOL))completionBlock {
+//    [[WebServiceManager manager] fetchCharacterInfoWithBattleTag:battletag region:region heroID:heroID withCompletionBlock:^(NSDictionary *dictonary) {
+//        if (dictonary) {
+//            [self insertItemsWithDictionary:dictonary forHero:hero];
+//            completionBlock(YES);
+//        } else {
+//            
+//        }
+//    }];
+//}
 
 #pragma mark - insert core data
 
-- (void)insertHeroesForBattletag:(BattleTag *)battletag withDictionary:(NSDictionary *)dictionary {
-    NSString *accountTag = [battletag valueForKey:@"accountTag"];
-    NSString *region = [battletag valueForKey:@"region"];
-    [[WebServiceManager manager] fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *dictonary) {
-        
+//- (void)insertHeroesForBattletag:(BattleTag *)battletag withDictionary:(NSDictionary *)dictionary {
+//    NSString *accountTag = [battletag valueForKey:@"accountTag"];
+//    NSString *region = [battletag valueForKey:@"region"];
+//    [[WebServiceManager manager] fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *dictonary) {
+//        
+//    }];
+//}
+
+- (void)updateObject:(NSManagedObject<SynchronizableManagedObject> *)object withDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context {
+    
+    [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *dictonary) {
+        [object updateObjectWithDictionary:dictionary managedObjectContext:context coreDataManager:self.manager];
     }];
+}
+     
+- (void)addObjectWithDictionary:(NSDictionary *)dictionary
+           managedObjectContext:(NSManagedObjectContext *)context
+            withCompletionBlock:(void (^)(BOOL success, BOOL isExisting))completionBlock {
+    
+   [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *responseDictonary) {
+       BOOL isExisting;
+       if (responseDictonary) {
+           NSMutableDictionary *mutableDictionary = [responseDictonary mutableCopy];
+           [mutableDictionary setValue:[BattleTag class] forKey:@"objectClass"];
+           NSString *region = [dictionary valueForKey:@"region"];
+           [mutableDictionary setValue:region forKey:@"region"];
+           Class managedObjectSubclass = [dictionary valueForKey:@"objectClass"];
+           NSString *accountTag = [responseDictonary valueForKey:@"battleTag"];
+           //TODO : BattleTag* newBattleTag = [NSEntityDescription insertNewObjectForEntityForName:@"BattleTag" inManagedObjectContext:context];
+           NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:<#(nonnull NSString *)#> inManagedObjectContext:context];
+           id object = context
+           
+           if ([managedObjectSubclass instancesRespondToSelector:@selector(insertObjectWithDictionary:managedObjectContext:coreDataManager:)]){
+               [managedObjectSubclass insertObjectWithDictionary:
+           }
+           
+           NSManagedObject<SynchronizableManagedObject> *newObject = [managedObjectSubclass instancesRespondToSelector:@selector(insertObjectWithDictionary:managedObjectContext:coreDataManager:)]
+           NSManagedObject<SynchronizableManagedObject> *newObject = [managedObjectSubclass insert];
+//           [BattleTag findOrCreateObjectWithPredicate:[BattleTag predicateForAccountTag:accountTag region:region]
+//                                           entityName:@"BattleTag"
+//                                              context:self.manager.managedObjectContext
+//                                           isExisting:&isExisting
+//                                     andCreationBlock:^id(void) {
+//                                         return [BattleTag insertBattleTagWithDictionary:newDictionary
+//                                                                    managedObjectContext:self.manager.managedObjectContext
+//                                                                         coreDataManager:self.manager];
+//                                     }];
+           if (newBattleTag) {
+               if (isExisting) {
+                   completionBlock(NO,YES); //already exists
+               } else {
+                   completionBlock(YES,NO); //newly added
+               }
+           } else {
+               completionBlock(NO,NO);  //no valid battle tag
+           }
+           
+       } else {
+           completionBlock(NO,NO);
+       }
+
+   }];
 }
 
-- (void)addProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success,BOOL isExisting))completionBlock {
-    
-    [[WebServiceManager manager] fetchProfileWithBattleTag:battletag region:region withCompletionBlock:^(NSDictionary *dictionary) {
-        BOOL isExisting;
-        if (dictionary) {
-            NSMutableDictionary *mutableDictionary = [dictionary mutableCopy];
-            [mutableDictionary setValue:region forKey:@"region"];
-            NSDictionary *newDictionary = [[NSDictionary alloc] initWithDictionary:mutableDictionary];
-            NSString *accountTag = [dictionary valueForKey:@"battleTag"];
-            
-            BattleTag *newBattleTag =
-            [BattleTag findOrCreateObjectWithPredicate:[BattleTag predicateForAccountTag:accountTag region:region]
-                                            entityName:@"BattleTag"
-                                               context:self.manager.managedObjectContext
-                                            isExisting:&isExisting
-                                      andCreationBlock:^id(void) {
-                                          return [BattleTag insertBattleTagWithDictionary:newDictionary
-                                                                     managedObjectContext:self.manager.managedObjectContext
-                                                                          coreDataManager:self.manager];
-                                      }];
-            if (newBattleTag) {
-                if (isExisting) {
-                    completionBlock(NO,YES); //already exists
-                } else {
-                    completionBlock(YES,NO); //newly added
-                }
-            } else {
-                completionBlock(NO,NO);  //no valid battle tag
-            }
-            
-        } else {
-            completionBlock(NO,NO);
-        }
-        
-    }];
-}
-- (void)updateBattleTag:(BattleTag *)battleTag WithAccountTag:(NSString *)accountTag region:(NSString *)region {
-    [[WebServiceManager manager] fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *dictonary) {
-        [BattleTag updateBattleTag:battleTag
-                    WithDictionary:dictonary
-              managedObjectContext:self.manager.managedObjectContext
-                   coreDataManager:self.manager];
-    }];
-}
+//- (void)addProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success,BOOL isExisting))completionBlock {
+//    
+//    [[WebServiceManager manager] fetchProfileWithBattleTag:battletag region:region withCompletionBlock:^(NSDictionary *dictionary) {
+//        BOOL isExisting;
+//        if (dictionary) {
+//            NSMutableDictionary *mutableDictionary = [dictionary mutableCopy];
+//            [mutableDictionary setValue:region forKey:@"region"];
+//            NSDictionary *newDictionary = [[NSDictionary alloc] initWithDictionary:mutableDictionary];
+//            NSString *accountTag = [dictionary valueForKey:@"battleTag"];
+//            
+//            BattleTag *newBattleTag =
+//            [BattleTag findOrCreateObjectWithPredicate:[BattleTag predicateForAccountTag:accountTag region:region]
+//                                            entityName:@"BattleTag"
+//                                               context:self.manager.managedObjectContext
+//                                            isExisting:&isExisting
+//                                      andCreationBlock:^id(void) {
+//                                          return [BattleTag insertBattleTagWithDictionary:newDictionary
+//                                                                     managedObjectContext:self.manager.managedObjectContext
+//                                                                          coreDataManager:self.manager];
+//                                      }];
+//            if (newBattleTag) {
+//                if (isExisting) {
+//                    completionBlock(NO,YES); //already exists
+//                } else {
+//                    completionBlock(YES,NO); //newly added
+//                }
+//            } else {
+//                completionBlock(NO,NO);  //no valid battle tag
+//            }
+//            
+//        } else {
+//            completionBlock(NO,NO);
+//        }
+//
+//    }];
+//}
+//- (void)updateBattleTag:(BattleTag *)battleTag WithAccountTag:(NSString *)accountTag region:(NSString *)region {
+//    [[WebServiceManager manager] fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *dictonary) {
+//        [BattleTag updateBattleTag:battleTag
+//                    WithDictionary:dictonary
+//              managedObjectContext:self.manager.managedObjectContext
+//                   coreDataManager:self.manager];
+//    }];
+//}
 
 ///
-- (void)insertItemsWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
-    NSDictionary *items = [dictionary valueForKey:@"items"];
-    for (NSString *type in items) {
-        NSDictionary *itemDictionary = [items valueForKey:type];
-        [[CoreDataBridge sharedCoreDataBridge] insertEquipmentWithDictionary:itemDictionary type:type forHero:hero];
-    }
-}
-- (void)insertSkillsWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
-    NSArray *activeSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"active"];
-    for (NSDictionary *skillDictionary in activeSkills) {
-        [[CoreDataBridge sharedCoreDataBridge] insertSkillWithDictionary:skillDictionary forHero:hero];
-    }
-    
-    NSArray *passiveSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"passive"];
-    for (NSDictionary *skillDictionary in passiveSkills) {
-        [[CoreDataBridge sharedCoreDataBridge] insertPassiveSkillWithDictionary:skillDictionary forHero:hero];
-    }
-}
+//- (void)insertItemsWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
+//    NSDictionary *items = [dictionary valueForKey:@"items"];
+//    for (NSString *type in items) {
+//        NSDictionary *itemDictionary = [items valueForKey:type];
+//        [[CoreDataBridge sharedCoreDataBridge] insertEquipmentWithDictionary:itemDictionary type:type forHero:hero];
+//    }
+//}
+//- (void)insertSkillsWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
+//    NSArray *activeSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"active"];
+//    for (NSDictionary *skillDictionary in activeSkills) {
+//        [[CoreDataBridge sharedCoreDataBridge] insertSkillWithDictionary:skillDictionary forHero:hero];
+//    }
+//    
+//    NSArray *passiveSkills = [[dictionary valueForKey:@"skills"] valueForKey:@"passive"];
+//    for (NSDictionary *skillDictionary in passiveSkills) {
+//        [[CoreDataBridge sharedCoreDataBridge] insertPassiveSkillWithDictionary:skillDictionary forHero:hero];
+//    }
+//}
 
--(void)updateObject:(NSManagedObject *)object withDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context {
-//    [[WebServiceManager manager] fetchObjectOfKind:(NSManagedObject *)object
-}
+//-(void)updateObject:(NSManagedObject *)object withDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context {
+////    [[WebServiceManager manager] fetchObjectOfKind:(NSManagedObject *)object
+//}
 
 #pragma mark - sync 
 

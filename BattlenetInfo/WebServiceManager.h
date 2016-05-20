@@ -26,13 +26,8 @@ typedef NS_ENUM(NSUInteger, ManagedObjectSubclass) {
 @interface WebServiceManager : AFHTTPSessionManager
 
 + (NSString *)stringFromBattlenetRegion:(BattlenetRegion)region;
-
-//- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
-+ (void)fetchObjectWithDictionary:(NSString *)dictionary withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
-//- (void)fetchCharacterInfoWithBattleTag:(NSString *)battletag region:(NSString *)region heroID:(NSString *)heroID withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock;
-
++ (void)fetchObjectWithDictionary:(NSDictionary *)fetechDictionary withCompletionBlock:(void (^)(NSDictionary *responseDictonary))completionBlock;
 + (NSString *)imageURLWithType:(NSString *)type icon:(NSString *)icon;
-
 + (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type;
 + (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID;
 

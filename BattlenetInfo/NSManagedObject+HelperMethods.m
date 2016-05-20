@@ -33,6 +33,16 @@
     
     return nil;
 }
+
+//+ (NSManagedObject *)updateObject:(NSManagedObject *)object
+//                WithDictionary:(NSDictionary *)dictionary
+//          managedObjectContext:(NSManagedObjectContext *)context
+//               coreDataManager:(CoreDataManager *)manager {
+//    Class managedObjectSubclass = [object class];
+//    
+//  return [managedObjectSubclass updateObject:object WithDictionary:dictionary managedObjectContext:context coreDataManager:manager];
+//}
+
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     [request setReturnsObjectsAsFaults:NO];
@@ -42,16 +52,20 @@
 }
 + (BOOL)shouldSynchronizeObject:(NSManagedObject<SynchronizableManagedObject> *)object {
     BOOL shouldSync;
-    NSDate *previousDate = [object lastSynchronizedDate];
-    if (!previousDate) {
+    if (!object) {
         shouldSync = YES;
     } else {
-        NSDate *currentDate = [NSDate date];
-        CGFloat secondsSinceLastSync = [currentDate timeIntervalSinceDate:previousDate];
-        if (secondsSinceLastSync < 3600.0f) {
-            shouldSync = NO;
-        } else {
+        NSDate *previousDate = [object lastSynchronizedDate];
+        if (!previousDate) {
             shouldSync = YES;
+        } else {
+            NSDate *currentDate = [NSDate date];
+            CGFloat secondsSinceLastSync = [currentDate timeIntervalSinceDate:previousDate];
+            if (secondsSinceLastSync < 3600.0f) {
+                shouldSync = NO;
+            } else {
+                shouldSync = YES;
+            }
         }
     }
         return shouldSync;
