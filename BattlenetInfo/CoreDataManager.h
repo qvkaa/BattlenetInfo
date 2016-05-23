@@ -16,7 +16,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong,nonatomic) NSArray * battleTags;
-+ (id)sharedCoreDataManager;
++ (instancetype)sharedCoreDataManager;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

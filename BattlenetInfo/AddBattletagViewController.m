@@ -15,7 +15,7 @@
 #import "WebServiceManager.h"
 #import "DataManager.h"
 #import "AlertManager.h"
-//#import "CoreDataBridge.h"
+
 @interface AddBattletagViewController () 
 @property (weak, nonatomic) IBOutlet UITextField *battleTagTextField;
 @property (weak, nonatomic) IBOutlet UITextField *regionTextField;
@@ -85,7 +85,7 @@ numberOfRowsInComponent:(NSInteger)component {
     }
     NSString *battleTag = self.battleTagTextField.text;
     NSString *region = self.regionTextField.text;
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
+  
     
     if ([battleTag length] < 6) {
          [self alertWithTitle:@"Missing Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
@@ -93,19 +93,35 @@ numberOfRowsInComponent:(NSInteger)component {
          [self alertWithTitle:@"Missing Region" message:@"Please select a region."];
         
     } else {
-        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region withCompletionBlock:^(BOOL success, BOOL isExisting) {
-            if (success) {
-                [self.navigationController popViewControllerAnimated:YES];
-            } else {
-                if (isExisting) {
-                    [self alertWithTitle:@"Battle Tag exists" message:@"Please insert a valid tag e.g. noob-1234."];
-                } else {
-                    [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
-                }
-                
-            }
-
-        }];
+        CoreDataManager *manager = [CoreDataManager sharedCoreDataManager];
+        NSMutableDictionary *dictionary = [WebServiceManager dictionaryForBattleTagFetchRequestWithAccountTag:battleTag region:region];
+        [[DataManager sharedDataManager] addObjectWithDictionary:dictionary
+                                            managedObjectContext:manager.managedObjectContext
+                                             withCompletionBlock:^(BOOL success, BOOL isExisting) {
+                                                 if (success) {
+                                                     [self.navigationController popViewControllerAnimated:YES];
+                                                 } else {
+                                                     if (isExisting) {
+                                                         [self alertWithTitle:@"Battle Tag exists" message:@"Please insert a valid tag e.g. noob-1234."];
+                                                     } else {
+                                                         [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
+                                                     }
+                                                     
+                                                 }
+                                             }];
+//        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region withCompletionBlock:^(BOOL success, BOOL isExisting) {
+//            if (success) {
+//                [self.navigationController popViewControllerAnimated:YES];
+//            } else {
+//                if (isExisting) {
+//                    [self alertWithTitle:@"Battle Tag exists" message:@"Please insert a valid tag e.g. noob-1234."];
+//                } else {
+//                    [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
+//                }
+//                
+//            }
+//
+//        }];
 
     }
 }

@@ -28,8 +28,12 @@ typedef NS_ENUM(NSUInteger, ManagedObjectSubclass) {
 + (NSString *)stringFromBattlenetRegion:(BattlenetRegion)region;
 + (void)fetchObjectWithDictionary:(NSDictionary *)fetechDictionary withCompletionBlock:(void (^)(NSDictionary *responseDictonary))completionBlock;
 + (NSString *)imageURLWithType:(NSString *)type icon:(NSString *)icon;
-+ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type;
-+ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID;
+
++ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region;
++ (NSMutableDictionary *)dictionaryForBattleTagFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region;
++ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region heroID:(NSString *)heroID;
+
++ (NSString *)changeBattletagFormat:(NSString *)battleTag;
 
 @end
 

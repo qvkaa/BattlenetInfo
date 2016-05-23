@@ -2,7 +2,7 @@
 //  Hero+CoreDataProperties.m
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 5/11/16.
+//  Created by yavoraleksiev on 5/23/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,8 +19,8 @@
 @dynamic heroID;
 @dynamic heroLevel;
 @dynamic heroName;
+@dynamic lastSynced;
 @dynamic seasonal;
-@dynamic lastSynched;
 @dynamic battleTag;
 @dynamic equips;
 @dynamic passiveSkills;

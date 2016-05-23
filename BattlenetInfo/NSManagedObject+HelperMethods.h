@@ -10,14 +10,17 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataManager.h"
+#import "SynchronizableManagedObjectProtocol.h"
 
+@interface NSManagedObject (HelperMethods) <SynchronizableManagedObject>
 
-@interface NSManagedObject (HelperMethods)
-//+ (NSManagedObject *)updateObject:(NSManagedObject *)object
-//                   WithDictionary:(NSDictionary *)dictionary
-//             managedObjectContext:(NSManagedObjectContext *)context
-//                  coreDataManager:(CoreDataManager *)manager;
 + (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void))creationBlock;
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context;
 + (BOOL)shouldSynchronizeObject:(NSManagedObject *)object ;
+
+- (instancetype)updateObjectWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)insertObjectWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
+
++ (NSPredicate *)predicateWithDictionary:(NSDictionary *)dictionary;
+
 @end

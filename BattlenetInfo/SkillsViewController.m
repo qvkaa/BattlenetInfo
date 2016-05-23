@@ -40,11 +40,12 @@
    
     if ([[self.hero valueForKey:@"skills"] count] == 0 ) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[DataManager sharedDataManager] fetchSkillsInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
-                [self initilizeDataSource];
-                [self.tableView reloadData];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }];
+        //TODO: change
+//        [[DataManager sharedDataManager] fetchSkillsInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
+//                [self initilizeDataSource];
+//                [self.tableView reloadData];
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        }];
     } else {
         [self initilizeDataSource];
         [self.tableView reloadData];

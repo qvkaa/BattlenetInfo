@@ -52,6 +52,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
             } else {
                 NSMutableDictionary *newResponseObject = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
                 [newResponseObject setObject:[fetchDictionary valueForKey:@"type"] forKey:@"type"];
+                [newResponseObject setObject:[fetchDictionary valueForKey:@"region"] forKey:@"region"];
                 completionBlock(newResponseObject);
             }
         } else {
@@ -119,25 +120,27 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 //    }];
 //}
 
-#pragma mark - private helper methods
+#pragma mark - helper methods
 
++ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:[WebServiceManager changeBattletagFormat:accountTag] forKey:@"accountTag"];
+    [dictionary setObject:region forKey:@"region"];
+    return dictionary;
+}
++ (NSMutableDictionary *)dictionaryForBattleTagFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region {
+    NSMutableDictionary *dictionary = [WebServiceManager dictionaryForFetchRequestWithAccountTag:accountTag region:region];
+    [dictionary setObject:@"BattleTag" forKey:@"type"];
+    return dictionary;
+}
 
-//+ (NSMutableDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type {
-//    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
-//    [dictionary setObject:accountTag forKey:@"accountTag"];
-//    [dictionary setObject:region forKey:@"region"];
-//    [dictionary setObject:[NSNumber numberWithInteger:type] forKey:@"type"];
-//    return dictionary;
-//}
-//
-//
-//+ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region type:(ManagedObjectSubclass)type heroID:(NSString *)heroID {
-//    NSMutableDictionary *fetchDictionary = [WebServiceManager dictionaryForFetchRequestWithAccountTag:accountTag region:region type:type];
-//    [fetchDictionary setObject:heroID forKey:@"heroID"];
-//    return fetchDictionary;
-//}
++ (NSMutableDictionary *)dictionaryForHeroProfileFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region heroID:(NSString *)heroID {
+    NSMutableDictionary *fetchDictionary = [WebServiceManager dictionaryForBattleTagFetchRequestWithAccountTag:accountTag region:region];
+    [fetchDictionary setObject:heroID forKey:@"heroID"];
+    return fetchDictionary;
+}
 
-- (NSString *)changeBattletagFormat:(NSString *)battleTag {
++ (NSString *)changeBattletagFormat:(NSString *)battleTag {
     if ([battleTag length] < 6) {
         return nil;
     }
@@ -152,7 +155,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
 + (NSString *)URIStringWithDictionary:(NSDictionary *)dictionary {
     NSMutableString *URIString = [[NSMutableString alloc] initWithString:@"https://"];
     
-    NSUInteger type = [[dictionary valueForKey:@"type"] integerValue];
+    NSString *type = [dictionary valueForKey:@"type"];
     
     [URIString appendString:[dictionary valueForKey:@"region"]];
     [URIString appendString:@".api.battle.net/d3/profile/"];
@@ -160,15 +163,14 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     [URIString appendString:@"/"];
     
   
-    switch (type) {
-        case ManagedObjectSubclassHero:{
+    if ([type isEqualToString:@"Hero"]) {
             [URIString appendString:@"hero/"];
             [URIString appendString:[dictionary valueForKey:@"heroID"]];
-        } break;
-    //TODO: add more cases
-        default:
-            break;
+    } else if ([type isEqualToString:@"BattleTag"]) {
+        
     }
+    //TODO: add more cases
+   
 
     [URIString appendString:@"?locale=en_GB&apikey="];
     [URIString appendString:CLIENT_ID];

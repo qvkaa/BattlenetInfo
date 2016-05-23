@@ -8,12 +8,10 @@
 
 #import "NSManagedObject+HelperMethods.h"
 #import "SynchronizableManagedObjectProtocol.h"
-@implementation NSManagedObject (HelperMethods)
+@implementation     NSManagedObject (HelperMethods)
 
 + (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void)) creationBlock {
     NSParameterAssert(predicate);
-    
-    //Class managedObjectSubclass = [self class];
     
     NSArray *existing = [NSManagedObject allInstancesWithPredicate:predicate entityName:entityName inManagedObjectContext:context];
     
@@ -30,18 +28,11 @@
         }
         return creationBlock();
     }
-    
+
     return nil;
 }
 
-//+ (NSManagedObject *)updateObject:(NSManagedObject *)object
-//                WithDictionary:(NSDictionary *)dictionary
-//          managedObjectContext:(NSManagedObjectContext *)context
-//               coreDataManager:(CoreDataManager *)manager {
-//    Class managedObjectSubclass = [object class];
-//    
-//  return [managedObjectSubclass updateObject:object WithDictionary:dictionary managedObjectContext:context coreDataManager:manager];
-//}
+
 
 + (NSArray *)allInstancesWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
@@ -70,7 +61,18 @@
     }
         return shouldSync;
 }
-//+ (void)updateObject:(NSManagedObject *)object {
-//    if (object respondsToSelector:@"update")
-//}
+
+
+#pragma mark - synchronize protocol methods
+
+- (NSDate *)lastSynchronizedDate {
+    return nil;
+}
+- (NSManagedObject *)updateObjectWithDictionary:(NSDictionary *)dictionary {
+    return nil;
+}
++ (instancetype)insertObjectWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
+    return nil;
+}
+
 @end

@@ -16,7 +16,7 @@
 
 @implementation CoreDataManager
 #pragma mark - class methods
-+ (id)sharedCoreDataManager {
++ (instancetype)sharedCoreDataManager {
     static CoreDataManager *sharedCoreDataManager = nil;
     @synchronized (self) {
         if (!sharedCoreDataManager) {

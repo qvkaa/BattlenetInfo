@@ -36,7 +36,7 @@
     newHero.heroLevel = heroLevel;
     newHero.heroName = heroName;
     newHero.seasonal = seasonal;
-    newHero.lastSynched = [NSDate date];
+    newHero.lastSynced = [NSDate date];
     
     [battleTag addCharactersObject:newHero];
     [[CoreDataBridge sharedCoreDataBridge].manager saveContext];
@@ -60,7 +60,7 @@
     hero.heroLevel = heroLevel;
     hero.heroName = heroName;
     hero.seasonal = seasonal;
-    hero.lastSynched = [NSDate date];
+    hero.lastSynced = [NSDate date];
     
     [[CoreDataBridge sharedCoreDataBridge].manager saveContext];
     return hero;

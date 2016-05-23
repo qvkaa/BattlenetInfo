@@ -11,17 +11,10 @@
 #import "CoreDataManager.h"
 
 @interface BattleTag (HelperMethods) <SynchronizableManagedObject>
-- (BattleTag *)updateObjectWithDictionary:(NSDictionary *)dictionary
-                     managedObjectContext:(NSManagedObjectContext *)context
-                          coreDataManager:(CoreDataManager *)manager;
 
-+ (instancetype)insertObjectWithDictionary:(NSDictionary *)dictionary
-                      managedObjectContext:(NSManagedObjectContext *)context
-                           coreDataManager:(CoreDataManager *)manager;
-
+- (instancetype)updateObjectWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)insertObjectWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
 + (NSPredicate *)predicateForAccountTag:(NSString *)accountTag region:(NSString *)region;
-//+ (BattleTag *)insertBattleTagWithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context coreDataManager:(CoreDataManager *)manager;
-+ (BattleTag *)updateBattleTag:(BattleTag *)battletag WithDictionary:(NSDictionary *)dictionary managedObjectContext:(NSManagedObjectContext *)context coreDataManager:(CoreDataManager *)manager;
 - (NSDate *)lastSynchronizedDate;
-+ (NSDictionary *)dictionaryForFetchRequestWithAccountTag:(NSString *)accountTag region:(NSString *)region;
+
 @end

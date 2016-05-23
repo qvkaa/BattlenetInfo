@@ -2,7 +2,7 @@
 //  Hero.m
 //  BattlenetInfo
 //
-//  Created by yavoraleksiev on 5/11/16.
+//  Created by yavoraleksiev on 5/23/16.
 //  Copyright © 2016 yavoraleksiev. All rights reserved.
 //
 

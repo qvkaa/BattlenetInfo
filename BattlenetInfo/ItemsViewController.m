@@ -37,12 +37,12 @@
     if ([[self.hero valueForKey:@"equips"] count] == 0 ) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
      
-            [[DataManager sharedDataManager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
-                if (success) {
-                    [self initilizeEquipmentViews];
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                }
-            }];
+//            [[DataManager sharedDataManager] fetchCharacterInfoWithBattleTag:self.battleTag region:self.region heroID:self.heroID forHero:self.hero withCompletionBlock:^(BOOL success) {
+//                if (success) {
+//                    [self initilizeEquipmentViews];
+//                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                }
+//            }];
     } else {
         [self initilizeEquipmentViews];
     }

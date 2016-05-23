@@ -52,27 +52,27 @@
     newHero.heroLevel = heroLevel;
     newHero.heroName = heroName;
     newHero.seasonal = seasonal;
-    newHero.lastSynched = [NSDate date];
+    newHero.lastSynced = [NSDate date];
     
     [battletag addCharactersObject:newHero];
     [self.manager saveContext];
     return newHero;
 }
 
-- (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
-    NSString *skillName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
-    NSString *runeName = [[dictionary valueForKey:@"rune"] valueForKey:@"name"];
-    NSString *icon = [[dictionary valueForKey:@"skill"] valueForKey:@"icon"];
-    
-    Skill *newSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Skill" inManagedObjectContext:self.manager.managedObjectContext];
-    newSkill.skillName = skillName;
-    newSkill.runeName = runeName;
-    newSkill.icon = icon;
-    newSkill.lastSynched = [NSDate date];
-    [hero addSkillsObject:newSkill];
-    [self.manager saveContext];
-    return newSkill;
-}
+//- (Skill *)insertSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero {
+//    NSString *skillName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
+//    NSString *runeName = [[dictionary valueForKey:@"rune"] valueForKey:@"name"];
+//    NSString *icon = [[dictionary valueForKey:@"skill"] valueForKey:@"icon"];
+//    
+//    Skill *newSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Skill" inManagedObjectContext:self.manager.managedObjectContext];
+//    newSkill.skillName = passiveName;
+//    newSkill.runeName = runeName;
+//    newSkill.icon = icon;
+//    newSkill.lastSynced = [NSDate date];
+//    [hero addSkillsObject:newSkill];
+//    [self.manager saveContext];
+//    return newSkill;
+//}
 
 - (Passive *)insertPassiveSkillWithDictionary:(NSDictionary *)dictionary forHero:(Hero *)hero{
     NSString *passiveName = [[dictionary valueForKey:@"skill"] valueForKey:@"name"];
@@ -81,7 +81,7 @@
     Passive *newPassiveSkill = [NSEntityDescription insertNewObjectForEntityForName:@"Passive" inManagedObjectContext:self.manager.managedObjectContext];
     newPassiveSkill.passiveName = passiveName;
     newPassiveSkill.icon = icon;
-    newPassiveSkill.lastSynched = [NSDate date];
+    newPassiveSkill.lastSynced = [NSDate date];
     [hero addPassiveSkillsObject:newPassiveSkill];
     [self.manager saveContext];
     return newPassiveSkill;

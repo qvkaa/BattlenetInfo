@@ -7,19 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-@class CoreDataManager;
+
+@class NSManagedObjectContext;
+@class NSManagedObject;
 @protocol SynchronizableManagedObject <NSObject>
 
 @required
+
 - (NSDate *)lastSynchronizedDate;
-
-- (NSManagedObject *)updateObjectWithDictionary:(NSDictionary *)dictionary
-                     managedObjectContext:(NSManagedObjectContext *)context
-                          coreDataManager:(CoreDataManager *)manager;
-+ (instancetype)insertObjectWithDictionary:(NSDictionary *)dictionary
-                      managedObjectContext:(NSManagedObjectContext *)context
-                           coreDataManager:(CoreDataManager *)manager;
-
+- (NSManagedObject *)updateObjectWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)insertObjectWithDictionary:(NSDictionary *)dictionary  inContext:(NSManagedObjectContext *)context;
 
 @end
 

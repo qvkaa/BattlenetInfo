@@ -10,16 +10,6 @@
 		588243FA539833DA64317E00 /* libPods-BattlenetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF9AB5851914407B217539 /* libPods-BattlenetInfo.a */; };
 		83070FF01CEB68E40071BB08 /* Hero+HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 83070FEF1CEB68E40071BB08 /* Hero+HelperMethods.m */; };
 		83504E701CE3439E00C4B88D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E6F1CE3439E00C4B88D /* DataManager.m */; };
-		83504E851CE3792B00C4B88D /* Skill+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E721CE3792B00C4B88D /* Skill+CoreDataProperties.m */; };
-		83504E861CE3792B00C4B88D /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E741CE3792B00C4B88D /* Skill.m */; };
-		83504E871CE3792B00C4B88D /* Passive+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E761CE3792B00C4B88D /* Passive+CoreDataProperties.m */; };
-		83504E881CE3792B00C4B88D /* Passive.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E781CE3792B00C4B88D /* Passive.m */; };
-		83504E891CE3792B00C4B88D /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E7A1CE3792B00C4B88D /* Item+CoreDataProperties.m */; };
-		83504E8A1CE3792B00C4B88D /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E7C1CE3792B00C4B88D /* Item.m */; };
-		83504E8B1CE3792B00C4B88D /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E7E1CE3792B00C4B88D /* Hero+CoreDataProperties.m */; };
-		83504E8C1CE3792B00C4B88D /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E801CE3792B00C4B88D /* Hero.m */; };
-		83504E8D1CE3792B00C4B88D /* BattleTag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E821CE3792B00C4B88D /* BattleTag+CoreDataProperties.m */; };
-		83504E8E1CE3792B00C4B88D /* BattleTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 83504E841CE3792B00C4B88D /* BattleTag.m */; };
 		83524C151CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 83524C141CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m */; };
 		8358235C1CC91D5E000EA43A /* HeroInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8358235B1CC91D5E000EA43A /* HeroInfoViewController.m */; };
 		835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F209C1CBE3C600094819F /* BattleTagSelectionViewController.m */; };
@@ -34,6 +24,16 @@
 		8382FEF01CE4E267001D69B6 /* BattleTag+HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382FEEF1CE4E267001D69B6 /* BattleTag+HelperMethods.m */; };
 		8382FEF41CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382FEF31CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m */; };
 		8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386E3031CC10DDB0023D540 /* CoreDataBridge.m */; };
+		838818161CF36856007FA420 /* Skill+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818031CF36856007FA420 /* Skill+CoreDataProperties.m */; };
+		838818171CF36856007FA420 /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818051CF36856007FA420 /* Skill.m */; };
+		838818181CF36856007FA420 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818071CF36856007FA420 /* Item+CoreDataProperties.m */; };
+		838818191CF36856007FA420 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818091CF36856007FA420 /* Item.m */; };
+		8388181A1CF36856007FA420 /* Passive+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388180B1CF36856007FA420 /* Passive+CoreDataProperties.m */; };
+		8388181B1CF36856007FA420 /* Passive.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388180D1CF36856007FA420 /* Passive.m */; };
+		8388181C1CF36856007FA420 /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388180F1CF36856007FA420 /* Hero+CoreDataProperties.m */; };
+		8388181D1CF36856007FA420 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818111CF36856007FA420 /* Hero.m */; };
+		8388181E1CF36856007FA420 /* BattleTag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818131CF36856007FA420 /* BattleTag+CoreDataProperties.m */; };
+		8388181F1CF36856007FA420 /* BattleTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 838818151CF36856007FA420 /* BattleTag.m */; };
 		8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8388B6851CAFAD4B0098B864 /* WebServiceManager.m */; };
 		83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83951EB81CC649A600CFDC2D /* AccountInfoViewController.m */; };
 		83B6B7BA1CAECA1800B08FDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6B7B91CAECA1800B08FDB /* main.m */; };
@@ -70,26 +70,6 @@
 		83070FEF1CEB68E40071BB08 /* Hero+HelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+HelperMethods.m"; sourceTree = "<group>"; };
 		83504E6E1CE3439E00C4B88D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		83504E6F1CE3439E00C4B88D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		83504E711CE3792B00C4B88D /* Skill+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Skill+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83504E721CE3792B00C4B88D /* Skill+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Skill+CoreDataProperties.m"; sourceTree = "<group>"; };
-		83504E731CE3792B00C4B88D /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
-		83504E741CE3792B00C4B88D /* Skill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
-		83504E751CE3792B00C4B88D /* Passive+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Passive+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83504E761CE3792B00C4B88D /* Passive+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Passive+CoreDataProperties.m"; sourceTree = "<group>"; };
-		83504E771CE3792B00C4B88D /* Passive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passive.h; sourceTree = "<group>"; };
-		83504E781CE3792B00C4B88D /* Passive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passive.m; sourceTree = "<group>"; };
-		83504E791CE3792B00C4B88D /* Item+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83504E7A1CE3792B00C4B88D /* Item+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataProperties.m"; sourceTree = "<group>"; };
-		83504E7B1CE3792B00C4B88D /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		83504E7C1CE3792B00C4B88D /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		83504E7D1CE3792B00C4B88D /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83504E7E1CE3792B00C4B88D /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
-		83504E7F1CE3792B00C4B88D /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
-		83504E801CE3792B00C4B88D /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
-		83504E811CE3792B00C4B88D /* BattleTag+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BattleTag+CoreDataProperties.h"; sourceTree = "<group>"; };
-		83504E821CE3792B00C4B88D /* BattleTag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BattleTag+CoreDataProperties.m"; sourceTree = "<group>"; };
-		83504E831CE3792B00C4B88D /* BattleTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTag.h; sourceTree = "<group>"; };
-		83504E841CE3792B00C4B88D /* BattleTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTag.m; sourceTree = "<group>"; };
 		83524C131CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynchronizableManagedObjectProtocol.h; sourceTree = "<group>"; };
 		83524C141CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynchronizableManagedObjectProtocol.m; sourceTree = "<group>"; };
 		8358235A1CC91D5E000EA43A /* HeroInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfoViewController.h; sourceTree = "<group>"; };
@@ -118,6 +98,26 @@
 		8382FEF31CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+HelperMethods.m"; sourceTree = "<group>"; };
 		8386E3021CC10DDB0023D540 /* CoreDataBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataBridge.h; sourceTree = "<group>"; };
 		8386E3031CC10DDB0023D540 /* CoreDataBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataBridge.m; sourceTree = "<group>"; };
+		838818021CF36856007FA420 /* Skill+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Skill+CoreDataProperties.h"; sourceTree = "<group>"; };
+		838818031CF36856007FA420 /* Skill+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Skill+CoreDataProperties.m"; sourceTree = "<group>"; };
+		838818041CF36856007FA420 /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
+		838818051CF36856007FA420 /* Skill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
+		838818061CF36856007FA420 /* Item+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataProperties.h"; sourceTree = "<group>"; };
+		838818071CF36856007FA420 /* Item+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataProperties.m"; sourceTree = "<group>"; };
+		838818081CF36856007FA420 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		838818091CF36856007FA420 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		8388180A1CF36856007FA420 /* Passive+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Passive+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8388180B1CF36856007FA420 /* Passive+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Passive+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8388180C1CF36856007FA420 /* Passive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passive.h; sourceTree = "<group>"; };
+		8388180D1CF36856007FA420 /* Passive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passive.m; sourceTree = "<group>"; };
+		8388180E1CF36856007FA420 /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8388180F1CF36856007FA420 /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
+		838818101CF36856007FA420 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		838818111CF36856007FA420 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
+		838818121CF36856007FA420 /* BattleTag+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BattleTag+CoreDataProperties.h"; sourceTree = "<group>"; };
+		838818131CF36856007FA420 /* BattleTag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BattleTag+CoreDataProperties.m"; sourceTree = "<group>"; };
+		838818141CF36856007FA420 /* BattleTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleTag.h; sourceTree = "<group>"; };
+		838818151CF36856007FA420 /* BattleTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleTag.m; sourceTree = "<group>"; };
 		8388B6841CAFAD4B0098B864 /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
 		8388B6851CAFAD4B0098B864 /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
 		83951EB71CC649A600CFDC2D /* AccountInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfoViewController.h; sourceTree = "<group>"; };
@@ -191,26 +191,26 @@
 		835E83391CBFFBC300C69E95 /* CoreDataEntities */ = {
 			isa = PBXGroup;
 			children = (
-				83504E711CE3792B00C4B88D /* Skill+CoreDataProperties.h */,
-				83504E721CE3792B00C4B88D /* Skill+CoreDataProperties.m */,
-				83504E731CE3792B00C4B88D /* Skill.h */,
-				83504E741CE3792B00C4B88D /* Skill.m */,
-				83504E751CE3792B00C4B88D /* Passive+CoreDataProperties.h */,
-				83504E761CE3792B00C4B88D /* Passive+CoreDataProperties.m */,
-				83504E771CE3792B00C4B88D /* Passive.h */,
-				83504E781CE3792B00C4B88D /* Passive.m */,
-				83504E791CE3792B00C4B88D /* Item+CoreDataProperties.h */,
-				83504E7A1CE3792B00C4B88D /* Item+CoreDataProperties.m */,
-				83504E7B1CE3792B00C4B88D /* Item.h */,
-				83504E7C1CE3792B00C4B88D /* Item.m */,
-				83504E7D1CE3792B00C4B88D /* Hero+CoreDataProperties.h */,
-				83504E7E1CE3792B00C4B88D /* Hero+CoreDataProperties.m */,
-				83504E7F1CE3792B00C4B88D /* Hero.h */,
-				83504E801CE3792B00C4B88D /* Hero.m */,
-				83504E811CE3792B00C4B88D /* BattleTag+CoreDataProperties.h */,
-				83504E821CE3792B00C4B88D /* BattleTag+CoreDataProperties.m */,
-				83504E831CE3792B00C4B88D /* BattleTag.h */,
-				83504E841CE3792B00C4B88D /* BattleTag.m */,
+				838818021CF36856007FA420 /* Skill+CoreDataProperties.h */,
+				838818031CF36856007FA420 /* Skill+CoreDataProperties.m */,
+				838818041CF36856007FA420 /* Skill.h */,
+				838818051CF36856007FA420 /* Skill.m */,
+				838818061CF36856007FA420 /* Item+CoreDataProperties.h */,
+				838818071CF36856007FA420 /* Item+CoreDataProperties.m */,
+				838818081CF36856007FA420 /* Item.h */,
+				838818091CF36856007FA420 /* Item.m */,
+				8388180A1CF36856007FA420 /* Passive+CoreDataProperties.h */,
+				8388180B1CF36856007FA420 /* Passive+CoreDataProperties.m */,
+				8388180C1CF36856007FA420 /* Passive.h */,
+				8388180D1CF36856007FA420 /* Passive.m */,
+				8388180E1CF36856007FA420 /* Hero+CoreDataProperties.h */,
+				8388180F1CF36856007FA420 /* Hero+CoreDataProperties.m */,
+				838818101CF36856007FA420 /* Hero.h */,
+				838818111CF36856007FA420 /* Hero.m */,
+				838818121CF36856007FA420 /* BattleTag+CoreDataProperties.h */,
+				838818131CF36856007FA420 /* BattleTag+CoreDataProperties.m */,
+				838818141CF36856007FA420 /* BattleTag.h */,
+				838818151CF36856007FA420 /* BattleTag.m */,
 			);
 			name = CoreDataEntities;
 			sourceTree = "<group>";
@@ -548,36 +548,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838818191CF36856007FA420 /* Item.m in Sources */,
 				83504E701CE3439E00C4B88D /* DataManager.m in Sources */,
 				8388B6861CAFAD4B0098B864 /* WebServiceManager.m in Sources */,
-				83504E881CE3792B00C4B88D /* Passive.m in Sources */,
+				8388181B1CF36856007FA420 /* Passive.m in Sources */,
 				835F20A71CBE62A00094819F /* CoreDataManager.m in Sources */,
+				838818171CF36856007FA420 /* Skill.m in Sources */,
 				83B6B7C61CAECA1A00B08FDB /* BattlenetInfo.xcdatamodeld in Sources */,
+				8388181A1CF36856007FA420 /* Passive+CoreDataProperties.m in Sources */,
 				837086851CCA2DC3001651D7 /* SkillsViewController.m in Sources */,
-				83504E871CE3792B00C4B88D /* Passive+CoreDataProperties.m in Sources */,
 				83B6B7BD1CAECA1900B08FDB /* AppDelegate.m in Sources */,
 				83756FE31CEA1EA400CE9F05 /* AlertManager.m in Sources */,
 				8382FEF41CE4E6E2001D69B6 /* NSManagedObject+HelperMethods.m in Sources */,
+				838818181CF36856007FA420 /* Item+CoreDataProperties.m in Sources */,
 				835F209D1CBE3C600094819F /* BattleTagSelectionViewController.m in Sources */,
 				8372B48D1CCF9E0900643BA4 /* SkillCell.m in Sources */,
+				838818161CF36856007FA420 /* Skill+CoreDataProperties.m in Sources */,
 				8386E3041CC10DDB0023D540 /* CoreDataBridge.m in Sources */,
 				83070FF01CEB68E40071BB08 /* Hero+HelperMethods.m in Sources */,
+				8388181C1CF36856007FA420 /* Hero+CoreDataProperties.m in Sources */,
 				83951EB91CC649A600CFDC2D /* AccountInfoViewController.m in Sources */,
 				83524C151CEC9A7C00CCB193 /* SynchronizableManagedObjectProtocol.m in Sources */,
-				83504E8D1CE3792B00C4B88D /* BattleTag+CoreDataProperties.m in Sources */,
-				83504E8A1CE3792B00C4B88D /* Item.m in Sources */,
 				83B6B7BA1CAECA1800B08FDB /* main.m in Sources */,
-				83504E8C1CE3792B00C4B88D /* Hero.m in Sources */,
+				8388181F1CF36856007FA420 /* BattleTag.m in Sources */,
 				835F20A31CBE62290094819F /* HeroesTableViewController.m in Sources */,
-				83504E8E1CE3792B00C4B88D /* BattleTag.m in Sources */,
-				83504E8B1CE3792B00C4B88D /* Hero+CoreDataProperties.m in Sources */,
 				8358235C1CC91D5E000EA43A /* HeroInfoViewController.m in Sources */,
-				83504E861CE3792B00C4B88D /* Skill.m in Sources */,
 				837086821CCA2DA0001651D7 /* ItemsViewController.m in Sources */,
 				835F20AA1CBE6E330094819F /* AddBattletagViewController.m in Sources */,
-				83504E891CE3792B00C4B88D /* Item+CoreDataProperties.m in Sources */,
-				83504E851CE3792B00C4B88D /* Skill+CoreDataProperties.m in Sources */,
+				8388181E1CF36856007FA420 /* BattleTag+CoreDataProperties.m in Sources */,
 				8382FEF01CE4E267001D69B6 /* BattleTag+HelperMethods.m in Sources */,
+				8388181D1CF36856007FA420 /* Hero.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
