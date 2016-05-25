@@ -61,64 +61,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         completionBlock(nil);
     }];
-
-//    NSUInteger type = [[dictionary valueForKey:@"type"] integerValue];
-//    NSString *region = [dictionary valueForKey:@"region"];
-//    NSString *accountTag = [dictionary valueForKey:@"accountTag"];
-////    NSMutableDictionary *fetchDictionary = [self dictionaryForFetchRequestWithAccountTag:accountTag region:region type:type];
-//    switch (type) {
-//        case ManagedObjectSubclassBattleTag: {
-//            
-////            [self fetch
-////            [self fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *responseObject) {
-////                completionBlock(responseObject);
-////            }];
-//        } break;
-//        case ManagedObjectSubclassHero: {
-////            [self fetchCharacterInfoWithBattleTag:accountTag region:region heroID:heroID withCompletionBlock:^(NSDictionary *responseObject) {
-////                completionBlock(responseObject);
-////            }];
-//        }
-//        default:
-//            break;
-//    }
-////    if ([type isEqualToString:@"BattleTag"]) {
-////        [self fetchProfileWithBattleTag:accountTag region:region withCompletionBlock:^(NSDictionary *responseObject) {
-////            completionBlock(responseObject);
-////        }];
-////    } else if ([type isEqualToString:@"Hero"] || [type isEqualToString:@"Skill"] || [type isEqualToString:@"Item"]) {
-////        NSString *heroID = [dictionary valueForKey:@"heroID"];
-////        [self fetchCharacterInfoWithBattleTag:accountTag region:region heroID:heroID withCompletionBlock:^(NSDictionary *responseObject) {
-////            completionBlock(responseObject);
-////        }];
-////    }
 }
-
-//- (void)fetchProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(NSDictionary *dictonary))completionBlock {
-//    
-//    NSString *newBattleTag = [self changeBattletagFormat:battletag];
-//    
-//    NSString *urlString =[self URIStringWithBattleTag:newBattleTag region:region];
-//    
-//    NSURL *URL = [NSURL URLWithString:urlString];
-//    
-//    [[AFHTTPSessionManager manager] GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-//        
-//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//            NSString* code = [responseObject objectForKey:@"code"];
-//            if ([code isEqualToString:@"NOTFOUND"]) {
-//                NSLog(@"%@",[responseObject objectForKey:@"reason"]);
-//                completionBlock(nil);
-//            } else {
-//                completionBlock(responseObject);
-//            }
-//        } else {
-//            completionBlock(nil);
-//        }
-//    } failure:^(NSURLSessionTask *operation, NSError *error) {
-//        completionBlock(nil);
-//    }];
-//}
 
 #pragma mark - helper methods
 

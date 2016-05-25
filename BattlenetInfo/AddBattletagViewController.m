@@ -109,20 +109,6 @@ numberOfRowsInComponent:(NSInteger)component {
                                                      
                                                  }
                                              }];
-//        [[DataManager sharedDataManager] addProfileWithBattleTag:battleTag region:region withCompletionBlock:^(BOOL success, BOOL isExisting) {
-//            if (success) {
-//                [self.navigationController popViewControllerAnimated:YES];
-//            } else {
-//                if (isExisting) {
-//                    [self alertWithTitle:@"Battle Tag exists" message:@"Please insert a valid tag e.g. noob-1234."];
-//                } else {
-//                    [self alertWithTitle:@"Invalid Battle Tag" message:@"Please insert a valid tag e.g. noob-1234."];
-//                }
-//                
-//            }
-//
-//        }];
-
     }
 }
 - (void)alertWithTitle:(NSString *)title message:(NSString *)message {

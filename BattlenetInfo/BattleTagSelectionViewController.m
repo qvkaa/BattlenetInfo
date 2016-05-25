@@ -10,11 +10,15 @@
 #import "AddBattletagViewController.h"
 #import "AccountInfoViewController.h"
 #import "DataManager.h"
+#import "BattleTag+HelperMethods.h"
+#import "WebServiceManager.h"
+#import "NSManagedObject+HelperMethods.h"
 @interface BattleTagSelectionViewController () <NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong,nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) CGFloat cellHeight;
 
 @end
@@ -27,9 +31,24 @@
     // Do any additional setup after loading the view.
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
+    
+    
     [self initializeFetchedResultsController];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    
+//    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+//    [self.tableView addSubview:self.refreshControl];
+//    
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +65,7 @@
 
 - (CGFloat)cellHeight {
     if (_cellHeight == 0.0f) {
-        _cellHeight = self.view.frame.size.height / 7;
+        _cellHeight = 32.0f;
     }
     return _cellHeight;
 }
@@ -185,4 +204,41 @@
     }
 }
 
+#pragma mark - pull to refresh 
+
+- (void)handleRefresh {
+    NSLog(@"SASD");
+    [self.tableView setUserInteractionEnabled:NO];
+//[self.refreshControl endRefreshing];
+}
+
+- (void)refresh {
+    NSArray *fetchedBattleTags = [self getAllBattleTags];
+    if (fetchedBattleTags == nil) {
+        
+    }
+    for (BattleTag *battleTag in fetchedBattleTags) {
+        if ([NSManagedObject shouldSynchronizeObject:battleTag]) {
+            NSString *region = [battleTag valueForKey:@"region"];
+            NSString *accountTag = [battleTag valueForKey:@"accountTag"];
+            NSDictionary *dictionary = [WebServiceManager dictionaryForBattleTagFetchRequestWithAccountTag:accountTag region:region];
+            [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *responseDictonary) {
+                [battleTag updateObjectWithDictionary:nil];
+            }];
+        }
+    }
+}
+
+- (NSArray *)getAllBattleTags {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BattleTag" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"accountTag"
+                                                                   ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    
+    NSError *error = nil;
+    return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
 @end

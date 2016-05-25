@@ -31,7 +31,7 @@
     return [self valueForKey:@"lastSynced"];
 }
 
-- (BattleTag *)updateObjectWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)updateObjectWithDictionary:(NSDictionary *)dictionary {
     
     NSString *accountTag = [dictionary valueForKey:@"battleTag"];
     NSNumber *paragonLevel = [dictionary valueForKey:@"paragonLevel"];

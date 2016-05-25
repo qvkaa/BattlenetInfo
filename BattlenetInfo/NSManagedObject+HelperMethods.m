@@ -8,7 +8,7 @@
 
 #import "NSManagedObject+HelperMethods.h"
 #import "SynchronizableManagedObjectProtocol.h"
-@implementation     NSManagedObject (HelperMethods)
+@implementation NSManagedObject (HelperMethods)
 
 + (instancetype)findOrCreateObjectWithPredicate:(NSPredicate *)predicate entityName:(NSString *)entityName context:(NSManagedObjectContext *)context isExisting:(BOOL *)isExisting andCreationBlock:(id (^)(void)) creationBlock {
     NSParameterAssert(predicate);
