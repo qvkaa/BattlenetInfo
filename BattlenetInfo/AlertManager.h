@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 @interface AlertManager : NSObject
-//+ (instancetype)sharedAlertManager;
+
 + (UIAlertController *)alertWithTitle:(NSString *)title message:(NSString *)message;
++ (UIAlertController *)alertWithTitle:(NSString *)title message:(NSString *)message withYesAndNoButtonsAndCompletionBlock:(void (^)(BOOL action))completionBlock;
+
 @end

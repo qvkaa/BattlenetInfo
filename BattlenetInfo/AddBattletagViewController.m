@@ -83,7 +83,7 @@ numberOfRowsInComponent:(NSInteger)component {
         [self alertWithTitle:@"No Internet Connection" message:@"You need to be online to use this feature."];
         return;
     }
-    NSString *battleTag = self.battleTagTextField.text;
+    NSString *battleTag = [self.battleTagTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *region = self.regionTextField.text;
   
     

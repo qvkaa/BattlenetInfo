@@ -52,7 +52,7 @@
         } else {
             NSDate *currentDate = [NSDate date];
             CGFloat secondsSinceLastSync = [currentDate timeIntervalSinceDate:previousDate];
-            if (secondsSinceLastSync < 3600.0f) {
+            if (secondsSinceLastSync < 10.0f) {
                 shouldSync = NO;
             } else {
                 shouldSync = YES;

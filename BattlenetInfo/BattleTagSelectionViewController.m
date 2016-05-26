@@ -13,6 +13,11 @@
 #import "BattleTag+HelperMethods.h"
 #import "WebServiceManager.h"
 #import "NSManagedObject+HelperMethods.h"
+#import "AlertManager.h"
+
+static NSString * const ALERT_MANY_ACCOUNTS_TITLE = @"This might take a while.";
+static NSString * const ALERT_MANY_ACCOUNTS_MESSAGE = @"There are more than 10 accounts. This process might be slow. Do you wish to continue?";
+
 @interface BattleTagSelectionViewController () <NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
@@ -20,6 +25,9 @@
 @property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong,nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) CGFloat cellHeight;
+@property (nonatomic) NSUInteger refreshedBattleTags;
+@property (nonatomic) NSUInteger totalBattleTags;
+@property (nonatomic) BOOL shouldProceedRefresh;
 
 @end
 
@@ -27,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _shouldProceedRefresh = NO;
     // Do any additional setup after loading the view.
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
@@ -46,7 +54,7 @@
     tableViewController.tableView = self.tableView;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refreshBattleTags) forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
     
 }
@@ -204,27 +212,59 @@
     }
 }
 
-#pragma mark - pull to refresh 
+#pragma mark - pull to refresh
 
-- (void)handleRefresh {
-    NSLog(@"SASD");
-    [self.tableView setUserInteractionEnabled:NO];
-//[self.refreshControl endRefreshing];
-}
-
-- (void)refresh {
+- (void)refreshBattleTags {
+    
     NSArray *fetchedBattleTags = [self getAllBattleTags];
+    
     if (fetchedBattleTags == nil) {
-        
+        [self.refreshControl endRefreshing];
+        return;
     }
+    
+    self.totalBattleTags = [fetchedBattleTags count];
+    if (self.totalBattleTags > 2) {
+        [self presentViewController:[AlertManager alertWithTitle:ALERT_MANY_ACCOUNTS_TITLE
+                                                         message:ALERT_MANY_ACCOUNTS_MESSAGE
+                           withYesAndNoButtonsAndCompletionBlock:^(BOOL action) {
+                               if (action) {
+                                   [self refreshBattleTags:fetchedBattleTags];
+                               } else {
+                                   [self.refreshControl endRefreshing];
+                                   return;
+                               }
+                            }]
+                           animated:YES
+                         completion:nil];
+    }
+}
+- (void)refreshBattleTags:(NSArray *)fetchedBattleTags {
+    
+    [self.tableView setUserInteractionEnabled:NO];
+    self.totalBattleTags = [fetchedBattleTags count];
+    self.refreshedBattleTags = 0;
+    
     for (BattleTag *battleTag in fetchedBattleTags) {
         if ([NSManagedObject shouldSynchronizeObject:battleTag]) {
             NSString *region = [battleTag valueForKey:@"region"];
             NSString *accountTag = [battleTag valueForKey:@"accountTag"];
             NSDictionary *dictionary = [WebServiceManager dictionaryForBattleTagFetchRequestWithAccountTag:accountTag region:region];
             [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *responseDictonary) {
-                [battleTag updateObjectWithDictionary:nil];
+                [battleTag updateObjectWithDictionary:responseDictonary];
+                self.refreshedBattleTags += 1;
+                if (self.refreshedBattleTags >= self.totalBattleTags) {
+                    [self.refreshControl endRefreshing];
+                    [self.tableView setUserInteractionEnabled:YES];
+                }
             }];
+        } else {
+            self.refreshedBattleTags += 1;
+            if (self.refreshedBattleTags >= self.totalBattleTags) {
+                [self.refreshControl endRefreshing];
+                [self.tableView setUserInteractionEnabled:YES];
+            }
+
         }
     }
 }

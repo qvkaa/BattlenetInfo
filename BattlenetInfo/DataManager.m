@@ -42,8 +42,6 @@
     
     [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *dictonary) {
         [object updateObjectWithDictionary:dictionary];
-        Skill *skill;
-        
     }];
 }
      
@@ -181,18 +179,27 @@
 
 #pragma mark - sync 
 
-- (void)syncManagedObjectIfNeeded:(NSManagedObject<SynchronizableManagedObject> *)object
+//+ (NSArray *)addChildrenObjectsToManagedObject:(NSManagedObject *)parent
+//                                withDictionary:(NSDictionary *)dictionary
+//                        inManagedObjectContext:(NSManagedObjectContext *)context
+//                           withCompletionBlock:(void (^)())completionBlock {
+//    
+//}
++ (void)addHeroesToBattleTag:(BattleTag *)battleTag
                    withDictionary:(NSDictionary *)dictionary
-           inManagedObjectContext:(NSManagedObjectContext *)context {
+           inManagedObjectContext:(NSManagedObjectContext *)context
+                 withCompletionBlock:(void (^)())completionBlock {
     
-    if ([NSManagedObject shouldSynchronizeObject:object]) {
-        if ([object isKindOfClass:[BattleTag class]]) {
-           // [self updateObject:object withDictionary:dictionary managedObjectContext:context];
+    
+    [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *responseDictonary) {
+        if (responseDictonary) {
+            
+        } else {
+            
         }
-    }
-    
-}
+    }];
 
+}
 + (NSPredicate *)predicateWithDictionary:(NSDictionary *)dictionary {
     NSString *type = [dictionary valueForKey:@"type"];
     NSPredicate *predicate;

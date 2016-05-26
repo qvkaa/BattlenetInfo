@@ -88,6 +88,7 @@ static NSString * const TEST_PASSWORD = @"qwerty123";
         return nil;
     }
     NSMutableString *newBattleTag = [[battleTag lowercaseString] mutableCopy];
+
     NSUInteger index = [newBattleTag length] - 5;
     NSRange range = NSMakeRange(index, 1);
     [newBattleTag replaceCharactersInRange:range withString:@"-"];

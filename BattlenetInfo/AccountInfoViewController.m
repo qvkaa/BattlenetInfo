@@ -8,6 +8,9 @@
 
 #import "AccountInfoViewController.h"
 #import "HeroesTableViewController.h"
+#import "AlertManager.h"
+#import "MBProgressHUD.h"
+
 @interface AccountInfoViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -21,6 +24,8 @@
 
 @implementation AccountInfoViewController
 
+#pragma mark - lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeFetchedResultsController];
@@ -29,11 +34,19 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([NSManagedObject shouldSynchronizeObject:self.managedObject]) {
+        if (![AFNetworkReachabilityManager sharedManager].reachable) {
+            [self presentViewController:[AlertManager alertWithTitle:@"No Internet Connection" message:@"You need to be online to use this feature."] animated:YES completion:nil];
+        } else {
+            [self updateManagedObject];
+        }
+    }
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([NSManagedObject shouldSynchronizeObject:self.managedObject]) {
-       // [BattleTag updateBattleTag:self.managedObject WithDictionary:<#(NSDictionary *)#> managedObjectContext:<#(NSManagedObjectContext *)#>]
-    }
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,11 +87,24 @@
 }
 
 #pragma mark - tableview delegate
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 32.0f;
 }
 
 #pragma mark - private helper methods
+
+- (void)updateManagedObject {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSString *region = [self.managedObject valueForKey:@"region"];
+    NSString *accountTag = [self.managedObject valueForKey:@"accountTag"];
+    NSDictionary *dictionary = [WebServiceManager dictionaryForBattleTagFetchRequestWithAccountTag:accountTag region:region];
+    [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *responseDictonary) {
+        [self.managedObject updateObjectWithDictionary:responseDictonary];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
 - (NSString *)stringAtIndex:(NSUInteger)index {
     NSString *result;
     switch (index) {

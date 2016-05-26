@@ -26,6 +26,11 @@
 - (void)addObjectWithDictionary:(NSDictionary *)dictionary
            managedObjectContext:(NSManagedObjectContext *)context
             withCompletionBlock:(void (^)(BOOL success, BOOL isExisting))completionBlock;
+
++ (void)addHeroesToBattleTag:(BattleTag *)battleTag
+              withDictionary:(NSDictionary *)dictionary
+      inManagedObjectContext:(NSManagedObjectContext *)context
+         withCompletionBlock:(void (^)())completionBlock;
 //- (void)addProfileWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success, BOOL isExisting))completionBlock;
 //- (void)addOrUpdateHeroWithBattleTag:(NSString *)battletag region:(NSString *)region withCompletionBlock:(void (^)(BOOL success,BOOL isExisting))completionBlock;
 

@@ -31,4 +31,22 @@
     return alert;
 }
 
++ (UIAlertController *)alertWithTitle:(NSString *)title message:(NSString *)message withYesAndNoButtonsAndCompletionBlock:(void (^)(BOOL action))completionBlock {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              completionBlock(YES);
+                                                          }];
+    UIAlertAction* noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              completionBlock(NO);
+                                                          }];
+    
+    [alert addAction:yesAction];
+    [alert addAction:noAction];
+    return alert;
+}
 @end
