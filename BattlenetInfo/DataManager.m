@@ -8,7 +8,7 @@
 
 #import "DataManager.h"
 #import "CoreDataBridge.h"
-
+#import "Hero+HelperMethods.m"
 @interface DataManager ()
 
 @property (strong,nonatomic) CoreDataManager* manager;
@@ -185,6 +185,9 @@
 //                           withCompletionBlock:(void (^)())completionBlock {
 //    
 //}
++ (void)fetchHeroesForBattleTag:(BattleTag *)battleTag {
+    
+}
 + (void)addHeroesToBattleTag:(BattleTag *)battleTag
                    withDictionary:(NSDictionary *)dictionary
            inManagedObjectContext:(NSManagedObjectContext *)context
@@ -193,9 +196,11 @@
     
     [WebServiceManager fetchObjectWithDictionary:dictionary withCompletionBlock:^(NSDictionary *responseDictonary) {
         if (responseDictonary) {
-            
-        } else {
-            
+            NSArray *heroes = [responseDictonary valueForKey:@"heroes"];
+            for (NSDictionary *heroDictionary in heroes) {
+                [Hero insertHeroWithDictionary:heroDictionary forBattletag:battleTag managedObjectContext:context];
+            }
+            completionBlock();
         }
     }];
 

@@ -22,28 +22,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.refreshControl addTarget:self action:@selector(refreshHeroes) forControlEvents:UIControlEventValueChanged];
+    //[self.refreshControl addTarget:self action:@selector(refreshHeroes) forControlEvents:UIControlEventValueChanged];
     [self initializeFetchedResultsController];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshHeroes) forControlEvents:UIControlEventValueChanged];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([[self.managedObject valueForKey:@"characters"] count] == 0) {
+    if ([[self.managedObject valueForKey:@"characters"] count] == 0 && [AFNetworkReachabilityManager sharedManager].reachable) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
         NSString *region = [self.managedObject valueForKey:@"region"];
         NSString *accountTag = [self.managedObject valueForKey:@"accountTag"];
         NSDictionary *dictionary = [WebServiceManager dictionaryForBattleTagFetchRequestWithAccountTag:accountTag region:region];
         [DataManager addHeroesToBattleTag:(BattleTag *)self.managedObject
                            withDictionary:dictionary
                    inManagedObjectContext:self.managedObjectContext withCompletionBlock:^{
-                       
+                       [MBProgressHUD hideHUDForView:self.view animated:YES];
                    }];
     }
-    //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //
   
 }
 #pragma mark - private 
-- (void)addHeroes {
-    //
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -51,51 +53,37 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"heroInfo"]) {
         if ([sender isKindOfClass:[UITableViewCell class]]) {
+           
             NSIndexPath *path = [self.tableView indexPathForCell:sender];
             HeroInfoViewController *vc = [segue destinationViewController];
-            vc.hero = [self.characters objectAtIndex:path.row];
+            vc.hero = [self.fetchedResultsController objectAtIndexPath:path];
+            
             vc.region = self.region;
             vc.battleTag = self.battleTag;
         }
     }
 }
-//#pragma mark - private helper methods
-//
-//- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-//    cell.textLabel.text = [[self.characters objectAtIndex:indexPath.row] valueForKey:@"heroName"];
-//    NSNumber *hardcore =[[self.characters objectAtIndex:indexPath.row] valueForKey:@"hardcore"];
-//    if ([hardcore boolValue]) {
-//        [cell.textLabel setTextColor:[UIColor redColor]];
-//    }
-//    cell.detailTextLabel.text = [[self.characters objectAtIndex:indexPath.row] valueForKey:@"heroClass"];
-//}
-//
-//#pragma mark - Table view data source
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [self.characters count];;
-//}
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"heroCell"];
-//    [self configureCell:cell atIndexPath:indexPath];
-//    return cell;
-//
-//}
-/* ------ */
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Fetch Record
-    //    NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
     // Update Cell
     
-   // cell.textLabel.text = [self.leftLabel objectAtIndex:indexPath.row];
-    //cell.detailTextLabel.text = [self stringAtIndex:indexPath.row];
+    cell.textLabel.text = [record valueForKey:@"heroName"];
+    cell.detailTextLabel.text = [record valueForKey:@"heroClass"];
+    NSNumber *hardcore =[record valueForKey:@"hardcore"];
+    if ([hardcore boolValue]) {
+        [cell.textLabel setTextColor:[UIColor redColor]];
+    }
+
 }
 
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray *sections = [self.fetchedResultsController sections];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+    
+    return [sectionInfo numberOfObjects];
 }
 #pragma mark - tableview datasource
 
@@ -123,12 +111,12 @@
 
 - (void)initializeFetchedResultsController {
     // Initialize Fetch Request
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"BattleTag"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"accountTag == %@",[self.managedObject valueForKey:@"accountTag"]];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Hero"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"battleTag == %@",self.managedObject];
     
     [fetchRequest setPredicate:predicate];
     // Add Sort Descriptors
-    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"accountTag" ascending:YES]]];
+    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"heroName" ascending:YES]]];
     
     // Initialize Fetched Results Controller
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
@@ -244,6 +232,12 @@
     
     NSError *error = nil;
     return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
+#pragma mark - private helper methods
+
+- (void)refreshHeroes {
+    NSLog(@"SADNESS");
 }
 
 @end
